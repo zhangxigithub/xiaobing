@@ -29,7 +29,7 @@
         self.backgroundColor = [UIColor clearColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        bgImage = ResizableImage(@"cellBg", 30, 15, 5, 5);
+        bgImage = ResizableImage(@"cellBg", 27, 13, 5, 5);
         
         icon = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 30, 30)];
         icon.image =[UIImage imageNamed:[NSString stringWithFormat:@"icon_%d",type]];
@@ -57,15 +57,15 @@
             }break;
             case Text:
             {
-                content = [[UITextView alloc] initWithFrame:CGRectMake(60, 5, 236, self.bounds.size.height-10)];
+                content = [[UITextView alloc] initWithFrame:CGRectMake(60, 8, 236, self.bounds.size.height-16)];
                 content.autoresizingMask = UIViewAutoresizingFlexibleHeight;
             }break;
             case Image:
             {
-                content = [[UITextView alloc] initWithFrame:CGRectMake(60, 5, 190, 70)];
+                content = [[UITextView alloc] initWithFrame:CGRectMake(60, 8, 190, 64 )];
                 
 
-                imageView = [[UIImageView alloc] initWithFrame:CGRectMake(240, 5, 60, 60)];
+                imageView = [[UIImageView alloc] initWithFrame:CGRectMake(240, 10, 60, 60)];
                 imageView.userInteractionEnabled = YES;
                 [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showImage)]];
                 [self addSubview:imageView];
@@ -102,7 +102,7 @@
     [super drawRect:rect];
     
     
-    CGRect frame = CGRectMake(50, 7, 250, rect.size.height-12);
+    CGRect frame = CGRectMake(50, 7, 250, rect.size.height-10);
     [bgImage drawInRect:frame];
 }
 

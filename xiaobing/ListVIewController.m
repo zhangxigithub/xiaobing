@@ -14,7 +14,7 @@
 #import "PlayerViewController.h"
 #import "FliterTableViewController.h"
 #import "AboutViewController.h"
-
+#import <UMSocial.h>
 
 @implementation ListVIewController
 
@@ -45,29 +45,40 @@
     line.backgroundColor = kColor_ListLine;
     [self.view addSubview:line];
     //+++++++++++++++++++++++++++++++++++
-    table = [[UITableView alloc] initWithFrame:CGRectMake(0, 50, kContent_Width, kContent_Height-50)
+    table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kContent_Width, kContent_Height-44)
                                          style:UITableViewStylePlain];
     table.separatorStyle = UITableViewCellSeparatorStyleNone;
     table.backgroundColor = [UIColor clearColor];
     table.dataSource = self;
     table.delegate = self;
-    table.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
+    table.contentInset = UIEdgeInsetsMake(15, 0, 0, 0);
     [self.view addSubview:table];
     
     //+++++++++++++++++++++++++++++++++++
     headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kContent_Width, 150)];
     headerView.backgroundColor = kColor_ListHeader;
-    [self.view addSubview:headerView];
+    //[self.view addSubview:headerView];
     
     //+++++++++++++++++++++++++++++++++++
     fliterButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    fliterButton.frame = CGRectMake(0, 0, 60, 37);
+    fliterButton.frame = CGRectMake(0, 0, 35, 35);
     [fliterButton addTarget:self
                      action:@selector(fliter)
            forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:fliterButton];
-    self.navigationItem.rightBarButtonItem = item;
+
     //+++++++++++++++++++++++++++++++++++
+    
+    UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shareButton setImage:[UIImage imageNamed:@"iconShare"] forState:UIControlStateNormal];
+    
+    shareButton.frame = CGRectMake(0, 0, 35, 35);
+    [shareButton addTarget:self
+                    action:@selector(share)
+        forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
+    
+    self.navigationItem.rightBarButtonItems = @[item,item2];;
     
     
     
@@ -122,6 +133,15 @@
 //    popover.border = NO;
 //    [popover presentPopoverFromView:fliterButton];
 }
+-(void)share
+{
+    [UMSocialSnsService presentSnsIconSheetView:[[[UIApplication sharedApplication] keyWindow] rootViewController]
+                                         appKey:@"51abf69b56240b183404f364"
+                                      shareText:@"@小饼FM"
+                                     shareImage:[UIImage imageNamed:@"icon.png"]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,nil]
+                                       delegate:nil];
+}
 - (void)popoverControllerDidDismissPopover:(FPPopoverController *)popoverController
 {
     [popoverController dismissPopoverAnimated:YES];
@@ -132,6 +152,7 @@
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    return;
     if(scrollView == table)
     {
         //NSLog(@"%f",table.contentOffset.y);
@@ -155,12 +176,13 @@
     XBPodcast *podcast = localData[indexPath.row];
     switch (podcast.type) {
         case Podcast:return 120;
-        case Text:   return podcast.height;
+        case Text:
+            NSLog(@"h:%f",podcast.height);
+            return podcast.height;
         case Image:  return 100;
         default:
             break;
     }
-    return 100;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     

@@ -29,11 +29,14 @@
     if(self.rowHeight <0)
     {
         CGSize size = [self.content sizeWithFont:kContent_Font
-                               constrainedToSize:CGRectMake(60, 5, 220, 999).size
+                               constrainedToSize:CGSizeMake(220, 9999)
                                    lineBreakMode:NSLineBreakByCharWrapping];
-        self.rowHeight = size.height+26;
+        
+        self.rowHeight = size.height+30;
     }
     NSLog(@"f:%f",self.rowHeight);
+    
+    
     return self.rowHeight;
 }
 
@@ -70,7 +73,7 @@
     [aCoder encodeInt:self.type forKey:@"zx_type"];
     [aCoder encodeObject:self.imageURL forKey:@"zx_imageURL"];
     [aCoder encodeObject:self.date forKey:@"zx_date"];
-    [aCoder encodeFloat:self.type forKey:@"zx_rowHeight"];
+    [aCoder encodeFloat:self.rowHeight forKey:@"zx_rowHeight"];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

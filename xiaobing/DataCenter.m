@@ -36,7 +36,7 @@ static DataCenter *dataCenter;
 -(NSArray *)localPodcast
 {
     
-    NSArray *result = [NSKeyedUnarchiver unarchiveObjectWithFile:[NSHomeDirectory() stringByAppendingPathComponent:@"dataaaaaa"]];
+    NSArray *result = [NSKeyedUnarchiver unarchiveObjectWithFile:[NSHomeDirectory() stringByAppendingPathComponent:@"/Documents/podcasts"]];
     
     return  result;
 }
@@ -55,7 +55,7 @@ static DataCenter *dataCenter;
          
          NSData *data = [NSKeyedArchiver archivedDataWithRootObject:result];
          
-         BOOL save = [data writeToFile:[NSHomeDirectory() stringByAppendingPathComponent:@"dataaaaaa"] atomically:YES];
+         BOOL save = [data writeToFile:[NSHomeDirectory() stringByAppendingPathComponent:@"/Documents/podcasts"] atomically:YES];
          
          LOGBOOL(save);
          
