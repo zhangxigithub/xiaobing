@@ -23,7 +23,6 @@
         case Image:  identifier = @"XB2"; break;
     }
     
-    NSLog(@"alloc %@",identifier);
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     if (self) {
         self.backgroundColor = [UIColor clearColor];

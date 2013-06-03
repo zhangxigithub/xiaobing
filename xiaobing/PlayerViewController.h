@@ -10,7 +10,7 @@
 #import "XBPlayer.h"
 #import "XBPodcast.h"
 
-@interface PlayerViewController : UIViewController
+@interface PlayerViewController : UIViewController<XBPlayerDelegate>
 {
     XBPlayer *player;
     XBPodcast *podcast;

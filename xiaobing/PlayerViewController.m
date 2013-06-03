@@ -22,11 +22,48 @@
         
         
         player = [XBPlayer sharedPlayer];
+        player.delegate = self;
         [player play:podcast];
     }
     return self;
 }
+-(void)position:(float)position
+{
+    NSLog(@"%f",position);
+}
+-(void)changeStatus:(DOUAudioStreamerStatus)status
+{
+    switch (status) {
+        case DOUAudioStreamerPlaying:
+            NSLog(@"DOUAudioStreamerPlaying");
+            //[_labelInfo setText:@"playing"];
+            //[_buttonPlayPause setTitle:@"Pause" forState:UIControlStateNormal];
+            break;
+            
+        case DOUAudioStreamerPaused:
+            NSLog(@"p");
+            //[_labelInfo setText:@"paused"];
+            //[_buttonPlayPause setTitle:@"Play" forState:UIControlStateNormal];
+            break;
+            
+        case DOUAudioStreamerFinished:
+            NSLog(@"f");
+            //[_labelInfo setText:@"finished"];
+            //[self actionNext:nil];
+            break;
+            
+        case DOUAudioStreamerBuffering:
+            NSLog(@"bu");
+            //[_labelInfo setText:@"buffering"];
+            break;
+            
+        case DOUAudioStreamerError:
+            NSLog(@"E");
+            //[_labelInfo setText:@"error"];
+            break;
+    }
 
+}
 - (IBAction)back:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -54,6 +91,12 @@
     self.view.backgroundColor = kColor_ListBG;
     self.navigationItem.title = podcast.title;
     [self.playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateSelected];
+    
+    
+    
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning

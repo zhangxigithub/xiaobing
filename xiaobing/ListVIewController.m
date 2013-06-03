@@ -175,11 +175,9 @@
 {
     XBPodcast *podcast = localData[indexPath.row];
     switch (podcast.type) {
-        case Podcast:return 120;
-        case Text:
-            NSLog(@"h:%f",podcast.height);
-            return podcast.height;
-        case Image:  return 100;
+        case Podcast: return 115;
+        case Text:    return podcast.height;
+        case Image:   return 100;
         default:
             break;
     }

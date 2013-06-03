@@ -11,14 +11,21 @@
 #import "XBPodcast.h"
 
 
+
+@protocol XBPlayerDelegate
+
+-(void)changeStatus:(DOUAudioStreamerStatus )status;
+-(void)position:(float)position;
+@end
+
 @interface XBPlayer : NSObject
 {
     DOUAudioStreamer *streamer;
 }
 
 -(DOUAudioStreamerStatus)status;
-
-
+@property(nonatomic,weak) id<XBPlayerDelegate>delegate;
+@property(nonatomic,strong) NSTimer *timer;
 +(XBPlayer *)sharedPlayer;
 
 -(void)play:(XBPodcast *)podcast;

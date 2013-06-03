@@ -12,7 +12,6 @@
 
 -(NSURL *)audioFileURL
 {
-    NSLog(@"::%@",self.podcastURL);
     return self.podcastURL;
 }
 
@@ -34,9 +33,6 @@
         
         self.rowHeight = size.height+30;
     }
-    NSLog(@"f:%f",self.rowHeight);
-    
-    
     return self.rowHeight;
 }
 

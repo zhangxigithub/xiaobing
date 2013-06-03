@@ -42,7 +42,7 @@
 		439CEDBC175B833A0096D909 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 439CEDBB175B833A0096D909 /* play@2x.png */; };
 		439CEDBF175B84FA0096D909 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CEDBE175B84FA0096D909 /* PlayerViewController.m */; };
 		439CEDC2175B90F30096D909 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CEDC1175B90F30096D909 /* ImageViewController.m */; };
-		43B50478175A24C400285735 /* XBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B50475175A24C400285735 /* XBPlayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		43B50478175A24C400285735 /* XBPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B50475175A24C400285735 /* XBPlayer.m */; };
 		43B5047B175A24E300285735 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43B5047A175A24E300285735 /* CFNetwork.framework */; };
 		43B5047F175A349500285735 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B5047E175A349500285735 /* GuideViewController.m */; };
 		43CB9BCF175A169D00B5705C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43CB9BCE175A169D00B5705C /* UIKit.framework */; };

@@ -24,31 +24,46 @@ static XBPlayer *player;
     }
     return player;
 }
-- (void)resetStreamer
-{
-    if (streamer != nil) {
-        [streamer pause];
-        [streamer removeObserver:self forKeyPath:@"status"];
-        [streamer removeObserver:self forKeyPath:@"duration"];
-        streamer = nil;
-    }
-    
 
-    
-    //streamer = [DOUAudioStreamer streamerWithAudioFile:track];
-    
-    [streamer addObserver:self
-               forKeyPath:@"status"
-                  options:NSKeyValueObservingOptionNew
-                  context:kStatusKVOKey];
-    
-    [streamer addObserver:self
-               forKeyPath:@"duration"
-                  options:NSKeyValueObservingOptionNew
-                  context:kDurationKVOKey];
-    
-    //[streamer play];
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        
+        self.timer =  [NSTimer scheduledTimerWithTimeInterval:0.2
+                                                       target:self
+                                                     selector:@selector(timerAction:)
+                                                     userInfo:nil
+                                                      repeats:YES];
+        
+    }
+    return self;
 }
+//- (void)resetStreamer
+//{
+//    if (streamer != nil) {
+//        [streamer pause];
+//        [streamer removeObserver:self forKeyPath:@"status"];
+//        [streamer removeObserver:self forKeyPath:@"duration"];
+//        streamer = nil;
+//    }
+//    
+//
+//    
+//    //streamer = [DOUAudioStreamer streamerWithAudioFile:track];
+//    
+//    [streamer addObserver:self
+//               forKeyPath:@"status"
+//                  options:NSKeyValueObservingOptionNew
+//                  context:kStatusKVOKey];
+//    
+//    [streamer addObserver:self
+//               forKeyPath:@"duration"
+//                  options:NSKeyValueObservingOptionNew
+//                  context:kDurationKVOKey];
+//    
+//    //[streamer play];
+//}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -72,8 +87,10 @@ static XBPlayer *player;
 {
     if ([streamer duration] == 0.0) {
         //[_progressView setProgress:0.0f animated:NO];
+        [self.delegate position:0];
     }
     else {
+         [self.delegate position:[streamer currentTime] / [streamer duration]];
         //[_progressView setProgress:[_streamer currentTime] / [_streamer duration] animated:YES];
     }
 }
@@ -83,6 +100,7 @@ static XBPlayer *player;
 }
 - (void)updateStatus
 {
+    [self.delegate changeStatus:[streamer status]];
     switch ([streamer status]) {
         case DOUAudioStreamerPlaying:
             //[_labelInfo setText:@"playing"];
