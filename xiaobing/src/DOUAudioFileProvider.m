@@ -148,7 +148,7 @@ typedef NS_ENUM(NSUInteger, DOUAudioRemoteFileHeaderFormat) {
 
 + (NSString *)_cachedPathForAudioFileURL:(NSURL *)audioFileURL
 {
-  NSString *filename = [NSString stringWithFormat:@"/Documents/douas-%@.mp3", [self _sha256ForAudioFileURL:audioFileURL]];
+  NSString *filename = [NSString stringWithFormat:@"/tmp/douas-%@.mp3", [self _sha256ForAudioFileURL:audioFileURL]];
   return [NSHomeDirectory() stringByAppendingPathComponent:filename];
 }
 

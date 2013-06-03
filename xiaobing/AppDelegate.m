@@ -11,6 +11,7 @@
 #import "DataCenter.h"
 #import "ListVIewController.h"
 #import <MobClick.h>
+#import <AVFoundation/AVFoundation.h>
 
 @implementation AppDelegate
 
@@ -36,13 +37,33 @@
 //    player.url = [NSURL URLWithString:@"http://mr3.douban.com/201306012033/bac698fb43b0609bf16ea8d044bb2ad2/view/song/small/p1639355.mp3"];
 //    [player play];
     
-    
+//    
+//    UInt32 allowMix = 1;
+//    
+//    AVAudioSession* audioSession = [AVAudioSession sharedInstance];
+//    
+//    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+//    
+//    AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryMixWithOthers, sizeof(allowMix), &allowMix);
+//    
+//    [audioSession setActive:YES error:nil];
+//    
+    //AVAudioSession *session = [AVAudioSession sharedInstance];
+    //[session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    //[session setActive:YES error:nil];
 
-    
+     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
     return YES;
 }
-
+-(BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+-(void)remoteControlReceivedWithEvent:(UIEvent *)event
+{
+    NSLog(@"%@",event);
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

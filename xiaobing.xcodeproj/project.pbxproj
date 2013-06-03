@@ -20,6 +20,7 @@
 		33708231175C3E5500752485 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33708230175C3E5500752485 /* CoreAudio.framework */; };
 		33708233175C3E6400752485 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33708232175C3E6400752485 /* Accelerate.framework */; };
 		33708235175C400400752485 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33708234175C400400752485 /* PlayerViewController.xib */; };
+		33708239175C628300752485 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33708238175C628300752485 /* AVFoundation.framework */; };
 		439CEDA7175A4B7E0096D909 /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CEDA6175A4B7E0096D909 /* DataCenter.m */; };
 		439CEDAA175AE4850096D909 /* XBPodcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CEDA9175AE4850096D909 /* XBPodcast.m */; };
 		439CEDAD175AE6320096D909 /* ListVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CEDAC175AE6320096D909 /* ListVIewController.m */; };
@@ -76,6 +77,7 @@
 		33708230175C3E5500752485 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		33708232175C3E6400752485 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		33708234175C400400752485 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		33708238175C628300752485 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		439CEDA5175A4B7E0096D909 /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenter.h; sourceTree = "<group>"; };
 		439CEDA6175A4B7E0096D909 /* DataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCenter.m; sourceTree = "<group>"; };
 		439CEDA8175AE4850096D909 /* XBPodcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPodcast.h; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33708239175C628300752485 /* AVFoundation.framework in Frameworks */,
 				33708233175C3E6400752485 /* Accelerate.framework in Frameworks */,
 				33708231175C3E5500752485 /* CoreAudio.framework in Frameworks */,
 				43B5047B175A24E300285735 /* CFNetwork.framework in Frameworks */,
@@ -212,6 +215,7 @@
 		43CB9BC2175A169D00B5705C = {
 			isa = PBXGroup;
 			children = (
+				33708238175C628300752485 /* AVFoundation.framework */,
 				33708232175C3E6400752485 /* Accelerate.framework */,
 				33708230175C3E5500752485 /* CoreAudio.framework */,
 				43CB9BF1175A189600B5705C /* Icon@2x.png */,

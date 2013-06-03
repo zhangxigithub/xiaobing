@@ -12,6 +12,7 @@
 
 -(NSURL *)audioFileURL
 {
+    NSLog(@"::%@",self.podcastURL);
     return self.podcastURL;
 }
 
