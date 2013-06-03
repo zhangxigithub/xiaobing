@@ -1,0 +1,273 @@
+10
+
+dir
+0
+svn://www.oksvn.com/gamezx/xiaobing/xiaobing
+svn://www.oksvn.com/gamezx
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1866c10b-87d9-3046-a89b-db91ab9bad9f
+
+main.m
+file
+
+
+
+add
+
+PlayerViewController.h
+file
+
+
+
+add
+
+XBPlayer.m
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+Default@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+XBPodcast.m
+file
+
+
+
+add
+
+XBPodcastCell.m
+file
+
+
+
+add
+
+GuideViewController.h
+file
+
+
+
+add
+
+image
+dir
+
+
+
+add
+
+xiaobing-Info.plist
+file
+
+
+
+add
+
+PlayerViewController.m
+file
+
+
+
+add
+
+en.lproj
+dir
+
+
+
+add
+
+src
+dir
+
+
+
+add
+
+GuideViewController.m
+file
+
+
+
+add
+
+config.h
+file
+
+
+
+add
+
+ListVIewController.h
+file
+
+
+
+add
+
+DataCenter.h
+file
+
+
+
+add
+
+AppDelegate.h
+file
+
+
+
+add
+
+xiaobing-Prefix.pch
+file
+
+
+
+add
+
+ListVIewController.m
+file
+
+
+
+add
+
+DataCenter.m
+file
+
+
+
+add
+
+AppDelegate.m
+file
+
+
+
+add
+
+ImageViewController.h
+file
+
+
+
+add
+
+Default.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+ZXMacro.h
+file
+
+
+
+add
+
+Default-568h@2x.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+ImageViewController.m
+file
+
+
+
+add
+
+XBPlayer.h
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+PlayerViewController.xib
+file
+
+
+
+add
+
+XBPodcast.h
+file
+
+
+
+add
+
+XBPodcastCell.h
+file
+
+
+
+add
+
