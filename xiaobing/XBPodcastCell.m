@@ -57,7 +57,8 @@
             }break;
             case Text:
             {
-                content = [[UITextView alloc] initWithFrame:CGRectMake(60, 5, 236, 70)];
+                content = [[UITextView alloc] initWithFrame:CGRectMake(60, 5, 236, self.bounds.size.height-10)];
+                content.autoresizingMask = UIViewAutoresizingFlexibleHeight;
             }break;
             case Image:
             {
@@ -77,7 +78,7 @@
         content.editable = NO;
         content.font         = kContent_Font;
         content.textColor    = kContent_Color;
-        
+
         
         titleLabel.font      = kTitle_Font;
         titleLabel.textColor = kTitle_Color;
@@ -101,7 +102,7 @@
     [super drawRect:rect];
     
     
-    CGRect frame = CGRectMake(50, 5, 250, rect.size.height-10);
+    CGRect frame = CGRectMake(50, 7, 250, rect.size.height-12);
     [bgImage drawInRect:frame];
 }
 

@@ -134,7 +134,7 @@
 {
     if(scrollView == table)
     {
-        NSLog(@"%f",table.contentOffset.y);
+        //NSLog(@"%f",table.contentOffset.y);
         if(scrollView.contentOffset.y <= -50)
         {
             headerView.frame = CGRectMake(0, 0,kContent_Width, -scrollView.contentOffset.y);
@@ -155,7 +155,7 @@
     XBPodcast *podcast = localData[indexPath.row];
     switch (podcast.type) {
         case Podcast:return 120;
-        case Text:   return 100;
+        case Text:   return podcast.height;
         case Image:  return 100;
         default:
             break;
