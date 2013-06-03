@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking 0
 
+// FPPopover
+#define COCOAPODS_POD_AVAILABLE_FPPopover
+#define COCOAPODS_VERSION_MAJOR_FPPopover 1
+#define COCOAPODS_VERSION_MINOR_FPPopover 4
+#define COCOAPODS_VERSION_PATCH_FPPopover 1
+
 // JSONKit
 #define COCOAPODS_POD_AVAILABLE_JSONKit
 // This library does not follow semantic-versioning,

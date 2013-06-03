@@ -16,9 +16,11 @@
     XBPodcast *podcast;
 }
 
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
 
 -(id)initWithPodcast:(XBPodcast *)thePodcast;
 
 - (IBAction)back:(id)sender;
+- (IBAction)play:(UIButton *)sender;
 
 @end

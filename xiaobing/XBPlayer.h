@@ -16,9 +16,13 @@
     DOUAudioStreamer *streamer;
 }
 
+-(DOUAudioStreamerStatus)status;
+
+
 +(XBPlayer *)sharedPlayer;
 
 -(void)play:(XBPodcast *)podcast;
 -(void)pause;
 -(void)stop;
+-(void)play;
 @end

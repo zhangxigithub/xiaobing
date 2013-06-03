@@ -77,7 +77,10 @@ static XBPlayer *player;
         //[_progressView setProgress:[_streamer currentTime] / [_streamer duration] animated:YES];
     }
 }
-
+-(DOUAudioStreamerStatus)status
+{
+    return [streamer status];
+}
 - (void)updateStatus
 {
     switch ([streamer status]) {
@@ -139,7 +142,10 @@ static XBPlayer *player;
 {
     [streamer stop];
 }
-
+-(void)play
+{
+    [streamer play];
+}
 
 
 

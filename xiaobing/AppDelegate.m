@@ -30,7 +30,8 @@
     
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ListVIewController alloc] init]];
-    [self.window.rootViewController.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    //[self.window.rootViewController.navigationController setNavigationBarHidden:NO animated:NO];
     
     
 //    player = [[XBPlayer alloc] init];

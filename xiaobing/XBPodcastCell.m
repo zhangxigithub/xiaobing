@@ -40,14 +40,14 @@
         switch (type) {   
             case Podcast:
             {
-                titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 10, 200, 20)];
+                titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(68, 12, 200, 20)];
                 [self addSubview:titleLabel];
                 
                 content = [[UITextView alloc] initWithFrame:CGRectMake(60, 30, 190, 70)];
                 
                 UIButton *playButton = [UIButton buttonWithType:UIButtonTypeCustom];
                 [playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
-                playButton.frame = CGRectMake(240, 15, 40, 40);
+                playButton.frame = CGRectMake(250, 38, 40, 40);
                 [playButton addTarget:self
                                action:@selector(play)
                      forControlEvents:UIControlEventTouchUpInside];

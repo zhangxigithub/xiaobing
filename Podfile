@@ -6,3 +6,5 @@ pod 'AFNetworking'
 
 pod 'UMengSocial'
 pod 'UMengAnalytics'
+
+pod 'FPPopover'

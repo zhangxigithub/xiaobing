@@ -12,6 +12,9 @@
 #import "DataCenter.h"
 #import <UIImageView+AFNetworking.h>
 #import "PlayerViewController.h"
+#import "FliterTableViewController.h"
+#import "AboutViewController.h"
+
 
 @implementation ListVIewController
 
@@ -28,7 +31,8 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = kColor_ListBG;
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.navigationItem.title = @"小饼电台";
+    //[self.navigationController setNavigationBarHidden:YES animated:NO];
 
 //    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"brnlthr_nav.jpg"] forBarMetrics:UIBarMetricsDefault];
     
@@ -55,8 +59,35 @@
     headerView.backgroundColor = kColor_ListHeader;
     [self.view addSubview:headerView];
     
-  
+    //+++++++++++++++++++++++++++++++++++
+    fliterButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    fliterButton.frame = CGRectMake(0, 0, 60, 37);
+    [fliterButton addTarget:self
+                     action:@selector(fliter)
+           forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:fliterButton];
+    self.navigationItem.rightBarButtonItem = item;
+    //+++++++++++++++++++++++++++++++++++
     
+    
+    
+    
+    
+    
+    
+    
+    
+    //+++++++++++++++++++++++++++++++++++
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //+++++++++++++++++++++++++++++++++++
     localData = [[[DataCenter sharedDateCenter] localPodcast] mutableCopy];
 
     if(localData == nil)
@@ -70,6 +101,34 @@
     }];
     }
     [self scrollViewDidScroll:table];
+    
+}
+
+-(void)fliter
+{
+    AboutViewController *about = [[AboutViewController alloc] init];
+    [self.navigationController pushViewController:about animated:YES];
+    
+    
+    
+    
+    
+    
+    
+//    FliterTableViewController *fliter = [[FliterTableViewController alloc] init];
+//    
+//    FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:fliter];
+//    popover.delegate  = self;
+//    popover.border = NO;
+//    [popover presentPopoverFromView:fliterButton];
+}
+- (void)popoverControllerDidDismissPopover:(FPPopoverController *)popoverController
+{
+    [popoverController dismissPopoverAnimated:YES];
+}
+- (void)presentedNewPopoverController:(FPPopoverController *)newPopoverController
+          shouldDismissVisiblePopover:(FPPopoverController*)visiblePopoverController
+{
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -95,7 +154,7 @@
 {
     XBPodcast *podcast = localData[indexPath.row];
     switch (podcast.type) {
-        case Podcast:return 150;
+        case Podcast:return 120;
         case Text:   return 100;
         case Image:  return 100;
         default:

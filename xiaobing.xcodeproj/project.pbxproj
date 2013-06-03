@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33655AE3175C6D95009339C1 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33655AE2175C6D95009339C1 /* pause@2x.png */; };
+		33655AE6175C7EFB009339C1 /* FliterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AE5175C7EFB009339C1 /* FliterTableViewController.m */; };
+		33655AEA175C80C9009339C1 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AE8175C80C9009339C1 /* AboutViewController.m */; };
+		33655AEB175C80C9009339C1 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33655AE9175C80C9009339C1 /* AboutViewController.xib */; };
+		33655AEF175C8124009339C1 /* ZXNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AEE175C8124009339C1 /* ZXNavigationBar.m */; };
+		33655AF1175C8299009339C1 /* navBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 33655AF0175C8299009339C1 /* navBg.png */; };
+		33655AF4175C8358009339C1 /* UIViewController+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AF3175C8358009339C1 /* UIViewController+UI.m */; };
+		33655AF6175C8478009339C1 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33655AF5175C8478009339C1 /* back@2x.png */; };
+		33655AF8175C8583009339C1 /* logo@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 33655AF7175C8583009339C1 /* logo@2x.jpg */; };
 		33708226175C3CC800752485 /* DOUAudioDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 33708211175C3CC800752485 /* DOUAudioDecoder.m */; };
 		33708227175C3CC800752485 /* DOUAudioEventLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = 33708213175C3CC800752485 /* DOUAudioEventLoop.m */; };
 		33708228175C3CC800752485 /* DOUAudioFilePreprocessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 33708216175C3CC800752485 /* DOUAudioFilePreprocessor.m */; };
@@ -52,6 +61,19 @@
 
 /* Begin PBXFileReference section */
 		1EAC52C2A43C4C9998B33DFE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		33655AE2175C6D95009339C1 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
+		33655AE4175C7EFA009339C1 /* FliterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FliterTableViewController.h; sourceTree = "<group>"; };
+		33655AE5175C7EFB009339C1 /* FliterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FliterTableViewController.m; sourceTree = "<group>"; };
+		33655AE7175C80C9009339C1 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		33655AE8175C80C9009339C1 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		33655AE9175C80C9009339C1 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		33655AED175C8124009339C1 /* ZXNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXNavigationBar.h; sourceTree = "<group>"; };
+		33655AEE175C8124009339C1 /* ZXNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXNavigationBar.m; sourceTree = "<group>"; };
+		33655AF0175C8299009339C1 /* navBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBg.png; sourceTree = "<group>"; };
+		33655AF2175C8358009339C1 /* UIViewController+UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+UI.h"; path = "ZXNavigationBar/UIViewController+UI.h"; sourceTree = "<group>"; };
+		33655AF3175C8358009339C1 /* UIViewController+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+UI.m"; path = "ZXNavigationBar/UIViewController+UI.m"; sourceTree = "<group>"; };
+		33655AF5175C8478009339C1 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		33655AF7175C8583009339C1 /* logo@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "logo@2x.jpg"; sourceTree = "<group>"; };
 		33708210175C3CC800752485 /* DOUAudioDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioDecoder.h; sourceTree = "<group>"; };
 		33708211175C3CC800752485 /* DOUAudioDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAudioDecoder.m; sourceTree = "<group>"; };
 		33708212175C3CC800752485 /* DOUAudioEventLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioEventLoop.h; sourceTree = "<group>"; };
@@ -141,6 +163,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33655AEC175C8124009339C1 /* ZXNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				33655AED175C8124009339C1 /* ZXNavigationBar.h */,
+				33655AEE175C8124009339C1 /* ZXNavigationBar.m */,
+			);
+			path = ZXNavigationBar;
+			sourceTree = "<group>";
+		};
 		3370820F175C3CC800752485 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +213,10 @@
 		439CEDB2175B163F0096D909 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				33655AF7175C8583009339C1 /* logo@2x.jpg */,
+				33655AF5175C8478009339C1 /* back@2x.png */,
+				33655AF0175C8299009339C1 /* navBg.png */,
+				33655AE2175C6D95009339C1 /* pause@2x.png */,
 				439CEDBB175B833A0096D909 /* play@2x.png */,
 				439CEDB9175B1BD90096D909 /* cellBg@2x.png */,
 				439CEDB3175B163F0096D909 /* icon_0@2x.png */,
@@ -257,6 +292,9 @@
 				43CB9BDE175A169D00B5705C /* AppDelegate.m */,
 				439CEDC4175B94F50096D909 /* Data */,
 				439CEDC3175B94DC0096D909 /* Player */,
+				33655AEC175C8124009339C1 /* ZXNavigationBar */,
+				33655AF2175C8358009339C1 /* UIViewController+UI.h */,
+				33655AF3175C8358009339C1 /* UIViewController+UI.m */,
 				43B5047D175A349500285735 /* GuideViewController.h */,
 				43B5047E175A349500285735 /* GuideViewController.m */,
 				439CEDAB175AE6310096D909 /* ListVIewController.h */,
@@ -266,6 +304,11 @@
 				33708234175C400400752485 /* PlayerViewController.xib */,
 				439CEDC0175B90F30096D909 /* ImageViewController.h */,
 				439CEDC1175B90F30096D909 /* ImageViewController.m */,
+				33655AE4175C7EFA009339C1 /* FliterTableViewController.h */,
+				33655AE5175C7EFB009339C1 /* FliterTableViewController.m */,
+				33655AE7175C80C9009339C1 /* AboutViewController.h */,
+				33655AE8175C80C9009339C1 /* AboutViewController.m */,
+				33655AE9175C80C9009339C1 /* AboutViewController.xib */,
 				439CEDAE175B03720096D909 /* Cells */,
 				439CEDB2175B163F0096D909 /* image */,
 				43CB9BD5175A169D00B5705C /* Supporting Files */,
@@ -352,6 +395,11 @@
 				439CEDBA175B1BD90096D909 /* cellBg@2x.png in Resources */,
 				439CEDBC175B833A0096D909 /* play@2x.png in Resources */,
 				33708235175C400400752485 /* PlayerViewController.xib in Resources */,
+				33655AE3175C6D95009339C1 /* pause@2x.png in Resources */,
+				33655AEB175C80C9009339C1 /* AboutViewController.xib in Resources */,
+				33655AF1175C8299009339C1 /* navBg.png in Resources */,
+				33655AF6175C8478009339C1 /* back@2x.png in Resources */,
+				33655AF8175C8583009339C1 /* logo@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +461,10 @@
 				3370822D175C3CC800752485 /* DOUAudioStreamer.m in Sources */,
 				3370822E175C3CC800752485 /* DOUSimpleHTTPRequest.m in Sources */,
 				3370822F175C3CC800752485 /* NSData+DOUMappedFile.m in Sources */,
+				33655AE6175C7EFB009339C1 /* FliterTableViewController.m in Sources */,
+				33655AEA175C80C9009339C1 /* AboutViewController.m in Sources */,
+				33655AEF175C8124009339C1 /* ZXNavigationBar.m in Sources */,
+				33655AF4175C8358009339C1 /* UIViewController+UI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 //
 
 #import "PlayerViewController.h"
-
+#import "UIViewController+UI.h"
 
 
 @implementation PlayerViewController
@@ -32,10 +32,28 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)play:(id)sender {
+    
+    
+    if([player status] == DOUAudioStreamerPlaying)
+    {
+        [self.playButton setSelected:YES];
+        [player pause];
+    }else
+    {
+        [self.playButton setSelected:NO];
+        [player play];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self addBackButton];
+    
+    self.view.backgroundColor = kColor_ListBG;
+    self.navigationItem.title = podcast.title;
+    [self.playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateSelected];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,6 +64,10 @@
 
 
 
+- (void)viewDidUnload {
+    [self setPlayButton:nil];
+    [super viewDidUnload];
+}
 @end
 
 

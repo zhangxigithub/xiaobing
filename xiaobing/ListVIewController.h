@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "XBPodcastCell.h"
+#import <FPPopoverController.h>
 
-@interface ListVIewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,XBPodcastCellDelegate>
+@interface ListVIewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,XBPodcastCellDelegate,FPPopoverControllerDelegate>
 {
     UITableView   *table;
     UIView        *headerView;
@@ -17,5 +18,8 @@
     
     
     NSMutableArray *localData;
+    
+    
+    UIButton *fliterButton;
 }
 @end
