@@ -31,7 +31,7 @@
                                constrainedToSize:CGSizeMake(220, 9999)
                                    lineBreakMode:NSLineBreakByCharWrapping];
         
-        self.rowHeight = size.height+30;
+        self.rowHeight = size.height+42;
     }
     return self.rowHeight;
 }

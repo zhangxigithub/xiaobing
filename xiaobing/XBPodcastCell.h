@@ -30,6 +30,8 @@
     UITextView  *content;
     UIImageView *imageView;
     
+    
+    UILabel     *dateLabel;
 }
 
 

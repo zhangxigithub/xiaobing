@@ -225,7 +225,7 @@
 {
     XBPodcast *podcast = localData[indexPath.row];
     switch (podcast.type) {
-        case Podcast: return 115;
+        case Podcast: return 124;
         case Text:    return podcast.height;
         case Image:   return 100;
         default:

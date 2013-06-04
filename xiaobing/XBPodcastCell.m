@@ -36,8 +36,7 @@
         icon.image =[UIImage imageNamed:[NSString stringWithFormat:@"icon_%d",type]];
         [self addSubview:icon];
         
-        
-        
+
         switch (type) {   
             case Podcast:
             {
@@ -53,6 +52,8 @@
                                action:@selector(play)
                      forControlEvents:UIControlEventTouchUpInside];
                 [self addSubview:playButton];
+                
+                
                 
                 
             }break;
@@ -73,6 +74,8 @@
             } break;
         }
         
+
+        
         
         [self addSubview:content];
         content.scrollEnabled = NO;
@@ -84,7 +87,14 @@
         titleLabel.font      = kTitle_Font;
         titleLabel.textColor = kTitle_Color;
         
-
+        
+        dateLabel = [[UILabel alloc] init];
+        dateLabel.font = kDate_Font;
+        dateLabel.textColor = kDate_Color;
+        dateLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        dateLabel.frame = CGRectMake(70, self.frame.size.height-20, 80, 15);
+        dateLabel.text = @"2013.6.5";
+        [self addSubview:dateLabel];
         
         
     }

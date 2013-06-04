@@ -27,3 +27,6 @@
 #define kContent_Color         HexRGB(0xaaaaaa)
 #define kContent_Font          [UIFont systemFontOfSize:13]
 
+#define kDate_Color         HexRGB(0xaaaaaa)
+#define kDate_Font          [UIFont systemFontOfSize:11]
+
