@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UMFeedback.h>
 
 @interface AboutViewController : UIViewController
 
+- (IBAction)feed:(UIButton *)sender;
 @end

@@ -44,4 +44,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)feed:(UIButton *)sender {
+    
+    [UMFeedback showFeedback:self withAppkey:@"51abf69b56240b183404f364"];
+}
 @end

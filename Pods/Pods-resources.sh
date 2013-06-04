@@ -33,6 +33,7 @@ install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/gray
 install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/grayArrow@2x.png'
 install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow.png'
 install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow@2x.png'
+install_resource 'UMengFeedback/UMFeedback_iOS_1.4/umFeedback.bundle'
 install_resource 'UMengSocial/UMSocial_Sdk_All_2.1.3/UMSocial_Sdk_2.1.3/UMSocialSDKResources.bundle'
 install_resource 'UMengSocial/UMSocial_Sdk_All_2.1.3/UMSocial_Sdk_2.1.3/SocialSDKXib/UMSCommentDetailController.xib'
 install_resource 'UMengSocial/UMSocial_Sdk_All_2.1.3/UMSocial_Sdk_2.1.3/SocialSDKXib/UMSCommentInputController.xib'

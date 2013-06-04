@@ -6,6 +6,7 @@ pod 'AFNetworking'
 
 pod 'UMengSocial'
 pod 'UMengAnalytics'
+pod 'UMengFeedback'
 
 pod 'FPPopover'
 pod 'EGOTableViewPullRefresh'

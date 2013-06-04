@@ -4,6 +4,7 @@ PODS:
   - FPPopover (1.4.1)
   - JSONKit (1.5pre)
   - UMengAnalytics (2.2.0)
+  - UMengFeedback (1.4)
   - UMengSocial (2.1.3)
 
 DEPENDENCIES:
@@ -12,6 +13,7 @@ DEPENDENCIES:
   - FPPopover
   - JSONKit
   - UMengAnalytics
+  - UMengFeedback
   - UMengSocial
 
 SPEC CHECKSUMS:
@@ -20,6 +22,7 @@ SPEC CHECKSUMS:
   FPPopover: 0289b796c031d8f27bd221d93d282ffe23619893
   JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
   UMengAnalytics: 8da44b6e1f604cd56202a820108b86df79a929bc
+  UMengFeedback: 89e746f9fb063e5a9bb4f06bb456f989d67d901d
   UMengSocial: ec4f829398c5328d622a9a2006b3e78d7853cf60
 
 COCOAPODS: 0.19.1
