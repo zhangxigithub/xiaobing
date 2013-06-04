@@ -47,16 +47,30 @@
  }
  
  */
+
+
+static NSDateFormatter *formatter;
+
 -(id)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [self init];
     if (self) {
+        
+        if(formatter == nil)
+        {
+            formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        }
+        
         self.podcastID = [NSString stringWithFormat:@"%d",[dictionary[@"id"] intValue]];
         self.type  = [dictionary[@"type"] intValue];
         self.title = dictionary[@"title"];
         self.content = dictionary[@"content"];
         self.coverURL   = [NSURL URLWithString:dictionary[@"cover"]];
-        self.date = [NSDate dateWithTimeIntervalSince1970:[dictionary[@"date"] intValue]];
+        
+        self.date = [formatter dateFromString:dictionary[@"date"]];
+        NSLog(@"...%@",self.date);
+        //self.date = [NSDate date];
         self.imageURL = [NSURL URLWithString:dictionary[@"imageURL"]];
         self.podcastURL = [NSURL URLWithString:dictionary[@"podcastURL"]];
     }

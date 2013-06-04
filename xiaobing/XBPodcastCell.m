@@ -13,6 +13,8 @@
 
 @implementation XBPodcastCell
 
+static NSDateFormatter *formatter;
+
 - (id)initWithType:(XBType )theType
 {
     type = theType;
@@ -88,12 +90,15 @@
         titleLabel.textColor = kTitle_Color;
         
         
+
+        
         dateLabel = [[UILabel alloc] init];
         dateLabel.font = kDate_Font;
         dateLabel.textColor = kDate_Color;
         dateLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         dateLabel.frame = CGRectMake(70, self.frame.size.height-20, 80, 15);
-        dateLabel.text = @"2013.6.5";
+
+
         [self addSubview:dateLabel];
         
         
@@ -121,6 +126,7 @@ static GGFullscreenImageViewController *vc;
     {
         vc = [[GGFullscreenImageViewController alloc] init];
     }
+    
         vc.liftedImageView = imageView;
     [controller presentViewController:vc animated:YES completion:^{
         
@@ -144,7 +150,13 @@ static GGFullscreenImageViewController *vc;
 -(void)setPodcast:(XBPodcast *)thePodcast
 {
     _podcast = thePodcast;
-
+    if(formatter == nil)
+    {
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy.MM.dd"];
+    }
+    dateLabel.text = [formatter stringFromDate:self.podcast.date];
+    
     switch (_podcast.type) {
             
         case Podcast:
