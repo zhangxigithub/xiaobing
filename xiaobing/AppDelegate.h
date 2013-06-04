@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "XBPlayer.h"
+#import <WXApi.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {

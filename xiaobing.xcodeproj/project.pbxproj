@@ -169,6 +169,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		330E9823175DCA9C0024A1CE /* SDKExport */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SDKExport;
+			sourceTree = "<group>";
+		};
 		33655AEC175C8124009339C1 /* ZXNavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +306,7 @@
 				43B5047C175A267500285735 /* ZXMacro.h */,
 				43CB9BDD175A169D00B5705C /* AppDelegate.h */,
 				43CB9BDE175A169D00B5705C /* AppDelegate.m */,
+				330E9823175DCA9C0024A1CE /* SDKExport */,
 				439CEDC4175B94F50096D909 /* Data */,
 				439CEDC3175B94DC0096D909 /* Player */,
 				33655AEC175C8124009339C1 /* ZXNavigationBar */,
@@ -559,6 +567,10 @@
 				GCC_PREFIX_HEADER = "xiaobing/xiaobing-Prefix.pch";
 				INFOPLIST_FILE = "xiaobing/xiaobing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/xiaobing/SDKExport\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -573,6 +585,10 @@
 				GCC_PREFIX_HEADER = "xiaobing/xiaobing-Prefix.pch";
 				INFOPLIST_FILE = "xiaobing/xiaobing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/xiaobing/SDKExport\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -22,6 +22,12 @@
     NSLog(@"%@",NSHomeDirectory());
     
     [MobClick startWithAppkey:@"51abf69b56240b183404f364"];
+    
+    [WXApi registerApp:@"wx7a0f9be121c270af"];
+    [UMSocialControllerService defaultControllerService].socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+    [UMSocialControllerService defaultControllerService].socialData.extConfig.appUrl = @"http://zhangxi.me";
+    
+    
     [UMSocialData setAppKey:@"51abf69b56240b183404f364"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
