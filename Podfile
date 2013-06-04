@@ -10,3 +10,4 @@ pod 'UMengFeedback'
 
 pod 'FPPopover'
 pod 'EGOTableViewPullRefresh'
+pod 'GGFullscreenImageViewController'

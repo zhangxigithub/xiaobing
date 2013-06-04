@@ -8,6 +8,8 @@
 
 #import "XBPodcastCell.h"
 #import <UIImageView+AFNetworking.h>
+#import "ImageViewController.h"
+#import <GGFullScreenImageViewController.h>
 
 @implementation XBPodcastCell
 
@@ -92,8 +94,32 @@
 {
     [self.delegate play:self.podcast];
 }
+
+
+static GGFullscreenImageViewController *vc;
 -(void)showImage
 {
+//    ImageViewController *image = [[ImageViewController alloc] initWithPodcast:self.podcast];
+   UIViewController *controller = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+//    [controller presentModalViewController:image animated:YES];
+//    
+//    
+    
+    
+    
+    if(vc == nil)
+    {
+        vc = [[GGFullscreenImageViewController alloc] init];
+    }
+        vc.liftedImageView = imageView;
+    [controller presentViewController:vc animated:YES completion:^{
+        
+    }];
+    
+    
+    
+    
+    
     [self.delegate showImage:self.podcast];
 }
 -(void)drawRect:(CGRect)rect

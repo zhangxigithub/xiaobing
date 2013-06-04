@@ -12,7 +12,8 @@
 @interface ImageViewController : UIViewController
 {
     XBPodcast *podcast;
-    
+    UIScrollView *canvas;
 }
 -(id)initWithPodcast:(XBPodcast *)thePodcast;
+
 @end
