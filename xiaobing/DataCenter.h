@@ -21,7 +21,7 @@
 
 +(DataCenter *)sharedDateCenter;
 
--(void)getPodcastWithBlock:(void(^)(NSArray *result))finish;
+-(void)getPodcastWithBlock:(void(^)(NSArray *result))finish withParams:(NSDictionary *)params;
 
 
 

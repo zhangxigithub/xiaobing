@@ -14,9 +14,23 @@
 {
     XBPlayer *player;
     XBPodcast *podcast;
+    
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UILabel *durationTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
+
+
+
+
+
+
+
+
+
 
 -(id)initWithPodcast:(XBPodcast *)thePodcast;
 

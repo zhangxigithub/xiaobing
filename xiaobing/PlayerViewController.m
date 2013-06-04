@@ -8,11 +8,13 @@
 
 #import "PlayerViewController.h"
 #import "UIViewController+UI.h"
-
+#import <UMSocial.h>
+#import <UIImageView+AFNetworking.h>
 
 @implementation PlayerViewController
 
 
+static NSDateFormatter *formatter;
 
 -(id)initWithPodcast:(XBPodcast *)thePodcast
 {
@@ -24,12 +26,23 @@
         player = [XBPlayer sharedPlayer];
         player.delegate = self;
         [player play:podcast];
+        
+        
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"mm:ss"];
     }
     return self;
 }
 -(void)position:(float)position
 {
     NSLog(@"%f",position);
+}
+-(void)time:(NSTimeInterval)time1 in:(NSTimeInterval)time2
+{
+    self.durationTimeLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:time1]];
+    self.totalTimeLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:time2]];
+    
+    self.progressView.progress = time1/time2;
 }
 -(void)changeStatus:(DOUAudioStreamerStatus)status
 {
@@ -88,15 +101,44 @@
     [super viewDidLoad];
     [self addBackButton];
     
-    self.view.backgroundColor = kColor_ListBG;
+    [self.coverImageView setImageWithURL:podcast.coverURL placeholderImage:[UIImage imageNamed:@"cover_holder"]];
+//    [self.coverImageView setImage:[UIImage imageNamed:@"cover_holder"]];
+    
+    //self.view.backgroundColor = kColor_ListBG;
     self.navigationItem.title = podcast.title;
     [self.playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateSelected];
     
     
     
     
+    UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shareButton setImage:[UIImage imageNamed:@"iconShare"] forState:UIControlStateNormal];
     
+    shareButton.frame = CGRectMake(0, 0, 35, 35);
+    [shareButton addTarget:self
+                    action:@selector(share)
+          forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
+    self.navigationItem.rightBarButtonItem = item;
+    
+    //+++++++++++++++
+    
+    self.progressView.trackImage    = [UIImage imageNamed:@"track"];
+    self.progressView.progressImage = [UIImage imageNamed:@"navBg"];
+    
+    
+    //+++++++++++++++
+}
 
+-(void)share
+{
+    [UMSocialSnsService presentSnsIconSheetView:[[[UIApplication sharedApplication] keyWindow] rootViewController]
+                                         appKey:@"51abf69b56240b183404f364"
+                                      shareText:@"@小饼FM"
+                                     shareImage:[UIImage imageNamed:@"icon.png"]
+                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,nil]
+                                       delegate:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,6 +151,10 @@
 
 - (void)viewDidUnload {
     [self setPlayButton:nil];
+    [self setCoverImageView:nil];
+    [self setProgressView:nil];
+    [self setDurationTimeLabel:nil];
+    [self setTotalTimeLabel:nil];
     [super viewDidUnload];
 }
 @end

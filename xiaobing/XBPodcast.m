@@ -51,9 +51,11 @@
 {
     self = [self init];
     if (self) {
+        self.podcastID = [NSString stringWithFormat:@"%d",[dictionary[@"id"] intValue]];
         self.type  = [dictionary[@"type"] intValue];
         self.title = dictionary[@"title"];
         self.content = dictionary[@"content"];
+        self.coverURL   = [NSURL URLWithString:dictionary[@"cover"]];
         self.date = [NSDate dateWithTimeIntervalSince1970:[dictionary[@"date"] intValue]];
         self.imageURL = [NSURL URLWithString:dictionary[@"imageURL"]];
         self.podcastURL = [NSURL URLWithString:dictionary[@"podcastURL"]];
@@ -63,8 +65,10 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
+    [aCoder encodeObject:self.podcastID forKey:@"zx_podcastID"];
     [aCoder encodeObject:self.podcastURL forKey:@"zx_podcastURL"];
     [aCoder encodeObject:self.title forKey:@"zx_title"];
+    [aCoder encodeObject:self.coverURL forKey:@"zx_cover"];
     [aCoder encodeObject:self.content forKey:@"zx_content"];
     [aCoder encodeInt:self.type forKey:@"zx_type"];
     [aCoder encodeObject:self.imageURL forKey:@"zx_imageURL"];
@@ -76,8 +80,10 @@
     self = [self init];
     if(self)
     {
+        self.podcastID = [aDecoder decodeObjectForKey:@"zx_podcastID"];
         self.podcastURL = [aDecoder decodeObjectForKey:@"zx_podcastURL"];
         self.title = [aDecoder decodeObjectForKey:@"zx_title"];
+        self.coverURL = [aDecoder decodeObjectForKey:@"zx_cover"];
         self.content = [aDecoder decodeObjectForKey:@"zx_content"];
         self.type = [aDecoder decodeIntForKey:@"zx_type"];
         self.imageURL = [aDecoder decodeObjectForKey:@"zx_imageURL"];
@@ -105,12 +111,16 @@
 }
 -(NSString *)description
 {
+    NSLog(@"===============");
+    NSLog(@"ID:%@",self.podcastID);
     NSLog(@"type:%d\n",self.type);
     NSLog(@"title:%@\n",self.title);
     NSLog(@"content:%@\n",self.content);
     NSLog(@"date:%@\n",self.date);
     NSLog(@"image:%@\n",self.imageURL);
     NSLog(@"podcast:%@\n",self.podcastURL);
+    NSLog(@"cover:%@\n",self.coverURL);
+    NSLog(@"===============");
 
     return [super description];
 }

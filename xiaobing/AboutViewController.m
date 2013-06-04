@@ -34,6 +34,7 @@
 {
     [super viewDidLoad];
     [self addBackButton];
+    self.navigationItem.title = @"关于小饼FM";
 
 }
 

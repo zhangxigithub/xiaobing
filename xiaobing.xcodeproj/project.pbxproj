@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330E9820175DAA8A0024A1CE /* track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 330E981F175DAA8A0024A1CE /* track@2x.png */; };
+		330E9822175DAF460024A1CE /* cover_holder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 330E9821175DAF460024A1CE /* cover_holder@2x.png */; };
 		33655AE3175C6D95009339C1 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33655AE2175C6D95009339C1 /* pause@2x.png */; };
 		33655AE6175C7EFB009339C1 /* FliterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AE5175C7EFB009339C1 /* FliterTableViewController.m */; };
 		33655AEA175C80C9009339C1 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AE8175C80C9009339C1 /* AboutViewController.m */; };
@@ -62,6 +64,8 @@
 
 /* Begin PBXFileReference section */
 		1EAC52C2A43C4C9998B33DFE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		330E981F175DAA8A0024A1CE /* track@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "track@2x.png"; sourceTree = "<group>"; };
+		330E9821175DAF460024A1CE /* cover_holder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover_holder@2x.png"; sourceTree = "<group>"; };
 		33655AE2175C6D95009339C1 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
 		33655AE4175C7EFA009339C1 /* FliterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FliterTableViewController.h; sourceTree = "<group>"; };
 		33655AE5175C7EFB009339C1 /* FliterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FliterTableViewController.m; sourceTree = "<group>"; };
@@ -215,6 +219,8 @@
 		439CEDB2175B163F0096D909 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				330E9821175DAF460024A1CE /* cover_holder@2x.png */,
+				330E981F175DAA8A0024A1CE /* track@2x.png */,
 				4331B930175CD41C00B581E3 /* iconShare@2x.png */,
 				33655AF7175C8583009339C1 /* logo@2x.jpg */,
 				33655AF5175C8478009339C1 /* back@2x.png */,
@@ -404,6 +410,8 @@
 				33655AF6175C8478009339C1 /* back@2x.png in Resources */,
 				33655AF8175C8583009339C1 /* logo@2x.jpg in Resources */,
 				4331B931175CD41C00B581E3 /* iconShare@2x.png in Resources */,
+				330E9820175DAA8A0024A1CE /* track@2x.png in Resources */,
+				330E9822175DAF460024A1CE /* cover_holder@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

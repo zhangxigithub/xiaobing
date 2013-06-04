@@ -20,8 +20,10 @@ typedef enum
 
 @property(nonatomic,assign) XBType    type;
 
+@property(nonatomic,strong) NSString *podcastID;
 @property(nonatomic,strong) NSString *title;
 @property(nonatomic,strong) NSString *content;
+@property(nonatomic,strong) NSURL    *coverURL;
 @property(nonatomic,strong) NSDate   *date;
 @property(nonatomic,strong) NSURL    *imageURL;
 @property(nonatomic,strong) NSURL    *podcastURL;

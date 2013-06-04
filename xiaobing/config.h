@@ -14,10 +14,11 @@
 
 #define kColor_Blue          HexRGB(0x0078c8)
 #define kColor_ListBG        HexRGB(0x687586)
+//#define kColor_ListBG        HexRGB(0xf5f3e4)
 #define kColor_ListHeader    HexRGB(0xff6c65)
 #define kColor_ListLine      HexRGB(0x5b6776)
 #define kColor_NavBg         HexRGB(0x57cdef)
-
+#define kCOlor_logoBg        HexRGB(0xd9d9d9)
 
 
 #define kTitle_Color         HexRGB(0x646464)

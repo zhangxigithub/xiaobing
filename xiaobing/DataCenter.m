@@ -40,15 +40,15 @@ static DataCenter *dataCenter;
     
     return  result;
 }
--(void)getPodcastWithBlock:(void(^)(NSArray *result))finish
+-(void)getPodcastWithBlock:(void(^)(NSArray *result))finish withParams:(NSDictionary *)params
 {
     NSMutableURLRequest *request = [self.client requestWithMethod:@"GET"
                                                              path:@"podcast.php"
-                                                       parameters:@{}];
+                                                       parameters:params];
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
      success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
          
-         //NSLog(@"%@",JSON);
+         NSLog(@"%@",JSON);
          
          
          NSMutableArray *result = [XBPodcast podcastsFromArray:JSON];

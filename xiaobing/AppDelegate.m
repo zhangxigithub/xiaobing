@@ -13,6 +13,8 @@
 #import <MobClick.h>
 #import <AVFoundation/AVFoundation.h>
 #import <UMSocial.h>
+#import "XBPlayer.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -20,6 +22,7 @@
     NSLog(@"%@",NSHomeDirectory());
     
     [MobClick startWithAppkey:@"51abf69b56240b183404f364"];
+    [UMSocialData setAppKey:@"51abf69b56240b183404f364"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
@@ -63,7 +66,21 @@
 }
 -(void)remoteControlReceivedWithEvent:(UIEvent *)event
 {
-    NSLog(@"%@",event);
+    if(event.type != UIEventTypeRemoteControl) return;
+    
+    switch (event.subtype) {
+        case UIEventSubtypeRemoteControlTogglePlayPause:
+        {
+            XBPlayer *thePLayer = [XBPlayer sharedPlayer];
+            if ([thePLayer status] == DOUAudioStreamerPlaying) {
+                [thePLayer pause];
+            }else
+            {
+                [thePLayer play];
+            }
+        
+        }
+    }
 }
 - (void)applicationWillResignActive:(UIApplication *)application
 {

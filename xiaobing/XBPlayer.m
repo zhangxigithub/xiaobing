@@ -85,6 +85,9 @@ static XBPlayer *player;
 }
 - (void)timerAction:(id)timer
 {
+    
+    [self.delegate time:[streamer currentTime]  in:[streamer duration]];
+    return;
     if ([streamer duration] == 0.0) {
         //[_progressView setProgress:0.0f animated:NO];
         [self.delegate position:0];

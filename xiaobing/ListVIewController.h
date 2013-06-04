@@ -21,5 +21,10 @@
     
     
     UIButton *fliterButton;
+    
+    UIView *tableFooterView;
+
+    __block BOOL finish;
+    __block BOOL loading;
 }
 @end

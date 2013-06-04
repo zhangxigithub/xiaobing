@@ -16,6 +16,7 @@
 
 -(void)changeStatus:(DOUAudioStreamerStatus )status;
 -(void)position:(float)position;
+-(void)time:(NSTimeInterval)time1 in:(NSTimeInterval)time2;
 @end
 
 @interface XBPlayer : NSObject

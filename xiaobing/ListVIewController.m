@@ -31,7 +31,12 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = kColor_ListBG;
-    self.navigationItem.title = @"小饼电台";
+    self.navigationItem.title = @"小饼FM";
+    
+    finish  = NO;
+    loading = NO;
+    
+
     //[self.navigationController setNavigationBarHidden:YES animated:NO];
 
 //    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"brnlthr_nav.jpg"] forBarMetrics:UIBarMetricsDefault];
@@ -89,8 +94,13 @@
     
     
     //+++++++++++++++++++++++++++++++++++
-    
-    
+    tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(40, 0, 240, 40)];
+    tableFooterView.backgroundColor = kColor_ListBG;
+    UIActivityIndicatorView *action  =[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [action startAnimating];
+    action.center = CGPointMake(120, 20);
+    [tableFooterView addSubview:action];
+
     
     
     
@@ -99,22 +109,50 @@
     
     
     //+++++++++++++++++++++++++++++++++++
-    localData = [[[DataCenter sharedDateCenter] localPodcast] mutableCopy];
+    //localData = [[[DataCenter sharedDateCenter] localPodcast] mutableCopy];
 
-    if(localData == nil)
-    {
+    //if(localData == nil)
+    //{
     localData = [NSMutableArray array];
     
-    [[DataCenter sharedDateCenter] getPodcastWithBlock:^(NSArray *result) {
-        
-        [localData addObjectsFromArray:result];
-        [table reloadData];
-    }];
-    }
+    [self loadPodcats];
+    
+    
+    //}
     [self scrollViewDidScroll:table];
     
 }
 
+
+
+
+-(void)loadPodcats
+{
+    
+    NSLog(@"泥马给力啊～～");
+    loading = YES;
+    [[DataCenter sharedDateCenter] getPodcastWithBlock:^(NSArray *result) {
+        
+    
+        if(result.count > 0 && result != nil)
+        {
+            [localData addObjectsFromArray:result];
+            [table reloadData];
+            finish = NO;
+        }else
+        {
+            finish = YES;
+        }
+        
+        table.tableFooterView = nil;
+        loading = NO;
+        
+    } withParams:
+     @{
+     @"offset":[NSString stringWithFormat:@"%d",localData.count],
+     @"length":@"10"
+     }];
+}
 -(void)fliter
 {
     AboutViewController *about = [[AboutViewController alloc] init];
@@ -135,6 +173,14 @@
 }
 -(void)share
 {
+    
+//    UMSocialIconActionSheet *iconActionSheet = [[UMSocialControllerService defaultControllerService] getSocialIconActionSheetInController:self];
+//    UIViewController *rootViewController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
+//    [iconActionSheet showInView:rootViewController.view];
+//    
+//    
+//    
+//    return;
     [UMSocialSnsService presentSnsIconSheetView:[[[UIApplication sharedApplication] keyWindow] rootViewController]
                                          appKey:@"51abf69b56240b183404f364"
                                       shareText:@"@小饼FM"
@@ -201,6 +247,16 @@
     }
     
     cell.podcast = podcast;
+    
+    
+    
+    if(loading == NO && finish == NO &&  indexPath.row == localData.count-1)
+    {
+        [self loadPodcats];
+        table.tableFooterView = tableFooterView;
+    }
+    
+    
     return cell;
 }
 

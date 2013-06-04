@@ -8,3 +8,4 @@ pod 'UMengSocial'
 pod 'UMengAnalytics'
 
 pod 'FPPopover'
+pod 'EGOTableViewPullRefresh'
