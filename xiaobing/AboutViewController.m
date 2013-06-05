@@ -18,17 +18,6 @@
     self = [super initWithNibName:@"AboutViewController" bundle:nil];
     if (self) {
         
-        NSURL *tapSound   = [[NSBundle mainBundle] URLForResource: @"voice"
-                                                    withExtension: @"mp3"];
-        
-        // Store the URL as a CFURLRef instance
-        self.soundFileURLRef = (__bridge CFURLRef) tapSound ;
-        
-        // Create a system sound object representing the sound file.
-        AudioServicesCreateSystemSoundID (
-                                          _soundFileURLRef,
-                                          &_soundFileObject
-                                          );
     }
     return self;
 }
@@ -46,13 +35,15 @@
     [super viewDidLoad];
     [self addBackButton];
     self.navigationItem.title = @"关于小饼FM";
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"voice" ofType:@"mp3"];
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    player = [[AVAudioPlayer alloc] initWithData:data error:nil];
 
 }
 -(void)viewDidUnload
 {
     [super viewDidUnload];
-    AudioServicesDisposeSystemSoundID (_soundFileObject);
-    CFRelease (_soundFileURLRef);
 }
 - (void)didReceiveMemoryWarning
 {
@@ -66,6 +57,11 @@
 }
 
 - (IBAction)voice:(id)sender {
-    AudioServicesPlaySystemSound (_soundFileObject);
+    
+
+    [player play];
+    
+    
+    //AudioServicesPlaySystemSound (_soundFileObject);
 }
 @end
