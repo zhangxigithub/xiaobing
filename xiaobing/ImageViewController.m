@@ -35,6 +35,9 @@
 {
     _podcast = thePodcast;
     
+    
+    
+    
     rateView.value = 0;
     rateView.hidden = NO;
     imageView.image = nil;

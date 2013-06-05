@@ -10,6 +10,7 @@
 		330E9820175DAA8A0024A1CE /* track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 330E981F175DAA8A0024A1CE /* track@2x.png */; };
 		330E9822175DAF460024A1CE /* cover_holder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 330E9821175DAF460024A1CE /* cover_holder@2x.png */; };
 		333AA8F5175F09D300FA6C91 /* PageNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 333AA8F4175F09D300FA6C91 /* PageNumberView.m */; };
+		333AA8F8175F1D4000FA6C91 /* voice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 333AA8F7175F1D4000FA6C91 /* voice.mp3 */; };
 		33655AE3175C6D95009339C1 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33655AE2175C6D95009339C1 /* pause@2x.png */; };
 		33655AE6175C7EFB009339C1 /* FliterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AE5175C7EFB009339C1 /* FliterTableViewController.m */; };
 		33655AEA175C80C9009339C1 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AE8175C80C9009339C1 /* AboutViewController.m */; };
@@ -69,6 +70,7 @@
 		330E9821175DAF460024A1CE /* cover_holder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover_holder@2x.png"; sourceTree = "<group>"; };
 		333AA8F3175F09D300FA6C91 /* PageNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageNumberView.h; sourceTree = "<group>"; };
 		333AA8F4175F09D300FA6C91 /* PageNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageNumberView.m; sourceTree = "<group>"; };
+		333AA8F7175F1D4000FA6C91 /* voice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = voice.mp3; sourceTree = "<group>"; };
 		33655AE2175C6D95009339C1 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
 		33655AE4175C7EFA009339C1 /* FliterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FliterTableViewController.h; sourceTree = "<group>"; };
 		33655AE5175C7EFB009339C1 /* FliterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FliterTableViewController.m; sourceTree = "<group>"; };
@@ -177,6 +179,14 @@
 			children = (
 			);
 			path = SDKExport;
+			sourceTree = "<group>";
+		};
+		333AA8F6175F1D4000FA6C91 /* voice */ = {
+			isa = PBXGroup;
+			children = (
+				333AA8F7175F1D4000FA6C91 /* voice.mp3 */,
+			);
+			path = voice;
 			sourceTree = "<group>";
 		};
 		33655AEC175C8124009339C1 /* ZXNavigationBar */ = {
@@ -313,6 +323,7 @@
 				439CEDC4175B94F50096D909 /* Data */,
 				439CEDC3175B94DC0096D909 /* Player */,
 				33655AEC175C8124009339C1 /* ZXNavigationBar */,
+				333AA8F6175F1D4000FA6C91 /* voice */,
 				333AA8F3175F09D300FA6C91 /* PageNumberView.h */,
 				333AA8F4175F09D300FA6C91 /* PageNumberView.m */,
 				33655AF2175C8358009339C1 /* UIViewController+UI.h */,
@@ -425,6 +436,7 @@
 				4331B931175CD41C00B581E3 /* iconShare@2x.png in Resources */,
 				330E9820175DAA8A0024A1CE /* track@2x.png in Resources */,
 				330E9822175DAF460024A1CE /* cover_holder@2x.png in Resources */,
+				333AA8F8175F1D4000FA6C91 /* voice.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

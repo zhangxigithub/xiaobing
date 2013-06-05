@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <UMFeedback.h>
+#include <AudioToolbox/AudioToolbox.h>
 
 @interface AboutViewController : UIViewController
 
+@property (readwrite)    CFURLRef        soundFileURLRef;
+@property (readonly)    SystemSoundID    soundFileObject;
+
+
 - (IBAction)feed:(UIButton *)sender;
+- (IBAction)voice:(id)sender;
+
 @end

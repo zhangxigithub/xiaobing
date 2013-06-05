@@ -8,7 +8,7 @@
 
 #import "AboutViewController.h"
 #import "UIViewController+UI.h"
-
+#include <AudioToolbox/AudioToolbox.h>
 
 @implementation AboutViewController
 
@@ -18,6 +18,17 @@
     self = [super initWithNibName:@"AboutViewController" bundle:nil];
     if (self) {
         
+        NSURL *tapSound   = [[NSBundle mainBundle] URLForResource: @"voice"
+                                                    withExtension: @"mp3"];
+        
+        // Store the URL as a CFURLRef instance
+        self.soundFileURLRef = (__bridge CFURLRef) tapSound ;
+        
+        // Create a system sound object representing the sound file.
+        AudioServicesCreateSystemSoundID (
+                                          _soundFileURLRef,
+                                          &_soundFileObject
+                                          );
     }
     return self;
 }
@@ -37,7 +48,12 @@
     self.navigationItem.title = @"关于小饼FM";
 
 }
-
+-(void)viewDidUnload
+{
+    [super viewDidUnload];
+    AudioServicesDisposeSystemSoundID (_soundFileObject);
+    CFRelease (_soundFileURLRef);
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -47,5 +63,9 @@
 - (IBAction)feed:(UIButton *)sender {
     
     [UMFeedback showFeedback:self withAppkey:@"51abf69b56240b183404f364"];
+}
+
+- (IBAction)voice:(id)sender {
+    AudioServicesPlaySystemSound (_soundFileObject);
 }
 @end
