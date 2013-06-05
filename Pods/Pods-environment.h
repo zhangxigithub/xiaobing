@@ -37,6 +37,24 @@
 // Please contact the author.
 // Version: 1.5pre.
 
+// MBProgressHUD
+#define COCOAPODS_POD_AVAILABLE_MBProgressHUD
+#define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
+#define COCOAPODS_VERSION_MINOR_MBProgressHUD 6
+#define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
+
+// MTStatusBarOverlay
+#define COCOAPODS_POD_AVAILABLE_MTStatusBarOverlay
+#define COCOAPODS_VERSION_MAJOR_MTStatusBarOverlay 0
+#define COCOAPODS_VERSION_MINOR_MTStatusBarOverlay 9
+#define COCOAPODS_VERSION_PATCH_MTStatusBarOverlay 1
+
+// UIBubbleTableView
+#define COCOAPODS_POD_AVAILABLE_UIBubbleTableView
+#define COCOAPODS_VERSION_MAJOR_UIBubbleTableView 0
+#define COCOAPODS_VERSION_MINOR_UIBubbleTableView 2
+#define COCOAPODS_VERSION_PATCH_UIBubbleTableView 0
+
 // UMengAnalytics
 #define COCOAPODS_POD_AVAILABLE_UMengAnalytics
 #define COCOAPODS_VERSION_MAJOR_UMengAnalytics 2

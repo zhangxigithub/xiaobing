@@ -35,6 +35,8 @@
 		33708235175C400400752485 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33708234175C400400752485 /* PlayerViewController.xib */; };
 		33708239175C628300752485 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33708238175C628300752485 /* AVFoundation.framework */; };
 		4331B931175CD41C00B581E3 /* iconShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331B930175CD41C00B581E3 /* iconShare@2x.png */; };
+		4331B934175F844600B581E3 /* FeedBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4331B933175F844600B581E3 /* FeedBack.m */; };
+		4331B936175F927500B581E3 /* inputBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331B935175F927500B581E3 /* inputBg@2x.png */; };
 		439CEDA7175A4B7E0096D909 /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CEDA6175A4B7E0096D909 /* DataCenter.m */; };
 		439CEDAA175AE4850096D909 /* XBPodcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CEDA9175AE4850096D909 /* XBPodcast.m */; };
 		439CEDAD175AE6320096D909 /* ListVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CEDAC175AE6320096D909 /* ListVIewController.m */; };
@@ -111,6 +113,9 @@
 		33708234175C400400752485 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		33708238175C628300752485 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4331B930175CD41C00B581E3 /* iconShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconShare@2x.png"; sourceTree = "<group>"; };
+		4331B932175F844600B581E3 /* FeedBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBack.h; sourceTree = "<group>"; };
+		4331B933175F844600B581E3 /* FeedBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBack.m; sourceTree = "<group>"; };
+		4331B935175F927500B581E3 /* inputBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputBg@2x.png"; sourceTree = "<group>"; };
 		439CEDA5175A4B7E0096D909 /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenter.h; sourceTree = "<group>"; };
 		439CEDA6175A4B7E0096D909 /* DataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCenter.m; sourceTree = "<group>"; };
 		439CEDA8175AE4850096D909 /* XBPodcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPodcast.h; sourceTree = "<group>"; };
@@ -239,6 +244,7 @@
 		439CEDB2175B163F0096D909 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				4331B935175F927500B581E3 /* inputBg@2x.png */,
 				330E9821175DAF460024A1CE /* cover_holder@2x.png */,
 				330E981F175DAA8A0024A1CE /* track@2x.png */,
 				4331B930175CD41C00B581E3 /* iconShare@2x.png */,
@@ -342,6 +348,8 @@
 				33655AE7175C80C9009339C1 /* AboutViewController.h */,
 				33655AE8175C80C9009339C1 /* AboutViewController.m */,
 				33655AE9175C80C9009339C1 /* AboutViewController.xib */,
+				4331B932175F844600B581E3 /* FeedBack.h */,
+				4331B933175F844600B581E3 /* FeedBack.m */,
 				439CEDAE175B03720096D909 /* Cells */,
 				439CEDB2175B163F0096D909 /* image */,
 				43CB9BD5175A169D00B5705C /* Supporting Files */,
@@ -437,6 +445,7 @@
 				330E9820175DAA8A0024A1CE /* track@2x.png in Resources */,
 				330E9822175DAF460024A1CE /* cover_holder@2x.png in Resources */,
 				333AA8F8175F1D4000FA6C91 /* voice.mp3 in Resources */,
+				4331B936175F927500B581E3 /* inputBg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +512,7 @@
 				33655AEF175C8124009339C1 /* ZXNavigationBar.m in Sources */,
 				33655AF4175C8358009339C1 /* UIViewController+UI.m in Sources */,
 				333AA8F5175F09D300FA6C91 /* PageNumberView.m in Sources */,
+				4331B934175F844600B581E3 /* FeedBack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

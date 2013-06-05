@@ -8,7 +8,8 @@
 
 #import "AboutViewController.h"
 #import "UIViewController+UI.h"
-#include <AudioToolbox/AudioToolbox.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import "FeedBack.h"
 
 @implementation AboutViewController
 
@@ -21,14 +22,7 @@
     }
     return self;
 }
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 - (void)viewDidLoad
 {
@@ -63,5 +57,10 @@
     
     
     //AudioServicesPlaySystemSound (_soundFileObject);
+}
+
+- (IBAction)talk:(id)sender {
+    FeedBack *feed = [[FeedBack alloc] init];
+    [self.navigationController pushViewController:feed animated:YES];
 }
 @end

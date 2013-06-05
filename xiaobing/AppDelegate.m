@@ -14,13 +14,14 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UMSocial.h>
 #import "XBPlayer.h"
-
+#import <UMFeedback.h>
+#import <MTStatusBarOverlay.h>
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSLog(@"%@",NSHomeDirectory());
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     [MobClick startWithAppkey:@"51abf69b56240b183404f364"];
     
     [WXApi registerApp:@"wx7a0f9be121c270af"];
@@ -48,31 +49,63 @@
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ListVIewController alloc] init]];
     
-    //[self.window.rootViewController.navigationController setNavigationBarHidden:NO animated:NO];
-    
-    
-//    player = [[XBPlayer alloc] init];
-//    player.url = [NSURL URLWithString:@"http://mr3.douban.com/201306012033/bac698fb43b0609bf16ea8d044bb2ad2/view/song/small/p1639355.mp3"];
-//    [player play];
-    
-//    
-//    UInt32 allowMix = 1;
-//    
-//    AVAudioSession* audioSession = [AVAudioSession sharedInstance];
-//    
-//    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
-//    
-//    AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryMixWithOthers, sizeof(allowMix), &allowMix);
-//    
-//    [audioSession setActive:YES error:nil];
-//    
-    //AVAudioSession *session = [AVAudioSession sharedInstance];
-    //[session setCategory:AVAudioSessionCategoryPlayback error:nil];
-    //[session setActive:YES error:nil];
+
 
      [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
+    [NSTimer scheduledTimerWithTimeInterval:30
+                                     target:self
+                                   selector:@selector(checkFeedBack)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(umCheck:)
+                                                 name:UMFBCheckFinishedNotification
+                                               object:nil];
+    
     return YES;
+}
+-(void)checkFeedBack
+{
+    [UMFeedback checkWithAppkey:@"51abf69b56240b183404f364"];
+}
+
+
+
+- (void)umCheck:(NSNotification *)notification {
+    
+
+    NSLog(@"notification = %@", notification.userInfo);
+    
+    if (notification.userInfo) {
+        
+        NSArray * newReplies = [notification.userInfo objectForKey:@"newReplies"];
+        NSLog(@"newReplies = %@", newReplies);
+        NSString *title = [NSString stringWithFormat:@"小饼给你回复了,去看看吧"];
+        
+        
+        MTStatusBarOverlay *overlay = [MTStatusBarOverlay sharedInstance];
+
+        //[overlay postMessage:title animated:YES];
+        
+        [overlay postImmediateFinishMessage:title duration:2 animated:YES];
+        
+        
+        
+//        
+//        
+//        NSMutableString *content = [NSMutableString string];
+//        for (int i = 0; i < [newReplies count]; i++) {
+//            NSString * dateTime = [[newReplies objectAtIndex:i] objectForKey:@"datetime"];
+//            NSString *_content = [[newReplies objectAtIndex:i] objectForKey:@"content"];
+//            [content appendString:[NSString stringWithFormat:@"%d .......%@.......\r\n", i+1,dateTime]];
+//            [content appendString:_content];
+//            [content appendString:@"\r\n\r\n"];
+//        }
+//        
+
+    }
 }
 -(BOOL)canBecomeFirstResponder
 {

@@ -22,5 +22,6 @@
 
 - (IBAction)feed:(UIButton *)sender;
 - (IBAction)voice:(id)sender;
+- (IBAction)talk:(id)sender;
 
 @end

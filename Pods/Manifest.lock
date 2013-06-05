@@ -4,6 +4,9 @@ PODS:
   - FPPopover (1.4.1)
   - GGFullscreenImageViewController (1.0.0)
   - JSONKit (1.5pre)
+  - MBProgressHUD (0.6)
+  - MTStatusBarOverlay (0.9.1)
+  - UIBubbleTableView (0.2)
   - UMengAnalytics (2.2.0)
   - UMengFeedback (1.4)
   - UMengSocial (2.1.3)
@@ -14,6 +17,9 @@ DEPENDENCIES:
   - FPPopover
   - GGFullscreenImageViewController
   - JSONKit
+  - MBProgressHUD
+  - MTStatusBarOverlay
+  - UIBubbleTableView
   - UMengAnalytics
   - UMengFeedback
   - UMengSocial
@@ -24,8 +30,11 @@ SPEC CHECKSUMS:
   FPPopover: 0289b796c031d8f27bd221d93d282ffe23619893
   GGFullscreenImageViewController: 81ff02e95ea08d28326e937090fbf3e2b2778193
   JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
+  MBProgressHUD: 9b55a90566fb5d07df0602f6fd9fa04510ad5d52
+  MTStatusBarOverlay: 2cee705996e4e307191d423bf49e583b9b2c14ac
+  UIBubbleTableView: 08dcbbb351538139d7a2a01216bb427ad4253bb1
   UMengAnalytics: 8da44b6e1f604cd56202a820108b86df79a929bc
   UMengFeedback: 89e746f9fb063e5a9bb4f06bb456f989d67d901d
   UMengSocial: ec4f829398c5328d622a9a2006b3e78d7853cf60
 
-COCOAPODS: 0.19.1
+COCOAPODS: 0.20.2
