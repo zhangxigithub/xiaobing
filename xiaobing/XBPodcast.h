@@ -26,6 +26,7 @@ typedef enum
 @property(nonatomic,strong) NSURL    *coverURL;
 @property(nonatomic,copy) NSDate   *date;
 @property(nonatomic,strong) NSURL    *imageURL;
+@property(nonatomic,strong) NSURL    *largeImageURL;
 @property(nonatomic,strong) NSURL    *podcastURL;
 
 @property(nonatomic,assign) float     rowHeight;

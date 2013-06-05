@@ -111,26 +111,32 @@ static NSDateFormatter *formatter;
 }
 
 
-static GGFullscreenImageViewController *vc;
+//static GGFullscreenImageViewController *vc;
+static ImageViewController *image;
 -(void)showImage
 {
-//    ImageViewController *image = [[ImageViewController alloc] initWithPodcast:self.podcast];
-   UIViewController *controller = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-//    [controller presentModalViewController:image animated:YES];
-//    
-//    
-    
-    
-    
-    if(vc == nil)
+    if(image == nil)
     {
-        vc = [[GGFullscreenImageViewController alloc] init];
+    image = [[ImageViewController alloc] init];
     }
+    image.podcast= self.podcast;
     
-        vc.liftedImageView = imageView;
-    [controller presentViewController:vc animated:YES completion:^{
-        
-    }];
+   UIViewController *controller = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    [controller presentModalViewController:image animated:YES];
+//    
+//    
+    
+    
+    
+//    if(vc == nil)
+//    {
+//        vc = [[GGFullscreenImageViewController alloc] init];
+//    }
+//    
+//        vc.liftedImageView = imageView;
+//    [controller presentViewController:vc animated:YES completion:^{
+//        
+//    }];
     
     
     

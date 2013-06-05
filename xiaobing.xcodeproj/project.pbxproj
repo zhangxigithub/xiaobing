@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		330E9820175DAA8A0024A1CE /* track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 330E981F175DAA8A0024A1CE /* track@2x.png */; };
 		330E9822175DAF460024A1CE /* cover_holder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 330E9821175DAF460024A1CE /* cover_holder@2x.png */; };
+		333AA8F5175F09D300FA6C91 /* PageNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 333AA8F4175F09D300FA6C91 /* PageNumberView.m */; };
 		33655AE3175C6D95009339C1 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33655AE2175C6D95009339C1 /* pause@2x.png */; };
 		33655AE6175C7EFB009339C1 /* FliterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AE5175C7EFB009339C1 /* FliterTableViewController.m */; };
 		33655AEA175C80C9009339C1 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AE8175C80C9009339C1 /* AboutViewController.m */; };
@@ -66,6 +67,8 @@
 		1EAC52C2A43C4C9998B33DFE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		330E981F175DAA8A0024A1CE /* track@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "track@2x.png"; sourceTree = "<group>"; };
 		330E9821175DAF460024A1CE /* cover_holder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cover_holder@2x.png"; sourceTree = "<group>"; };
+		333AA8F3175F09D300FA6C91 /* PageNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageNumberView.h; sourceTree = "<group>"; };
+		333AA8F4175F09D300FA6C91 /* PageNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageNumberView.m; sourceTree = "<group>"; };
 		33655AE2175C6D95009339C1 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
 		33655AE4175C7EFA009339C1 /* FliterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FliterTableViewController.h; sourceTree = "<group>"; };
 		33655AE5175C7EFB009339C1 /* FliterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FliterTableViewController.m; sourceTree = "<group>"; };
@@ -310,6 +313,8 @@
 				439CEDC4175B94F50096D909 /* Data */,
 				439CEDC3175B94DC0096D909 /* Player */,
 				33655AEC175C8124009339C1 /* ZXNavigationBar */,
+				333AA8F3175F09D300FA6C91 /* PageNumberView.h */,
+				333AA8F4175F09D300FA6C91 /* PageNumberView.m */,
 				33655AF2175C8358009339C1 /* UIViewController+UI.h */,
 				33655AF3175C8358009339C1 /* UIViewController+UI.m */,
 				43B5047D175A349500285735 /* GuideViewController.h */,
@@ -485,6 +490,7 @@
 				33655AEA175C80C9009339C1 /* AboutViewController.m in Sources */,
 				33655AEF175C8124009339C1 /* ZXNavigationBar.m in Sources */,
 				33655AF4175C8358009339C1 /* UIViewController+UI.m in Sources */,
+				333AA8F5175F09D300FA6C91 /* PageNumberView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

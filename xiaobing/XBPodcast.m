@@ -69,10 +69,16 @@ static NSDateFormatter *formatter;
         self.coverURL   = [NSURL URLWithString:dictionary[@"cover"]];
         
         self.date = [formatter dateFromString:dictionary[@"date"]];
-        NSLog(@"...%@",self.date);
+        //NSLog(@"...%@",self.date);
         //self.date = [NSDate date];
         self.imageURL = [NSURL URLWithString:dictionary[@"imageURL"]];
         self.podcastURL = [NSURL URLWithString:dictionary[@"podcastURL"]];
+        
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%d",dictionary[@"largeImageURL"],arc4random()]];
+        
+        self.largeImageURL = url;
+        if([dictionary[@"largeImageURL"] isEqualToString:@""])
+            self.largeImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://xiaobingfm.sinaapp.com/image/jinyu.jpg?%d",arc4random()]];
     }
     return self;
 }
@@ -88,6 +94,7 @@ static NSDateFormatter *formatter;
     [aCoder encodeObject:self.imageURL forKey:@"zx_imageURL"];
     [aCoder encodeObject:self.date forKey:@"zx_date"];
     [aCoder encodeFloat:self.rowHeight forKey:@"zx_rowHeight"];
+    [aCoder encodeObject:self.largeImageURL forKey:@"zx_largeImageURL"];
 }
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -103,6 +110,7 @@ static NSDateFormatter *formatter;
         self.imageURL = [aDecoder decodeObjectForKey:@"zx_imageURL"];
         self.date = [aDecoder decodeObjectForKey:@"zx_date"];
         self.rowHeight = [aDecoder decodeFloatForKey:@"zx_rowHeight"];
+        self.largeImageURL = [aDecoder decodeObjectForKey:@"zx_largeImageURL"];
     }
     return self;
 }
@@ -134,6 +142,7 @@ static NSDateFormatter *formatter;
     NSLog(@"image:%@\n",self.imageURL);
     NSLog(@"podcast:%@\n",self.podcastURL);
     NSLog(@"cover:%@\n",self.coverURL);
+    NSLog(@"largeImage:%@\n",self.largeImageURL);
     NSLog(@"===============");
 
     return [super description];

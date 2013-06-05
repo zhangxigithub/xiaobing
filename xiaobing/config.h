@@ -18,6 +18,7 @@
 #define kColor_ListHeader    HexRGB(0xff6c65)
 #define kColor_ListLine      HexRGB(0x5b6776)
 #define kColor_NavBg         HexRGB(0x57cdef)
+#define kColor_NavBgAlpha    HexRGBAlpha(0x57cdef,0.4)
 #define kCOlor_logoBg        HexRGB(0xd9d9d9)
 
 

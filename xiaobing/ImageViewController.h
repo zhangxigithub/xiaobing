@@ -8,12 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import "XBPodcast.h"
+#import "PageNumberView.h"
 
-@interface ImageViewController : UIViewController
+@interface ImageViewController : UIViewController<UIScrollViewDelegate>
 {
-    XBPodcast *podcast;
+    
     UIScrollView *canvas;
+    
+    
+    UIActivityIndicatorView *activityIndicatorView;
+    
+    
+    PageNumberView *rateView;
+    __block  UIImageView *imageView;
 }
--(id)initWithPodcast:(XBPodcast *)thePodcast;
+
+
+@property(nonatomic,strong) XBPodcast *podcast;
+
+
+//-(id)initWithPodcast:(XBPodcast *)thePodcast;
 
 @end
