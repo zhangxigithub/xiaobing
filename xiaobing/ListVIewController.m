@@ -227,7 +227,7 @@
     switch (podcast.type) {
         case Podcast: return 124;
         case Text:    return podcast.height;
-        case Image:   return 100;
+        case Image:   return 90;
         default:
             break;
     }

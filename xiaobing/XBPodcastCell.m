@@ -10,7 +10,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "ImageViewController.h"
 #import <GGFullScreenImageViewController.h>
-
+#import <QuartzCore/QuartzCore.h>
 @implementation XBPodcastCell
 
 static NSDateFormatter *formatter;
@@ -46,7 +46,7 @@ static NSDateFormatter *formatter;
                 [self addSubview:titleLabel];
                 
                 content = [[UITextView alloc] initWithFrame:CGRectMake(60, 30, 190, 70)];
-                
+                [self addSubview:content];
                 UIButton *playButton = [UIButton buttonWithType:UIButtonTypeCustom];
                 [playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
                 playButton.frame = CGRectMake(250, 38, 40, 40);
@@ -63,13 +63,17 @@ static NSDateFormatter *formatter;
             {
                 content = [[UITextView alloc] initWithFrame:CGRectMake(60, 8, 236, self.bounds.size.height-16)];
                 content.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+                [self addSubview:content];
             }break;
             case Image:
             {
-                content = [[UITextView alloc] initWithFrame:CGRectMake(60, 8, 190, 64 )];
-                
+                content = [[UITextView alloc] initWithFrame:CGRectMake(60, 8, 167, 64 )];
+                [self addSubview:content];
 
-                imageView = [[UIImageView alloc] initWithFrame:CGRectMake(240, 10, 60, 60)];
+                imageView = [[UIImageView alloc] initWithFrame:CGRectMake(221, 8, 78, 78)];
+                imageView.layer.cornerRadius = 5;
+                imageView.clipsToBounds = YES;
+                imageView.contentMode = UIViewContentModeScaleAspectFill;
                 imageView.userInteractionEnabled = YES;
                 [imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showImage)]];
                 [self addSubview:imageView];
@@ -79,7 +83,7 @@ static NSDateFormatter *formatter;
 
         
         
-        [self addSubview:content];
+        
         content.scrollEnabled = NO;
         content.editable = NO;
         content.font         = kContent_Font;
