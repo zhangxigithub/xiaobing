@@ -148,15 +148,40 @@
     [self.view addSubview:input];
     
     
-[[NSNotificationCenter defaultCenter] addObserver:self
-                                         selector:@selector(change:)
-                                             name:UIKeyboardWillChangeFrameNotification
-                                           object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(change:)
+                                                 name:UIKeyboardWillChangeFrameNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(umCheck:)
+                                                 name:UMFBCheckFinishedNotification
+                                               object:nil];
     
     
     [umFeedback get];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
+
+- (void)umCheck:(NSNotification *)notification {
+    
+    
+    NSLog(@"notification = %@", notification.userInfo);
+    
+    if (notification.userInfo) {
+        
+        NSArray * newReplies = [notification.userInfo objectForKey:@"newReplies"];
+        NSLog(@"newReplies = %@", newReplies);
+        
+        NSBubbleData *data = [NSBubbleData dataWithText:newReplies[0][@"content"]
+                                                   date:[NSDate date]
+                                                   type:BubbleTypeSomeoneElse];
+        [localData addObject:data];
+        [table reloadData];
+        table.contentOffset = CGPointMake(0, table.contentSize.height-table.frame.size.height);
+    }
+}
+
 
 -(void)change:(NSNotification *)notification
 {
@@ -219,6 +244,7 @@
 {
     [super viewDidUnload];
     umFeedback.delegate = nil;
+
 }
 
 - (NSInteger)rowsForBubbleTable:(UIBubbleTableView *)tableView
