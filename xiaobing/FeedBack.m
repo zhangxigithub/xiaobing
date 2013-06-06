@@ -9,7 +9,7 @@
 #import "FeedBack.h"
 #import "UIViewController+UI.h"
 #import <MBProgressHUD.h>
-
+#import <MTStatusBarOverlay.h>
 @implementation FeedBack
 
 
@@ -97,6 +97,8 @@
 }
 - (void)postFinishedWithError:(NSError *)error
 {
+    [[MTStatusBarOverlay sharedInstance] hide];
+    
     NSLog(@"%@",error);
     if(error)
     {
@@ -234,6 +236,7 @@
     [input resignFirstResponder];
     
     
+    [[MTStatusBarOverlay sharedInstance] postMessage:@"发送中..."];
  lastPost =   [NSBubbleData dataWithText:input.text
                           date:[NSDate date]
                           type:BubbleTypeMine];

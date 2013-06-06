@@ -23,7 +23,7 @@
 #define kColor_MessageBg     HexRGB(0xdbe2ed)
 
 #define kTitle_Color         HexRGB(0x646464)
-#define kTitle_Font          [UIFont systemFontOfSize:17]
+#define kTitle_Font          [UIFont systemFontOfSize:16]
 
 #define kContent_Color         HexRGB(0xaaaaaa)
 #define kContent_Font          [UIFont systemFontOfSize:13]

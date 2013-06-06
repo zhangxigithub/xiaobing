@@ -42,7 +42,7 @@ static NSDateFormatter *formatter;
         switch (type) {   
             case Podcast:
             {
-                titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(68, 12, 200, 20)];
+                titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(68, 12, 230, 20)];
                 [self addSubview:titleLabel];
                 
                 content = [[UITextView alloc] initWithFrame:CGRectMake(60, 30, 190, 70)];
