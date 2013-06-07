@@ -43,8 +43,8 @@ static DataCenter *dataCenter;
 -(void)getPodcastWithBlock:(void(^)(NSArray *result))finish withParams:(NSDictionary *)params
 {
     
-    finish([XBPodcast podcastsFromArray:[FileString(@"list", @"") objectFromJSONString]]);
-    return;
+    //finish([XBPodcast podcastsFromArray:[FileString(@"list", @"") objectFromJSONString]]);
+    //return;
     
     NSMutableURLRequest *request = [self.client requestWithMethod:@"GET"
                                                              path:@"podcast.php"

@@ -146,7 +146,8 @@ static NSDateFormatter *formatter;
                                          appKey:@"51abf69b56240b183404f364"
                                       shareText:@"@小饼FM"
                                      shareImage:[UIImage imageNamed:@"icon.png"]
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,nil]
+                                shareToSnsNames:@[UMShareToSina,UMShareToTencent,UMShareToRenren,
+     UMShareToDouban,UMShareToQzone,UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter]
                                        delegate:nil];
 }
 

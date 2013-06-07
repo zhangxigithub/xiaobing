@@ -21,6 +21,10 @@
     
     PageNumberView *rateView;
     __block  UIImageView *imageView;
+    
+    
+    
+    UIButton *shareButton;
 }
 
 
