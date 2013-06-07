@@ -70,7 +70,14 @@
 
 - (void)umCheck:(NSNotification *)notification {
     
-
+    @1;
+    @("ddd");
+    
+    int a = 2;
+    int b = 3;
+    
+    @(a+b);
+    
     NSLog(@"notification = %@", notification.userInfo);
     
     if (notification.userInfo) {
