@@ -97,7 +97,7 @@
     
     //+++++++++++++++++++++++++++++++++++
     tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(40, 0, 240, 40)];
-    tableFooterView.backgroundColor = kColor_ListBG;
+    tableFooterView.backgroundColor = [UIColor clearColor];
     UIActivityIndicatorView *action  =[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     [action startAnimating];
     action.center = CGPointMake(120, 20);
