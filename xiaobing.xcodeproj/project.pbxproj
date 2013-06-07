@@ -34,6 +34,11 @@
 		33708233175C3E6400752485 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33708232175C3E6400752485 /* Accelerate.framework */; };
 		33708235175C400400752485 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33708234175C400400752485 /* PlayerViewController.xib */; };
 		33708239175C628300752485 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33708238175C628300752485 /* AVFoundation.framework */; };
+		3373D24F1761A1FF00E004E5 /* listBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3373D24E1761A1FF00E004E5 /* listBg@2x.png */; };
+		3373D2511761A61600E004E5 /* aboutLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3373D2501761A61600E004E5 /* aboutLine@2x.png */; };
+		3373D2551761A83E00E004E5 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 3373D2531761A83D00E004E5 /* List.m */; };
+		3373D2561761A83E00E004E5 /* List.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3373D2541761A83E00E004E5 /* List.xib */; };
+		3373D25B1761B51E00E004E5 /* ZXRemoteNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 3373D25A1761B51E00E004E5 /* ZXRemoteNotification.m */; };
 		4331B931175CD41C00B581E3 /* iconShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331B930175CD41C00B581E3 /* iconShare@2x.png */; };
 		4331B934175F844600B581E3 /* FeedBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4331B933175F844600B581E3 /* FeedBack.m */; };
 		4331B936175F927500B581E3 /* inputBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331B935175F927500B581E3 /* inputBg@2x.png */; };
@@ -112,6 +117,13 @@
 		33708232175C3E6400752485 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		33708234175C400400752485 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		33708238175C628300752485 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3373D24E1761A1FF00E004E5 /* listBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listBg@2x.png"; sourceTree = "<group>"; };
+		3373D2501761A61600E004E5 /* aboutLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutLine@2x.png"; sourceTree = "<group>"; };
+		3373D2521761A83D00E004E5 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
+		3373D2531761A83D00E004E5 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
+		3373D2541761A83E00E004E5 /* List.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = List.xib; sourceTree = "<group>"; };
+		3373D2591761B51E00E004E5 /* ZXRemoteNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXRemoteNotification.h; sourceTree = "<group>"; };
+		3373D25A1761B51E00E004E5 /* ZXRemoteNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXRemoteNotification.m; sourceTree = "<group>"; };
 		4331B930175CD41C00B581E3 /* iconShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconShare@2x.png"; sourceTree = "<group>"; };
 		4331B932175F844600B581E3 /* FeedBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBack.h; sourceTree = "<group>"; };
 		4331B933175F844600B581E3 /* FeedBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBack.m; sourceTree = "<group>"; };
@@ -232,6 +244,15 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		3373D2581761B51E00E004E5 /* ZXRemoteNotification */ = {
+			isa = PBXGroup;
+			children = (
+				3373D2591761B51E00E004E5 /* ZXRemoteNotification.h */,
+				3373D25A1761B51E00E004E5 /* ZXRemoteNotification.m */,
+			);
+			path = ZXRemoteNotification;
+			sourceTree = "<group>";
+		};
 		439CEDAE175B03720096D909 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +265,8 @@
 		439CEDB2175B163F0096D909 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				3373D2501761A61600E004E5 /* aboutLine@2x.png */,
+				3373D24E1761A1FF00E004E5 /* listBg@2x.png */,
 				4331B935175F927500B581E3 /* inputBg@2x.png */,
 				330E9821175DAF460024A1CE /* cover_holder@2x.png */,
 				330E981F175DAA8A0024A1CE /* track@2x.png */,
@@ -330,6 +353,7 @@
 				439CEDC3175B94DC0096D909 /* Player */,
 				33655AEC175C8124009339C1 /* ZXNavigationBar */,
 				333AA8F6175F1D4000FA6C91 /* voice */,
+				3373D2581761B51E00E004E5 /* ZXRemoteNotification */,
 				333AA8F3175F09D300FA6C91 /* PageNumberView.h */,
 				333AA8F4175F09D300FA6C91 /* PageNumberView.m */,
 				33655AF2175C8358009339C1 /* UIViewController+UI.h */,
@@ -348,6 +372,9 @@
 				33655AE7175C80C9009339C1 /* AboutViewController.h */,
 				33655AE8175C80C9009339C1 /* AboutViewController.m */,
 				33655AE9175C80C9009339C1 /* AboutViewController.xib */,
+				3373D2521761A83D00E004E5 /* List.h */,
+				3373D2531761A83D00E004E5 /* List.m */,
+				3373D2541761A83E00E004E5 /* List.xib */,
 				4331B932175F844600B581E3 /* FeedBack.h */,
 				4331B933175F844600B581E3 /* FeedBack.m */,
 				439CEDAE175B03720096D909 /* Cells */,
@@ -446,6 +473,9 @@
 				330E9822175DAF460024A1CE /* cover_holder@2x.png in Resources */,
 				333AA8F8175F1D4000FA6C91 /* voice.mp3 in Resources */,
 				4331B936175F927500B581E3 /* inputBg@2x.png in Resources */,
+				3373D24F1761A1FF00E004E5 /* listBg@2x.png in Resources */,
+				3373D2511761A61600E004E5 /* aboutLine@2x.png in Resources */,
+				3373D2561761A83E00E004E5 /* List.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +543,8 @@
 				33655AF4175C8358009339C1 /* UIViewController+UI.m in Sources */,
 				333AA8F5175F09D300FA6C91 /* PageNumberView.m in Sources */,
 				4331B934175F844600B581E3 /* FeedBack.m in Sources */,
+				3373D2551761A83E00E004E5 /* List.m in Sources */,
+				3373D25B1761B51E00E004E5 /* ZXRemoteNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

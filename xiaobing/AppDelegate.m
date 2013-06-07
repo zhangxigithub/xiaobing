@@ -16,6 +16,8 @@
 #import "XBPlayer.h"
 #import <UMFeedback.h>
 #import <MTStatusBarOverlay.h>
+#import "ZXRemoteNotification.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -36,16 +38,9 @@
     [self.window makeKeyAndVisible];
     
     //self.window.rootViewController = [[GuideViewController alloc] init];
+
     
-    for(int i=0;i<=9;i++)
-        for(int j=0;j<=9;j++)
-            for(int k=0;k<=9;k++)
-            {
-                if(i*11+j*11+k*11 == i*100+j*100+k)
-                {
-                    NSLog(@"%d%d+%d%d+%d%d = %d%d%d",i,i,j,j,k,k,i,j,k);
-                }
-            }
+    [UIApplication registerRemote];
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ListVIewController alloc] init]];
     

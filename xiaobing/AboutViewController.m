@@ -10,6 +10,7 @@
 #import "UIViewController+UI.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "FeedBack.h"
+#import "List.h"
 
 @implementation AboutViewController
 
@@ -28,6 +29,8 @@
 {
     [super viewDidLoad];
     [self addBackButton];
+    //self.view.backgroundColor = kColor_MessageBg;
+    
     self.navigationItem.title = @"关于小饼FM";
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"voice" ofType:@"mp3"];
@@ -62,5 +65,15 @@
 - (IBAction)talk:(id)sender {
     FeedBack *feed = [[FeedBack alloc] init];
     [self.navigationController pushViewController:feed animated:YES];
+}
+
+- (IBAction)list:(id)sender {
+    
+    List *list = [[List alloc] init];
+    [self.navigationController pushViewController:list animated:YES];
+}
+
+- (IBAction)rate:(id)sender {
+    ALERT(@"提示评价");
 }
 @end

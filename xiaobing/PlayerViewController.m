@@ -10,7 +10,7 @@
 #import "UIViewController+UI.h"
 #import <UMSocial.h>
 #import <UIImageView+AFNetworking.h>
-
+#import "DOUAudioFileProvider.h"
 @implementation PlayerViewController
 
 
@@ -43,6 +43,15 @@ static NSDateFormatter *formatter;
     self.totalTimeLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:time2]];
     
     self.progressView.progress = time1/time2;
+}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    DOUAudioFileProvider *p = [DOUAudioFileProvider fileProviderWithAudioFile:podcast];
+    NSLog(@"%@",podcast.audioFileURL);
+    
+    NSLog(@"%@",p.isFinished?@"yes":@"no");
+    NSLog(@"%@",p.cachedURL);
+    NSLog(@"%@",p.cachedPath);
 }
 -(void)changeStatus:(DOUAudioStreamerStatus)status
 {

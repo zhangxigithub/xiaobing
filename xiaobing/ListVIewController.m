@@ -30,7 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = kColor_ListBG;
+    //self.view.backgroundColor = kColor_ListBG;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"listBg"]];
+    
     self.navigationItem.title = @"小饼FM";
     
     finish  = NO;

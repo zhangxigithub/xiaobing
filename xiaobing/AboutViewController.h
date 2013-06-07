@@ -23,5 +23,7 @@
 - (IBAction)feed:(UIButton *)sender;
 - (IBAction)voice:(id)sender;
 - (IBAction)talk:(id)sender;
+- (IBAction)list:(id)sender;
 
+- (IBAction)rate:(id)sender;
 @end
