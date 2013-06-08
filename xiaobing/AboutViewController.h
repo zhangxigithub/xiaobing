@@ -11,11 +11,19 @@
 
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import "PageNumberView.h"
+#import <MBProgressHUD.h>
 
-@interface AboutViewController : UIViewController
+@interface AboutViewController : UIViewController<AVAudioPlayerDelegate>
 {
     AVAudioPlayer *player;
+    UIView *voiceView;
+    PageNumberView *page;
+    NSTimer *musicTimer;
+    MBProgressHUD *hud;
     
+    
+    __weak IBOutlet UIImageView *logoView;
 }
 
 

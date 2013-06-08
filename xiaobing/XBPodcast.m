@@ -77,8 +77,8 @@ static NSDateFormatter *formatter;
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%d",dictionary[@"largeImageURL"],arc4random()]];
         
         self.largeImageURL = url;
-        if([dictionary[@"largeImageURL"] isEqualToString:@""])
-            self.largeImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://xiaobingfm.sinaapp.com/image/jinyu.jpg?%d",arc4random()]];
+//        if([dictionary[@"largeImageURL"] isEqualToString:@""])
+//            self.largeImageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://xiaobingfm.sinaapp.com/image/jinyu.jpg?%d",arc4random()]];
     }
     return self;
 }

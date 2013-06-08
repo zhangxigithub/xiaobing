@@ -49,7 +49,7 @@ static NSDateFormatter *formatter;
                 [self addSubview:content];
                 UIButton *playButton = [UIButton buttonWithType:UIButtonTypeCustom];
                 [playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
-                playButton.frame = CGRectMake(250, 38, 40, 40);
+                playButton.frame = CGRectMake(250, 44, 40, 40);
                 [playButton addTarget:self
                                action:@selector(play)
                      forControlEvents:UIControlEventTouchUpInside];

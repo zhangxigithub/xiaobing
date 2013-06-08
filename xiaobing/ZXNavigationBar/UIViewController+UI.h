@@ -11,6 +11,7 @@
 @interface UIViewController (UI)
 
 -(void)addBackButton;
+-(void)addRefreshButton;
 -(void)back;
 
 

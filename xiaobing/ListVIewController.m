@@ -15,6 +15,7 @@
 #import "FliterTableViewController.h"
 #import "AboutViewController.h"
 #import <UMSocial.h>
+#import "UIViewController+UI.h"
 
 @implementation ListVIewController
 
@@ -26,10 +27,16 @@
     }
     return self;
 }
-
+-(void)refresh
+{
+    localData = [NSMutableArray array];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self loadPodcats];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self addRefreshButton];
     //self.view.backgroundColor = kColor_ListBG;
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"listBg"]];
     
@@ -135,7 +142,7 @@
     loading = YES;
     [[DataCenter sharedDateCenter] getPodcastWithBlock:^(NSArray *result) {
         
-    
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if(result.count > 0 && result != nil)
         {
             [localData addObjectsFromArray:result];

@@ -22,6 +22,18 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = item;
 }
+-(void)addRefreshButton
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
+    button.frame = CGRectMake(0, 0, 33, 27);
+    [button addTarget:self
+               action:@selector(refresh)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = item;
+}
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
