@@ -49,7 +49,7 @@ static NSDateFormatter *formatter;
     DOUAudioFileProvider *p = [DOUAudioFileProvider fileProviderWithAudioFile:podcast];
     NSLog(@"%@",podcast.audioFileURL);
     
-    NSLog(@"%@",p.isFinished?@"yes":@"no");
+    NSLog(@"%@",(p.isFinished==YES)?@"yes":@"no");
     NSLog(@"%@",p.cachedURL);
     NSLog(@"%@",p.cachedPath);
 }
