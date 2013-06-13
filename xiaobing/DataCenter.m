@@ -76,5 +76,17 @@ static DataCenter *dataCenter;
     
     //finish(@[@"aaaa"]);
 }
-
+-(NSString *)content:(NSString *)podcastID
+{
+    NSMutableURLRequest *request = [self.client requestWithMethod:@"GET"
+                                                             path:@"content.php"
+                                                       parameters:@{@"id":podcastID}];
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    //http://xiaobingfm.sinaapp.com/api/content.php?id=33
+}
 @end

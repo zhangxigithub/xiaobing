@@ -11,6 +11,9 @@
 #import <UMSocial.h>
 #import <UIImageView+AFNetworking.h>
 #import "DOUAudioFileProvider.h"
+#import <AFHTTPClient.h>
+#import "DataCenter.h"
+
 @implementation PlayerViewController
 
 
@@ -109,7 +112,7 @@ static NSDateFormatter *formatter;
 {
     [super viewDidLoad];
     [self addBackButton];
-    
+    [self loadContent];
     [self.coverImageView setImageWithURL:podcast.coverURL placeholderImage:[UIImage imageNamed:@"cover_holder"]];
 //    [self.coverImageView setImage:[UIImage imageNamed:@"cover_holder"]];
     
@@ -157,7 +160,24 @@ static NSDateFormatter *formatter;
     // Dispose of any resources that can be recreated.
 }
 
+-(void)loadContent
+{
+    
 
+    NSMutableURLRequest *request = [[[DataCenter sharedDateCenter] client] requestWithMethod:@"GET"
+                                                             path:@"content.php"
+                                                       parameters:@{@"id":podcast.podcastID}];
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        _contentTextView.text = [operation responseString];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    [op start];
+}
 
 - (void)viewDidUnload {
     [self setPlayButton:nil];
@@ -165,6 +185,7 @@ static NSDateFormatter *formatter;
     [self setProgressView:nil];
     [self setDurationTimeLabel:nil];
     [self setTotalTimeLabel:nil];
+    [self setContentTextView:nil];
     [super viewDidUnload];
 }
 @end

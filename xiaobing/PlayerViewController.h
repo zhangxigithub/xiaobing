@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *durationTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 
 
 

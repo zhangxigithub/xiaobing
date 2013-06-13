@@ -26,4 +26,7 @@
 
 
 -(NSArray *)localPodcast;
+
+
+-(NSString*)content:(NSString *)podcastID;
 @end
