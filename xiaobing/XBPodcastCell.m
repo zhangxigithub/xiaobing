@@ -33,7 +33,7 @@ static NSDateFormatter *formatter;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         bgImage = ResizableImage(@"cellBg", 27, 13, 5, 5);
-        
+        //bgImage = [UIImage imageNamed:@"cellBg"];
         icon = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, 30, 30)];
         icon.image =[UIImage imageNamed:[NSString stringWithFormat:@"icon_%d",type]];
         [self addSubview:icon];

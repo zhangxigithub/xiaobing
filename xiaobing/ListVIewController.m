@@ -59,7 +59,12 @@
     line.backgroundColor = kColor_ListLine;
     [self.view addSubview:line];
     //+++++++++++++++++++++++++++++++++++
-    table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kContent_Width, kContent_Height-44)
+    float top = 0;
+    if(iOS >= 7)
+    {
+        top = 20+44;
+    }
+    table = [[UITableView alloc] initWithFrame:CGRectMake(0, top, kContent_Width, kContent_Height-44)
                                          style:UITableViewStylePlain];
     table.separatorStyle = UITableViewCellSeparatorStyleNone;
     table.backgroundColor = [UIColor clearColor];

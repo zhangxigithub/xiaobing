@@ -1,15 +1,16 @@
 PODS:
-  - AFNetworking (1.3.0)
+  - AFNetworking (1.3.1)
   - EGOTableViewPullRefresh (0.1.0)
   - FPPopover (1.4.1)
   - GGFullscreenImageViewController (1.0.0)
   - JSONKit (1.5pre)
-  - MBProgressHUD (0.6)
+  - MBProgressHUD (0.7)
   - MTStatusBarOverlay (0.9.1)
   - UIBubbleTableView (0.2)
   - UMengAnalytics (2.2.0)
   - UMengFeedback (1.4)
-  - UMengSocial (2.1.3)
+  - UMengSocial (2.2.1)
+  - ZXTools/ZXMacro (1.3)
 
 DEPENDENCIES:
   - AFNetworking
@@ -23,18 +24,20 @@ DEPENDENCIES:
   - UMengAnalytics
   - UMengFeedback
   - UMengSocial
+  - ZXTools/ZXMacro
 
 SPEC CHECKSUMS:
-  AFNetworking: e528f20d06b1b818c3571266fb5efa20031a8ace
+  AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
   EGOTableViewPullRefresh: 6ba637ce6dd3186b503d2d91e6b3a08a26d650f5
   FPPopover: 0289b796c031d8f27bd221d93d282ffe23619893
   GGFullscreenImageViewController: 81ff02e95ea08d28326e937090fbf3e2b2778193
   JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
-  MBProgressHUD: 9b55a90566fb5d07df0602f6fd9fa04510ad5d52
+  MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
   MTStatusBarOverlay: 2cee705996e4e307191d423bf49e583b9b2c14ac
   UIBubbleTableView: 08dcbbb351538139d7a2a01216bb427ad4253bb1
   UMengAnalytics: 8da44b6e1f604cd56202a820108b86df79a929bc
   UMengFeedback: 89e746f9fb063e5a9bb4f06bb456f989d67d901d
-  UMengSocial: ec4f829398c5328d622a9a2006b3e78d7853cf60
+  UMengSocial: cdc835fa1d810c7d1fba3e542c08d05071aa8c27
+  ZXTools: 054380fff825372beb03f795eab25a87ca38e357
 
 COCOAPODS: 0.20.2

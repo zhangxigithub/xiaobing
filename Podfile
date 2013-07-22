@@ -14,3 +14,5 @@ pod 'GGFullscreenImageViewController'
 pod 'UIBubbleTableView'
 pod 'MBProgressHUD'
 pod 'MTStatusBarOverlay'
+
+pod 'ZXTools/ZXMacro'

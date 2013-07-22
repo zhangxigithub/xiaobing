@@ -17,11 +17,23 @@
 #import <UMFeedback.h>
 #import <MTStatusBarOverlay.h>
 #import "ZXRemoteNotification.h"
+#import <ZXMacro.h>
+#import "Menu.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
+    
+    
+    NSLog(@"kContent_Height:%f",kContent_Height);
+    NSLog(@"kScreen_Height:%f",kScreen_Height);
+    
+    
+    
+    
     NSLog(@"%@",NSHomeDirectory());
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     [MobClick startWithAppkey:@"51abf69b56240b183404f364"];
@@ -42,9 +54,16 @@
     
     [UIApplication registerRemote];
     
+    /*
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ListVIewController alloc] init]];
     
-
+*/
+    
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[Menu alloc] initWithNibName:@"Menu" bundle:nil]];
+    
+    navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.window.rootViewController = navigationController;
 
      [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
@@ -70,13 +89,7 @@
 
 - (void)umCheck:(NSNotification *)notification {
     
-    @1;
-    @("ddd");
-    
-    int a = 2;
-    int b = 3;
-    
-    @(a+b);
+
     
     NSLog(@"notification = %@", notification.userInfo);
     

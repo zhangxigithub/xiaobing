@@ -8,7 +8,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import "ZXMacro.h"
+#import <ZXMacro.h>
 
 
 

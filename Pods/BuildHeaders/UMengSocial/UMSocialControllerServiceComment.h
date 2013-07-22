@@ -1,1 +1,1 @@
-../../UMengSocial/UMSocial_Sdk_All_2.1.3/UMSocial_Sdk_2.1.3/Header/UMSocialControllerServiceComment.h
+../../UMengSocial/UMSocial_Sdk_All_2.2.1/UMSocial_Sdk_2.2.1/Header/UMSocialControllerServiceComment.h
