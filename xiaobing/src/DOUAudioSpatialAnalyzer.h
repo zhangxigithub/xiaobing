@@ -14,14 +14,8 @@
  *
  */
 
-#import "DOUAudioFilePreprocessor.h"
+#import "DOUAudioAnalyzer.h"
 
-@implementation DOUAudioFilePreprocessor
-
-- (NSData *)handleData:(NSData *)data offset:(NSUInteger)offset
-{
-  [self doesNotRecognizeSelector:_cmd];
-  return nil;
-}
+@interface DOUAudioSpatialAnalyzer : DOUAudioAnalyzer
 
 @end

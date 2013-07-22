@@ -14,14 +14,20 @@
  *
  */
 
-#import "DOUAudioFilePreprocessor.h"
+#import "DOUAudioAnalyzer+Default.h"
+#import "DOUAudioSpatialAnalyzer.h"
+#import "DOUAudioFrequencyAnalyzer.h"
 
-@implementation DOUAudioFilePreprocessor
+@implementation DOUAudioAnalyzer (Default)
 
-- (NSData *)handleData:(NSData *)data offset:(NSUInteger)offset
++ (instancetype)spatialAnalyzer
 {
-  [self doesNotRecognizeSelector:_cmd];
-  return nil;
+  return [DOUAudioSpatialAnalyzer analyzer];
+}
+
++ (instancetype)frequencyAnalyzer
+{
+  return [DOUAudioFrequencyAnalyzer analyzer];
 }
 
 @end

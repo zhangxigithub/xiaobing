@@ -16,6 +16,7 @@
 
 #import "DOUAudioRenderer.h"
 #import "DOUAudioDecoder.h"
+#import "DOUAudioAnalyzer.h"
 #include <CoreAudio/CoreAudioTypes.h>
 #include <AudioUnit/AudioUnit.h>
 #include <pthread.h>
@@ -46,6 +47,8 @@
   NSUInteger _bufferTime;
   BOOL _started;
 
+  NSArray *_analyzers;
+
   uint64_t _startedTime;
   uint64_t _interruptedTime;
   uint64_t _totalInterruptedInterval;
@@ -59,6 +62,7 @@
 @implementation DOUAudioRenderer
 
 @synthesize started = _started;
+@synthesize analyzers = _analyzers;
 
 + (instancetype)rendererWithBufferTime:(NSUInteger)bufferTime
 {
@@ -136,6 +140,7 @@ static OSStatus au_render_callback(void *inRefCon,
   NSUInteger validByteCount = renderer->_validByteCount;
 
   if (validByteCount < totalBytesToCopy) {
+    [renderer->_analyzers makeObjectsPerformSelector:@selector(flush)];
     [renderer _setShouldInterceptTiming:YES];
 
     *inActionFlags = kAudioUnitRenderAction_OutputIsSilence;
@@ -163,6 +168,14 @@ static OSStatus au_render_callback(void *inRefCon,
   }
   else {
     memcpy(outBuffer, bytes, bytesToCopy);
+  }
+
+  NSArray *analyzers = renderer->_analyzers;
+  if (analyzers != nil) {
+    for (DOUAudioAnalyzer *analyzer in analyzers) {
+      [analyzer handleLPCMSamples:(int16_t *)outBuffer
+                            count:bytesToCopy / sizeof(int16_t)];
+    }
   }
 
 #if TARGET_OS_IPHONE
@@ -412,6 +425,8 @@ static OSStatus property_listener_default_output_device(AudioObjectID inObjectID
 
 - (void)stop
 {
+  [_analyzers makeObjectsPerformSelector:@selector(flush)];
+
   if (_outputAudioUnit == NULL) {
     return;
   }
@@ -431,6 +446,13 @@ static OSStatus property_listener_default_output_device(AudioObjectID inObjectID
 
 - (void)flush
 {
+  [self flushShouldResetTiming:YES];
+}
+
+- (void)flushShouldResetTiming:(BOOL)shouldResetTiming
+{
+  [_analyzers makeObjectsPerformSelector:@selector(flush)];
+
   if (_outputAudioUnit == NULL) {
     return;
   }
@@ -439,7 +461,9 @@ static OSStatus property_listener_default_output_device(AudioObjectID inObjectID
 
   _firstValidByteOffset = 0;
   _validByteCount = 0;
-  [self _resetTiming];
+  if (shouldResetTiming) {
+    [self _resetTiming];
+  }
 
   pthread_mutex_unlock(&_mutex);
   pthread_cond_signal(&_cond);

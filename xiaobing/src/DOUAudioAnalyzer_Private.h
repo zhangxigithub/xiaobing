@@ -14,14 +14,13 @@
  *
  */
 
-#import "DOUAudioFilePreprocessor.h"
+#import "DOUAudioAnalyzer.h"
 
-@implementation DOUAudioFilePreprocessor
+#define kDOUAudioAnalyzerSampleCount 1024
+#define kDOUAudioAnalyzerCount (kDOUAudioAnalyzerSampleCount / 2)
 
-- (NSData *)handleData:(NSData *)data offset:(NSUInteger)offset
-{
-  [self doesNotRecognizeSelector:_cmd];
-  return nil;
-}
+@interface DOUAudioAnalyzer ()
+
+- (void)processChannelVectors:(const float *)vectors toLevels:(float *)levels;
 
 @end

@@ -14,14 +14,16 @@
  *
  */
 
-#import "DOUAudioFilePreprocessor.h"
+#import "DOUAudioSpatialAnalyzer.h"
+#import "DOUAudioAnalyzer_Private.h"
 
-@implementation DOUAudioFilePreprocessor
+@implementation DOUAudioSpatialAnalyzer
 
-- (NSData *)handleData:(NSData *)data offset:(NSUInteger)offset
+- (void)processChannelVectors:(const float *)vectors toLevels:(float *)levels
 {
-  [self doesNotRecognizeSelector:_cmd];
-  return nil;
+  for (size_t i = 0; i < kDOUAudioAnalyzerLevelCount; ++i) {
+    levels[i] = vectors[kDOUAudioAnalyzerCount * i / kDOUAudioAnalyzerLevelCount];
+  }
 }
 
 @end

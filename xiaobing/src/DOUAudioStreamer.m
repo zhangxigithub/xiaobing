@@ -29,6 +29,7 @@ NSString *const kDOUAudioStreamerErrorDomain = @"com.douban.audio-streamer.error
   NSError *_error;
 
   NSTimeInterval _duration;
+  NSInteger _timingOffset;
 
   DOUAudioFileProvider *_fileProvider;
   DOUAudioPlaybackItem *_playbackItem;
@@ -46,6 +47,7 @@ NSString *const kDOUAudioStreamerErrorDomain = @"com.douban.audio-streamer.error
 @synthesize error = _error;
 
 @synthesize duration = _duration;
+@synthesize timingOffset = _timingOffset;
 
 @synthesize fileProvider = _fileProvider;
 @synthesize playbackItem = _playbackItem;
@@ -65,7 +67,7 @@ NSString *const kDOUAudioStreamerErrorDomain = @"com.douban.audio-streamer.error
   self = [super init];
   if (self) {
     _audioFile = audioFile;
-    _status = DOUAudioStreamerPaused;
+    _status = DOUAudioStreamerIdle;
 
     _fileProvider = [DOUAudioFileProvider fileProviderWithAudioFile:_audioFile];
     if (_fileProvider == nil) {
@@ -84,6 +86,21 @@ NSString *const kDOUAudioStreamerErrorDomain = @"com.douban.audio-streamer.error
 + (void)setVolume:(double)volume
 {
   [[DOUAudioEventLoop sharedEventLoop] setVolume:volume];
+}
+
++ (NSArray *)analyzers
+{
+  return [[DOUAudioEventLoop sharedEventLoop] analyzers];
+}
+
++ (void)setAnalyzers:(NSArray *)analyzers
+{
+  [[DOUAudioEventLoop sharedEventLoop] setAnalyzers:analyzers];
+}
+
++ (void)setHintWithAudioFile:(id <DOUAudioFile>)audioFile
+{
+  [DOUAudioFileProvider setHintWithAudioFile:audioFile];
 }
 
 - (id <DOUAudioFile>)audioFile
@@ -105,6 +122,15 @@ NSString *const kDOUAudioStreamerErrorDomain = @"com.douban.audio-streamer.error
   return [[DOUAudioEventLoop sharedEventLoop] currentTime];
 }
 
+- (void)setCurrentTime:(NSTimeInterval)currentTime
+{
+  if ([[DOUAudioEventLoop sharedEventLoop] currentStreamer] != self) {
+    return;
+  }
+
+  [[DOUAudioEventLoop sharedEventLoop] setCurrentTime:currentTime];
+}
+
 - (double)volume
 {
   return [[self class] volume];
@@ -113,6 +139,16 @@ NSString *const kDOUAudioStreamerErrorDomain = @"com.douban.audio-streamer.error
 - (void)setVolume:(double)volume
 {
   [[self class] setVolume:volume];
+}
+
+- (NSArray *)analyzers
+{
+  return [[self class] analyzers];
+}
+
+- (void)setAnalyzers:(NSArray *)analyzers
+{
+  [[self class] setAnalyzers:analyzers];
 }
 
 - (NSString *)cachedPath
@@ -143,7 +179,9 @@ NSString *const kDOUAudioStreamerErrorDomain = @"com.douban.audio-streamer.error
 - (void)play
 {
   @synchronized(self) {
-    if (_status != DOUAudioStreamerPaused) {
+    if (_status != DOUAudioStreamerPaused &&
+        _status != DOUAudioStreamerIdle &&
+        _status != DOUAudioStreamerFinished) {
       return;
     }
 
@@ -159,7 +197,9 @@ NSString *const kDOUAudioStreamerErrorDomain = @"com.douban.audio-streamer.error
 - (void)pause
 {
   @synchronized(self) {
-    if (_status == DOUAudioStreamerPaused) {
+    if (_status == DOUAudioStreamerPaused ||
+        _status == DOUAudioStreamerIdle ||
+        _status == DOUAudioStreamerFinished) {
       return;
     }
 
@@ -174,7 +214,7 @@ NSString *const kDOUAudioStreamerErrorDomain = @"com.douban.audio-streamer.error
 - (void)stop
 {
   @synchronized(self) {
-    if (_status == DOUAudioStreamerPaused) {
+    if (_status == DOUAudioStreamerIdle) {
       return;
     }
 
@@ -182,7 +222,7 @@ NSString *const kDOUAudioStreamerErrorDomain = @"com.douban.audio-streamer.error
       return;
     }
 
-    [[DOUAudioEventLoop sharedEventLoop] pause];
+    [[DOUAudioEventLoop sharedEventLoop] stop];
     [[DOUAudioEventLoop sharedEventLoop] setCurrentStreamer:nil];
   }
 }

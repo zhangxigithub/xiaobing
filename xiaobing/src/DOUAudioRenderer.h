@@ -27,9 +27,12 @@
 - (void)renderBytes:(const void *)bytes length:(NSUInteger)length;
 - (void)stop;
 - (void)flush;
+- (void)flushShouldResetTiming:(BOOL)shouldResetTiming;
 
 @property (nonatomic, readonly) NSUInteger currentTime;
 @property (nonatomic, readonly, getter = isStarted) BOOL started;
 @property (nonatomic, assign) double volume;
+
+@property (nonatomic, copy) NSArray *analyzers;
 
 @end

@@ -14,14 +14,17 @@
  *
  */
 
-#import "DOUAudioFilePreprocessor.h"
+#if TARGET_OS_IPHONE
 
-@implementation DOUAudioFilePreprocessor
+#import "DOUEAGL1View.h"
 
-- (NSData *)handleData:(NSData *)data offset:(NSUInteger)offset
+@implementation DOUEAGL1View
+
++ (EAGLRenderingAPI)eaglRenderingAPI
 {
-  [self doesNotRecognizeSelector:_cmd];
-  return nil;
+  return kEAGLRenderingAPIOpenGLES1;
 }
 
 @end
+
+#endif /* TARGET_OS_IPHONE */

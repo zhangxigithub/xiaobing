@@ -14,14 +14,20 @@
  *
  */
 
-#import "DOUAudioFilePreprocessor.h"
+#if TARGET_OS_IPHONE
 
-@implementation DOUAudioFilePreprocessor
+#import "DOUEAGL1View.h"
 
-- (NSData *)handleData:(NSData *)data offset:(NSUInteger)offset
-{
-  [self doesNotRecognizeSelector:_cmd];
-  return nil;
-}
+typedef NS_ENUM(NSUInteger, DOUAudioVisualizerInterpolationType) {
+  DOUAudioVisualizerLinearInterpolation,
+  DOUAudioVisualizerSmoothInterpolation
+};
+
+@interface DOUAudioVisualizer : DOUEAGL1View
+
+@property (nonatomic, assign) NSUInteger stepCount;
+@property (nonatomic, assign) DOUAudioVisualizerInterpolationType interpolationType;
 
 @end
+
+#endif /* TARGET_OS_IPHONE */

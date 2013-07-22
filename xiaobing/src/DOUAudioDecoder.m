@@ -357,7 +357,7 @@ static OSStatus decoder_data_proc(AudioConverterRef inAudioConverter, UInt32 *io
     double intervalPerPacket = 1000.0 / _decodingContext.inputFormat.mSampleRate * framesPerPacket;
     double intervalPerRead = intervalPerPacket / bytesPerPacket * bytesPerRead;
 
-    double downloadTime = 1000.0 * bytesPerRead / [provider downloadSpeed];
+    double downloadTime = 1000.0 * (bytesPerRead - (receivedDataLength - packetDataOffset)) / [provider downloadSpeed];
     SInt64 bytesRemaining = expectedDataLength - receivedDataLength;
 
     if (receivedDataLength < packetDataOffset ||
@@ -411,6 +411,24 @@ static OSStatus decoder_data_proc(AudioConverterRef inAudioConverter, UInt32 *io
 
   pthread_mutex_unlock(&_decodingContext.mutex);
   return DOUAudioDecoderSucceeded;
+}
+
+- (void)seekToTime:(NSUInteger)milliseconds
+{
+  if (!_decodingContextInitialized) {
+    return;
+  }
+
+  pthread_mutex_lock(&_decodingContext.mutex);
+
+  double frames = (double)milliseconds * _decodingContext.inputFormat.mSampleRate / 1000.0;
+  double packets = frames / _decodingContext.inputFormat.mFramesPerPacket;
+  NSUInteger packetNumebr = lrint(floor(packets));
+
+  _decodingContext.afio.pos = packetNumebr;
+  _decodingContext.outputPos = packetNumebr * _decodingContext.inputFormat.mFramesPerPacket / _decodingContext.outputFormat.mFramesPerPacket;
+  
+  pthread_mutex_unlock(&_decodingContext.mutex);
 }
 
 @end

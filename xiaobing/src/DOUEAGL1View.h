@@ -14,14 +14,13 @@
  *
  */
 
-#import "DOUAudioFilePreprocessor.h"
+#if TARGET_OS_IPHONE
 
-@implementation DOUAudioFilePreprocessor
+#import "DOUEAGLView.h"
+#include <OpenGLES/ES1/gl.h>
 
-- (NSData *)handleData:(NSData *)data offset:(NSUInteger)offset
-{
-  [self doesNotRecognizeSelector:_cmd];
-  return nil;
-}
+@interface DOUEAGL1View : DOUEAGLView
 
 @end
+
+#endif /* TARGET_OS_IPHONE */

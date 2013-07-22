@@ -28,7 +28,15 @@ static NSDateFormatter *formatter;
         
         player = [XBPlayer sharedPlayer];
         player.delegate = self;
-        [player play:podcast];
+        
+        if([[player currentPodcastID] isEqualToString:podcast.podcastID])
+        {
+            
+        }
+        else
+        {
+            [player play:podcast];
+        }
         
         
         formatter = [[NSDateFormatter alloc] init];
@@ -111,7 +119,7 @@ static NSDateFormatter *formatter;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self addBackButton];
+    //[self addBackButton];
     [self loadContent];
     [self.coverImageView setImageWithURL:podcast.coverURL placeholderImage:[UIImage imageNamed:@"cover_holder"]];
 //    [self.coverImageView setImage:[UIImage imageNamed:@"cover_holder"]];
@@ -121,18 +129,25 @@ static NSDateFormatter *formatter;
     [self.playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateSelected];
     
     
+//    
+//    
+//    UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [shareButton setImage:[UIImage imageNamed:@"iconShare"] forState:UIControlStateNormal];
+//    
+//    shareButton.frame = CGRectMake(0, 0, 35, 35);
+//    [shareButton addTarget:self
+//                    action:@selector(share)
+//          forControlEvents:UIControlEventTouchUpInside];
+//    
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
+    //self.navigationItem.rightBarButtonItem = item;
     
     
-    UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shareButton setImage:[UIImage imageNamed:@"iconShare"] forState:UIControlStateNormal];
-    
-    shareButton.frame = CGRectMake(0, 0, 35, 35);
-    [shareButton addTarget:self
-                    action:@selector(share)
-          forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
-    self.navigationItem.rightBarButtonItem = item;
+
+
+    //left.title = @" ";
+
+    //self.navigationItem.leftBarButtonItem = left;
     
     //+++++++++++++++
     

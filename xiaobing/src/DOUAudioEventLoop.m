@@ -34,6 +34,8 @@ static NSString *const kVolumeKey = @"DOUAudioStreamerVolume";
 typedef NS_ENUM(uint64_t, event_type) {
   event_play,
   event_pause,
+  event_stop,
+  event_seek,
   event_streamer_changed,
   event_provider_events,
   event_finalizing,
@@ -61,6 +63,7 @@ typedef NS_ENUM(uint64_t, event_type) {
   DOUAudioFileProviderEventBlock _fileProviderEventBlock;
 
   int _kq;
+  void *_lastKQUserData;
   pthread_mutex_t _mutex;
   pthread_t _thread;
 }
@@ -69,6 +72,7 @@ typedef NS_ENUM(uint64_t, event_type) {
 @implementation DOUAudioEventLoop
 
 @synthesize currentStreamer = _currentStreamer;
+@dynamic analyzers;
 
 + (instancetype)sharedEventLoop
 {
@@ -200,8 +204,13 @@ static void audio_route_change_listener(void *inClientData,
 
 - (void)_sendEvent:(event_type)event
 {
+  [self _sendEvent:event userData:NULL];
+}
+
+- (void)_sendEvent:(event_type)event userData:(void *)userData
+{
   struct kevent kev;
-  EV_SET(&kev, event, EVFILT_USER, 0, NOTE_TRIGGER, 0, NULL);
+  EV_SET(&kev, event, EVFILT_USER, 0, NOTE_TRIGGER, 0, userData);
   kevent(_kq, &kev, 1, NULL, 0, NULL);
 }
 
@@ -228,6 +237,7 @@ static void audio_route_change_listener(void *inClientData,
       if (kev.filter == EVFILT_USER &&
           kev.ident >= event_first &&
           kev.ident <= event_last) {
+        _lastKQUserData = kev.udata;
         return kev.ident;
       }
     }
@@ -243,15 +253,41 @@ static void audio_route_change_listener(void *inClientData,
 {
   if (event == event_play) {
     if (*streamer != nil &&
-        [*streamer status] == DOUAudioStreamerPaused) {
+        ([*streamer status] == DOUAudioStreamerPaused ||
+         [*streamer status] == DOUAudioStreamerIdle ||
+         [*streamer status] == DOUAudioStreamerFinished)) {
       [*streamer setStatus:DOUAudioStreamerPlaying];
     }
   }
   else if (event == event_pause) {
     if (*streamer != nil &&
-        [*streamer status] != DOUAudioStreamerPaused) {
+        ([*streamer status] != DOUAudioStreamerPaused &&
+         [*streamer status] != DOUAudioStreamerIdle &&
+         [*streamer status] != DOUAudioStreamerFinished)) {
       [_renderer stop];
       [*streamer setStatus:DOUAudioStreamerPaused];
+    }
+  }
+  else if (event == event_stop) {
+    if (*streamer != nil &&
+        [*streamer status] != DOUAudioStreamerIdle) {
+      if ([*streamer status] != DOUAudioStreamerPaused) {
+        [_renderer stop];
+      }
+      [_renderer flush];
+      [*streamer setDecoder:nil];
+      [*streamer setPlaybackItem:nil];
+      [*streamer setStatus:DOUAudioStreamerIdle];
+    }
+  }
+  else if (event == event_seek) {
+    if (*streamer != nil &&
+        [*streamer decoder] != nil) {
+      NSUInteger milliseconds = MIN((NSUInteger)(uintptr_t)_lastKQUserData,
+                                    [[*streamer playbackItem] estimatedDuration]);
+      [*streamer setTimingOffset:(NSInteger)milliseconds - (NSInteger)[_renderer currentTime]];
+      [[*streamer decoder] seekToTime:milliseconds];
+      [_renderer flushShouldResetTiming:NO];
     }
   }
   else if (event == event_streamer_changed) {
@@ -273,8 +309,12 @@ static void audio_route_change_listener(void *inClientData,
   }
 #if TARGET_OS_IPHONE
   else if (event == event_interruption_begin) {
+    AudioSessionSetActive(FALSE);
+
     if (*streamer != nil &&
-        [*streamer status] != DOUAudioStreamerPaused) {
+        ([*streamer status] != DOUAudioStreamerPaused &&
+         [*streamer status] != DOUAudioStreamerIdle &&
+         [*streamer status] != DOUAudioStreamerFinished)) {
       [self performSelector:@selector(pause) onThread:[NSThread mainThread] withObject:nil waitUntilDone:NO];
       [*streamer setPausedByInterruption:YES];
     }
@@ -356,6 +396,9 @@ static void audio_route_change_listener(void *inClientData,
     return;
 
   case DOUAudioDecoderEndEncountered:
+    [_renderer stop];
+    [streamer setDecoder:nil];
+    [streamer setPlaybackItem:nil];
     [streamer setStatus:DOUAudioStreamerFinished];
     return;
 
@@ -382,6 +425,7 @@ static void audio_route_change_listener(void *inClientData,
       if (streamer != nil) {
         switch ([streamer status]) {
         case DOUAudioStreamerPaused:
+        case DOUAudioStreamerIdle:
         case DOUAudioStreamerFinished:
         case DOUAudioStreamerBuffering:
         case DOUAudioStreamerError:
@@ -452,7 +496,13 @@ static void *event_loop_main(void *info)
 
 - (NSTimeInterval)currentTime
 {
-  return (NSTimeInterval)[_renderer currentTime] / 1000.0;
+  return (NSTimeInterval)([[self currentStreamer] timingOffset] + [_renderer currentTime]) / 1000.0;
+}
+
+- (void)setCurrentTime:(NSTimeInterval)currentTime
+{
+  NSUInteger milliseconds = lrint(currentTime * 1000.0);
+  [self _sendEvent:event_seek userData:(void *)(uintptr_t)milliseconds];
 }
 
 - (double)volume
@@ -474,6 +524,21 @@ static void *event_loop_main(void *info)
 - (void)pause
 {
   [self _sendEvent:event_pause];
+}
+
+- (void)stop
+{
+  [self _sendEvent:event_stop];
+}
+
+- (id)forwardingTargetForSelector:(SEL)aSelector
+{
+  if (aSelector == @selector(analyzers) ||
+      aSelector == @selector(setAnalyzers:)) {
+    return _renderer;
+  }
+
+  return [super forwardingTargetForSelector:aSelector];
 }
 
 @end

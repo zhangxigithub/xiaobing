@@ -15,20 +15,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "DOUAudioBase.h"
 #import "DOUAudioFile.h"
 #import "DOUAudioFilePreprocessor.h"
-
-#ifdef __cplusplus
-#define DOUAS_EXTERN extern "C"
-#else /* __cplusplus */
-#define DOUAS_EXTERN extern
-#endif /* __cplusplus */
+#import "DOUAudioAnalyzer+Default.h"
 
 DOUAS_EXTERN NSString *const kDOUAudioStreamerErrorDomain;
 
 typedef NS_ENUM(NSUInteger, DOUAudioStreamerStatus) {
   DOUAudioStreamerPlaying,
   DOUAudioStreamerPaused,
+  DOUAudioStreamerIdle,
   DOUAudioStreamerFinished,
   DOUAudioStreamerBuffering,
   DOUAudioStreamerError
@@ -47,6 +44,11 @@ typedef NS_ENUM(NSInteger, DOUAudioStreamerErrorCode) {
 + (double)volume;
 + (void)setVolume:(double)volume;
 
++ (NSArray *)analyzers;
++ (void)setAnalyzers:(NSArray *)analyzers;
+
++ (void)setHintWithAudioFile:(id <DOUAudioFile>)audioFile;
+
 @property (assign, readonly) DOUAudioStreamerStatus status;
 @property (strong, readonly) NSError *error;
 
@@ -54,8 +56,10 @@ typedef NS_ENUM(NSInteger, DOUAudioStreamerErrorCode) {
 @property (nonatomic, readonly) NSURL *url;
 
 @property (nonatomic, assign, readonly) NSTimeInterval duration;
-@property (nonatomic, readonly) NSTimeInterval currentTime;
+@property (nonatomic, assign) NSTimeInterval currentTime;
 @property (nonatomic, assign) double volume;
+
+@property (nonatomic, copy) NSArray *analyzers;
 
 @property (nonatomic, readonly) NSString *cachedPath;
 @property (nonatomic, readonly) NSURL *cachedURL;

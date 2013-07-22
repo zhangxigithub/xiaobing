@@ -14,14 +14,20 @@
  *
  */
 
-#import "DOUAudioFilePreprocessor.h"
+#import <Foundation/Foundation.h>
 
-@implementation DOUAudioFilePreprocessor
+#define kDOUAudioAnalyzerLevelCount 20
 
-- (NSData *)handleData:(NSData *)data offset:(NSUInteger)offset
-{
-  [self doesNotRecognizeSelector:_cmd];
-  return nil;
-}
+@interface DOUAudioAnalyzer : NSObject
+
++ (instancetype)analyzer;
+
+- (void)handleLPCMSamples:(int16_t *)samples count:(NSUInteger)count;
+- (void)flush;
+
+- (void)copyLevels:(float *)levels;
+
+@property (nonatomic, assign) NSTimeInterval interval;
+@property (nonatomic, assign, getter = isEnabled) BOOL enabled;
 
 @end

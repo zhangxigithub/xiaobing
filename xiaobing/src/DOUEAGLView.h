@@ -14,14 +14,24 @@
  *
  */
 
-#import "DOUAudioFilePreprocessor.h"
+#if TARGET_OS_IPHONE
 
-@implementation DOUAudioFilePreprocessor
+#import <UIKit/UIKit.h>
+#import <OpenGLES/EAGL.h>
 
-- (NSData *)handleData:(NSData *)data offset:(NSUInteger)offset
-{
-  [self doesNotRecognizeSelector:_cmd];
-  return nil;
-}
+@interface DOUEAGLView : UIView
+
++ (EAGLRenderingAPI)eaglRenderingAPI;
+
+@property (nonatomic, getter = isPaused) BOOL paused;
+@property (nonatomic, assign) NSInteger frameInterval;
+
+- (void)prepare;
+- (void)cleanup;
+
+- (void)reshape;
+- (void)render;
 
 @end
+
+#endif /* TARGET_OS_IPHONE */

@@ -139,7 +139,7 @@ static XBPlayer *player;
         [streamer removeObserver:self forKeyPath:@"duration"];
         streamer = nil;
     }
-    
+    self.currentPodcastID = podcast.podcastID;
     streamer = [DOUAudioStreamer streamerWithAudioFile:podcast];
     
     [streamer addObserver:self
@@ -168,7 +168,10 @@ static XBPlayer *player;
     [streamer play];
 }
 
-
+-(BOOL)isPlaying
+{
+    return [streamer status] == DOUAudioStreamerPlaying;
+}
 
 
 

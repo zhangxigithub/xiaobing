@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PodcastList : UIViewController
+@interface PodcastList : UIViewController<UITableViewDataSource,UITableViewDelegate>
+
+{
+    NSMutableArray *localData;
+}
+@property (weak, nonatomic) IBOutlet UITableView *table;
 
 @end

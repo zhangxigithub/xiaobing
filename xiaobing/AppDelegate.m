@@ -24,35 +24,30 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    
-    
-    
     NSLog(@"kContent_Height:%f",kContent_Height);
     NSLog(@"kScreen_Height:%f",kScreen_Height);
-    
-    
-    
-    
     NSLog(@"%@",NSHomeDirectory());
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    
     [MobClick startWithAppkey:@"51abf69b56240b183404f364"];
+    [UMSocialData setAppKey:@"51abf69b56240b183404f364"];
+    
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    
     
     [WXApi registerApp:@"wx7a0f9be121c270af"];
     [UMSocialControllerService defaultControllerService].socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     [UMSocialControllerService defaultControllerService].socialData.extConfig.appUrl = @"http://zhangxi.me";
     
     
-    [UMSocialData setAppKey:@"51abf69b56240b183404f364"];
+    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    //self.window.rootViewController = [[GuideViewController alloc] init];
 
     
-    [UIApplication registerRemote];
+    //[UIApplication registerRemote];
     
     /*
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[ListVIewController alloc] init]];
@@ -62,7 +57,7 @@
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[Menu alloc] initWithNibName:@"Menu" bundle:nil]];
     
-    navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.window.rootViewController = navigationController;
 
      [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];

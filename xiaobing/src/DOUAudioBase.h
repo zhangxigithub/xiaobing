@@ -14,14 +14,8 @@
  *
  */
 
-#import "DOUAudioFilePreprocessor.h"
-
-@implementation DOUAudioFilePreprocessor
-
-- (NSData *)handleData:(NSData *)data offset:(NSUInteger)offset
-{
-  [self doesNotRecognizeSelector:_cmd];
-  return nil;
-}
-
-@end
+#ifdef __cplusplus
+#define DOUAS_EXTERN extern "C"
+#else /* __cplusplus */
+#define DOUAS_EXTERN extern
+#endif /* __cplusplus */

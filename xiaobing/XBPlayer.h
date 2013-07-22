@@ -26,11 +26,16 @@
 
 -(DOUAudioStreamerStatus)status;
 @property(nonatomic,weak) id<XBPlayerDelegate>delegate;
+
 @property(nonatomic,strong) NSTimer *timer;
+@property(nonatomic,strong) NSString *currentPodcastID;
+
 +(XBPlayer *)sharedPlayer;
 
 -(void)play:(XBPodcast *)podcast;
 -(void)pause;
 -(void)stop;
 -(void)play;
+
+-(BOOL)isPlaying;
 @end

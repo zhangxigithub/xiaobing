@@ -23,6 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = @"小饼FM";
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -35,6 +36,12 @@
 - (IBAction)listen:(id)sender {
     
     PodcastList *list = [[PodcastList alloc] initWithNibName:@"PodcastList" bundle:nil];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@" "
+                                                                 style:UIBarButtonItemStyleBordered
+                                                                target:nil
+                                                                action:nil];
+    [self.navigationItem setBackBarButtonItem:backItem];
     [self.navigationController pushViewController:list animated:YES];
 }
 
