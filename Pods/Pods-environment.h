@@ -67,12 +67,6 @@
 #define COCOAPODS_VERSION_MINOR_UMengFeedback 4
 #define COCOAPODS_VERSION_PATCH_UMengFeedback 0
 
-// UMengSocial
-#define COCOAPODS_POD_AVAILABLE_UMengSocial
-#define COCOAPODS_VERSION_MAJOR_UMengSocial 2
-#define COCOAPODS_VERSION_MINOR_UMengSocial 2
-#define COCOAPODS_VERSION_PATCH_UMengSocial 1
-
 // ZXTools/ZXMacro
 #define COCOAPODS_POD_AVAILABLE_ZXTools_ZXMacro
 #define COCOAPODS_VERSION_MAJOR_ZXTools_ZXMacro 1

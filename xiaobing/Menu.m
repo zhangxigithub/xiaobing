@@ -8,6 +8,10 @@
 
 #import "Menu.h"
 #import "PodcastList.h"
+#import <UMSocial.h>
+#import <ZXMacro.h>
+#import "XBPlayer.h"
+
 
 @implementation Menu
 
@@ -24,9 +28,31 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"小饼FM";
-    // Do any additional setup after loading the view from its nib.
+    
+    
+//    if(iOS<7)
+//    {
+//        self.listenButton.backgroundColor =  [UIColor clearColor];
+//    }
+    
+    
+    
+    
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, kContent_Height/2, 300, 1)];
+    line.backgroundColor = RGB(240, 240, 240);
+    [self.view addSubview:line];
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if([[XBPlayer sharedPlayer] currentPodcastTitle]!= Nil)
+    {
+        self.currentLabel.text = [[XBPlayer sharedPlayer] currentPodcastTitle];
+    }else
+        self.currentLabel.text = @"";
 
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -37,14 +63,57 @@
     
     PodcastList *list = [[PodcastList alloc] initWithNibName:@"PodcastList" bundle:nil];
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@" "
+    
+    
+    
+    NSString *title;
+    if(iOS>=7)
+    {
+        title = @" ";
+    }else
+    {
+        title = @"返回";
+    }
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:title
                                                                  style:UIBarButtonItemStyleBordered
                                                                 target:nil
                                                                 action:nil];
     [self.navigationItem setBackBarButtonItem:backItem];
+    
+    
     [self.navigationController pushViewController:list animated:YES];
 }
 
 - (IBAction)rate:(id)sender {
+    
+    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+    [UMSocialData defaultData].extConfig.appUrl = @"http://zhangxi.me";//设置你应用的下载地址
+    
+    //2.用微信web类型，用户点击直接打开web
+    /*    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther;
+     WXWebpageObject *webObject = [WXWebpageObject object];
+     webObject.webpageUrl = @"https://www.umeng.com"; //设置你自己的url地址
+     [UMSocialData defaultData].extConfig.wxMediaObject = webObject;
+     */
+    
+    NSString *shareText = [UMSocialData defaultData].shareText;           //分享内嵌文字
+    UIImage *shareImage = [UMSocialData defaultData].shareImage;          //分享内嵌图片
+    
+    //如果得到分享完成回调，可以设置delegate
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"51abf69b56240b183404f364"
+                                      shareText:shareText
+                                     shareImage:shareImage
+                                shareToSnsNames:nil
+                                       delegate:nil];
+    
+//    
+//    [UMSocialSnsService presentSnsIconSheetView:[[[UIApplication sharedApplication] keyWindow] rootViewController]
+//                                         appKey:@"51abf69b56240b183404f364"
+//                                      shareText:@"@小饼FM"
+//                                     shareImage:[UIImage imageNamed:@"icon.png"]
+//                                shareToSnsNames:@[UMShareToSina,UMShareToTencent,UMShareToRenren,
+//                                                  UMShareToDouban,UMShareToQzone,UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter]
+//                                       delegate:nil];
 }
 @end

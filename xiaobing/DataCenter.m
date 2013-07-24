@@ -8,6 +8,7 @@
 
 #import "DataCenter.h"
 #import "XBPodcast.h"
+#import <JSONKit.h>
 
 @implementation DataCenter
 
@@ -33,12 +34,64 @@ static DataCenter *dataCenter;
     return self;
 }
 
--(NSArray *)localPodcast
+-(NSMutableArray *)localPodcast
 {
+    NSMutableArray *podcasts = [[[NSUserDefaults standardUserDefaults] objectForKey:kStoreKey] mutableCopy];
     
-    NSArray *result = [NSKeyedUnarchiver unarchiveObjectWithFile:[NSHomeDirectory() stringByAppendingPathComponent:@"/Documents/podcasts"]];
+    if(podcasts == nil)
+    {
+        
+        NSString *json = FileString(@"list", @"json");
+        
+        NSArray *newPodcast = [json objectFromJSONString];
+        
+        [[NSUserDefaults standardUserDefaults]setObject:newPodcast
+                                                 forKey:kStoreKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        podcasts = [newPodcast mutableCopy];
+    }
     
-    return  result;
+    return podcasts;
+}
+-(NSMutableArray *)podcast
+{
+
+    NSMutableArray *podcasts = [self localPodcast];
+    
+    NSMutableArray *result = [NSMutableArray array];
+    for(NSDictionary *podcast in podcasts)
+    {
+        XBPodcast *onePodcast = [[XBPodcast alloc] initWithDictionary:podcast];
+        [result addObject:onePodcast];
+    }
+    return result;
+}
+
++(void)setURL:(NSString *)url toPodcast:(NSString *)podcastID
+{
+    NSMutableArray *podcasts = [[[NSUserDefaults standardUserDefaults] objectForKey:kStoreKey] mutableCopy];
+    NSMutableArray *newPod = [NSMutableArray array];
+    if(podcasts == nil) return;
+    
+    for(NSDictionary *thePodcast in podcasts)
+    {
+        if([podcastID isEqualToString:thePodcast[@"id"]])
+        {
+            NSMutableDictionary *newPodcast = [thePodcast mutableCopy];
+            [newPodcast setObject:url forKey:@"podcastURL"];
+
+            
+            [newPod addObject:newPodcast];
+        }else
+        {
+            [newPod addObject:thePodcast];
+        }
+    }
+    
+    [[NSUserDefaults standardUserDefaults]setObject:newPod
+                                             forKey:kStoreKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 -(void)getPodcastWithBlock:(void(^)(NSArray *result))finish withParams:(NSDictionary *)params
 {

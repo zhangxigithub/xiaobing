@@ -19,6 +19,7 @@
 #import "ZXRemoteNotification.h"
 #import <ZXMacro.h>
 #import "Menu.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation AppDelegate
 
@@ -44,6 +45,20 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    
+    
+    
+    /*
+    newPlayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:@"http://xiaobingfm-podcast.stor.sinaapp.com/%E5%B0%8F%E9%A5%BC%E7%94%B5%E5%8F%B0%20vol6%E4%BA%94%E9%81%93%E5%8F%A3%E6%98%AF%E4%B8%96%E7%95%8C%E4%B8%AD%E5%BF%83.mp3"]];
+    [newPlayer play];
+    
+    
+
+    
+    AVPlayerItem *item = [newPlayer currentItem];
+    */
+    
     
 
     

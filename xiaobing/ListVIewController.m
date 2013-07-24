@@ -60,10 +60,10 @@
     [self.view addSubview:line];
     //+++++++++++++++++++++++++++++++++++
     float top = 0;
-    if(iOS >= 7)
-    {
-        top = 20+44;
-    }
+//    if(iOS >= 7)
+//    {
+//        top = 20+44;
+//    }
     table = [[UITableView alloc] initWithFrame:CGRectMake(0, top, kContent_Width, kContent_Height-44)
                                          style:UITableViewStylePlain];
     table.separatorStyle = UITableViewCellSeparatorStyleNone;

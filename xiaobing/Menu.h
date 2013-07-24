@@ -12,5 +12,8 @@
 
 - (IBAction)listen:(id)sender;
 - (IBAction)rate:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *listenButton;
+@property (weak, nonatomic) IBOutlet UIButton *rateButton;
+@property (weak, nonatomic) IBOutlet UILabel *currentLabel;
 
 @end

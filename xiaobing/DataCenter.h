@@ -7,6 +7,11 @@
 //
 
 #define kBaseURL [NSURL URLWithString:@"http://xiaobingfm.sinaapp.com/api"]
+#define kStoreKey @"me.zhangxi.xiaobing-podcast"
+
+
+
+
 
 #import <Foundation/Foundation.h>
 #import <AFHTTPClient.h>
@@ -25,8 +30,9 @@
 
 
 
--(NSArray *)localPodcast;
-
+-(NSMutableArray *)localPodcast;
+-(NSMutableArray *)podcast;
++(void)setURL:(NSString *)url toPodcast:(NSString *)podcastID;
 
 -(NSString*)content:(NSString *)podcastID;
 @end

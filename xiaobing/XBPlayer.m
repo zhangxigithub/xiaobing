@@ -36,6 +36,7 @@ static XBPlayer *player;
                                                      userInfo:nil
                                                       repeats:YES];
         
+
     }
     return self;
 }
@@ -87,6 +88,26 @@ static XBPlayer *player;
 {
     
     [self.delegate time:[streamer currentTime]  in:[streamer duration]];
+    
+    
+
+    //NSLog(@"%f   %f    ",(float)[streamer receivedLength]/1024.0f/1024.0f,(float)[streamer expectedLength]/1024.0f/1024.0f);
+
+    
+    
+    if([streamer receivedLength] == [streamer expectedLength] > 0)
+    {
+        //save
+        
+        
+        //NSLog(@"path:%@",streamer.cachedPath);
+        //NSLog(@"url:%@",streamer.cachedURL);
+
+        
+        
+    }
+    
+    
     return;
     if ([streamer duration] == 0.0) {
         //[_progressView setProgress:0.0f animated:NO];
@@ -96,6 +117,13 @@ static XBPlayer *player;
          [self.delegate position:[streamer currentTime] / [streamer duration]];
         //[_progressView setProgress:[_streamer currentTime] / [_streamer duration] animated:YES];
     }
+    
+    
+        /*
+    
+      [_labelMisc setText:[NSString stringWithFormat:@"Received %.2f/%.2f MB, Speed %.2f MB/s", (double)[_streamer receivedLength] / 1024 / 1024, (double)[_streamer expectedLength] / 1024 / 1024, (double)[_streamer downloadSpeed] / 1024 / 1024]];
+    
+    */
 }
 -(DOUAudioStreamerStatus)status
 {
@@ -127,6 +155,10 @@ static XBPlayer *player;
         case DOUAudioStreamerError:
             //[_labelInfo setText:@"error"];
             break;
+        
+        
+        default:
+            break;
     }
 }
 
@@ -140,6 +172,8 @@ static XBPlayer *player;
         streamer = nil;
     }
     self.currentPodcastID = podcast.podcastID;
+    self.currentPodcastTitle = podcast.title;
+    
     streamer = [DOUAudioStreamer streamerWithAudioFile:podcast];
     
     [streamer addObserver:self

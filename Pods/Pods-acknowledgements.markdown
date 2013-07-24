@@ -118,11 +118,6 @@ Copyright 2011 - 2013 UMeng.com. All rights reserved.
 Copyright 2011 - 2013 UMeng.com. All rights reserved.
 
 
-## UMengSocial
-
-Copyright 2011 - 2013 UMeng.com. All rights reserved.
-
-
 ## ZXTools
 
 Copyright (c)        2012 zhangxi <zhangxi_1989@sina.com>

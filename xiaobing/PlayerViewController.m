@@ -22,6 +22,7 @@ static NSDateFormatter *formatter;
 -(id)initWithPodcast:(XBPodcast *)thePodcast
 {
     self = [super initWithNibName:@"PlayerViewController" bundle:nil];
+    //self = [super initWithNibName:@"Player" bundle:nil];
     if (self) {
         podcast = thePodcast;
         
@@ -31,7 +32,8 @@ static NSDateFormatter *formatter;
         
         if([[player currentPodcastID] isEqualToString:podcast.podcastID])
         {
-            
+            if([player isPlaying] == NO)
+                [player play];
         }
         else
         {
@@ -58,6 +60,8 @@ static NSDateFormatter *formatter;
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     DOUAudioFileProvider *p = [DOUAudioFileProvider fileProviderWithAudioFile:podcast];
+    
+    
     NSLog(@"%@",podcast.audioFileURL);
     
     NSLog(@"%@",(p.isFinished==YES)?@"yes":@"no");

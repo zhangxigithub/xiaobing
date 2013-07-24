@@ -29,6 +29,7 @@
 
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,strong) NSString *currentPodcastID;
+@property(nonatomic,strong) NSString *currentPodcastTitle;
 
 +(XBPlayer *)sharedPlayer;
 

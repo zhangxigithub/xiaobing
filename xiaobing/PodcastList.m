@@ -12,6 +12,7 @@
 #import "XBPodcast.h"
 #import "XBPlayer.h"
 #import "PlayerViewController.h"
+#import "DataCenter.h"
 
 @implementation PodcastList
 
@@ -73,7 +74,15 @@
     PlayerViewController *player = [[PlayerViewController alloc] initWithPodcast:podcast];
 
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@" "
+    NSString *title;
+    if(iOS>=7)
+    {
+        title = @" ";
+    }else
+    {
+        title = @"返回";
+    }
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:title
                                                                  style:UIBarButtonItemStyleBordered
                                                                 target:nil
                                                                 action:nil];
@@ -85,18 +94,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    localData = [NSMutableArray array];
-
-    
-    NSString *json = FileString(@"list", @"json");
-    NSArray *podcasts = [json objectFromJSONString];
-
-    for(NSDictionary *podcast in podcasts)
-    {
-        XBPodcast *onePodcast = [[XBPodcast alloc] initWithDictionary:podcast];
-        [localData addObject:onePodcast];
-    }
-    
+    localData = [[DataCenter sharedDateCenter] podcast];
     
     self.navigationItem.title = @"podcasts";
 }

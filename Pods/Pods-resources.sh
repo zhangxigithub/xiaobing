@@ -45,14 +45,6 @@ install_resource 'UIBubbleTableView/images/typingMine@2x.png'
 install_resource 'UIBubbleTableView/images/typingSomeone.png'
 install_resource 'UIBubbleTableView/images/typingSomeone@2x.png'
 install_resource 'UMengFeedback/UMFeedback_iOS_1.4/umFeedback.bundle'
-install_resource 'UMengSocial/UMSocial_Sdk_All_2.2.1/UMSocial_Sdk_2.2.1/SocialSDKXib/UMSCommentDetailController.xib'
-install_resource 'UMengSocial/UMSocial_Sdk_All_2.2.1/UMSocial_Sdk_2.2.1/SocialSDKXib/UMSCommentInputController.xib'
-install_resource 'UMengSocial/UMSocial_Sdk_All_2.2.1/UMSocial_Sdk_2.2.1/SocialSDKXib/UMSCommentInputControlleriPad.xib'
-install_resource 'UMengSocial/UMSocial_Sdk_All_2.2.1/UMSocial_Sdk_2.2.1/SocialSDKXib/UMShareEditViewController.xib'
-install_resource 'UMengSocial/UMSocial_Sdk_All_2.2.1/UMSocial_Sdk_2.2.1/SocialSDKXib/UMShareEditViewControlleriPad.xib'
-install_resource 'UMengSocial/UMSocial_Sdk_All_2.2.1/UMSocial_Sdk_2.2.1/SocialSDKXib/UMSLoginViewController.xib'
-install_resource 'UMengSocial/UMSocial_Sdk_All_2.2.1/UMSocial_Sdk_2.2.1/SocialSDKXib/UMSnsAccountViewController.xib'
-install_resource 'UMengSocial/UMSocial_Sdk_All_2.2.1/UMSocial_Sdk_2.2.1/SocialSDKXib/UMSShareListController.xib'
 
 rsync -avr --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rm "$RESOURCES_TO_COPY"

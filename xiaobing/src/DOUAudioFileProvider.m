@@ -18,6 +18,8 @@
 #import "DOUSimpleHTTPRequest.h"
 #import "NSData+DOUMappedFile.h"
 #include <CommonCrypto/CommonDigest.h>
+#import "XBPlayer.h"
+#import "DataCenter.h"
 
 static const NSUInteger kID3HeaderSize = 10;
 static const NSUInteger kDefaultHeaderFormatThreshold = 4096 * 4;
@@ -133,7 +135,7 @@ typedef NS_ENUM(NSUInteger, DOUAudioRemoteFileHeaderFormat) {
 
     [_request cancel];
   }
-  [[NSFileManager defaultManager] removeItemAtPath:self.cachedPath error:NULL];
+  //[[NSFileManager defaultManager] removeItemAtPath:self.cachedPath error:NULL];
 }
 
 + (NSString *)_sha256ForAudioFileURL:(NSURL *)audioFileURL
@@ -152,8 +154,14 @@ typedef NS_ENUM(NSUInteger, DOUAudioRemoteFileHeaderFormat) {
 
 + (NSString *)_cachedPathForAudioFileURL:(NSURL *)audioFileURL
 {
-  NSString *filename = [NSString stringWithFormat:@"douas-%@.tmp", [self _sha256ForAudioFileURL:audioFileURL]];
-  return [NSTemporaryDirectory() stringByAppendingPathComponent:filename];
+    NSLog(@"cached:%@",audioFileURL);
+  NSString *filename = [NSString stringWithFormat:@"/Documents/douas-%@.mp3", [self _sha256ForAudioFileURL:audioFileURL]];
+    
+    
+    
+    
+    NSLog(@"local:%@",[NSHomeDirectory() stringByAppendingPathComponent:filename]);
+  return [NSHomeDirectory() stringByAppendingPathComponent:filename];
 }
 
 - (void)_invokeEventBlock
@@ -165,6 +173,7 @@ typedef NS_ENUM(NSUInteger, DOUAudioRemoteFileHeaderFormat) {
 
 - (void)_requestDidComplete
 {
+    NSLog(@"finish!!!");
   if ([_request isFailed] ||
       !([_request statusCode] >= 200 && [_request statusCode] < 300)) {
     _failed = YES;
@@ -178,6 +187,20 @@ typedef NS_ENUM(NSUInteger, DOUAudioRemoteFileHeaderFormat) {
     gHintProvider = [[[self class] alloc] _initWithAudioFile:gHintFile];
   }
 
+    //save file by zhangxi
+    if(_failed == NO)
+    {
+        NSLog(@"save:%@",self.cachedURL);
+        
+        
+        XBPodcast *podcast = (XBPodcast *)self.audioFile;
+        NSLog(@"title:%@",podcast.title);
+        NSLog(@"id:%@",podcast.podcastID);
+        
+        [DataCenter setURL:self.cachedURL.absoluteString toPodcast:podcast.podcastID];
+    }
+    
+    
   [self _invokeEventBlock];
 }
 
@@ -201,6 +224,7 @@ typedef NS_ENUM(NSUInteger, DOUAudioRemoteFileHeaderFormat) {
 
 - (void)_requestDidReceiveData:(NSData *)data
 {
+
   if (_mappedData == nil) {
     return;
   }
