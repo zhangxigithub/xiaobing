@@ -16,3 +16,4 @@ pod 'MBProgressHUD'
 pod 'MTStatusBarOverlay'
 
 pod 'ZXTools/ZXMacro'
+pod 'UI7Kit'

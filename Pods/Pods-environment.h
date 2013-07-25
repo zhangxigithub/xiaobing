@@ -24,6 +24,24 @@
 #define COCOAPODS_VERSION_MINOR_FPPopover 4
 #define COCOAPODS_VERSION_PATCH_FPPopover 1
 
+// FoundationExtension
+#define COCOAPODS_POD_AVAILABLE_FoundationExtension
+#define COCOAPODS_VERSION_MAJOR_FoundationExtension 0
+#define COCOAPODS_VERSION_MINOR_FoundationExtension 37
+#define COCOAPODS_VERSION_PATCH_FoundationExtension 1
+
+// FoundationExtension/FoundationExtension
+#define COCOAPODS_POD_AVAILABLE_FoundationExtension_FoundationExtension
+#define COCOAPODS_VERSION_MAJOR_FoundationExtension_FoundationExtension 0
+#define COCOAPODS_VERSION_MINOR_FoundationExtension_FoundationExtension 37
+#define COCOAPODS_VERSION_PATCH_FoundationExtension_FoundationExtension 1
+
+// FoundationExtension/UIKitExtension
+#define COCOAPODS_POD_AVAILABLE_FoundationExtension_UIKitExtension
+#define COCOAPODS_VERSION_MAJOR_FoundationExtension_UIKitExtension 0
+#define COCOAPODS_VERSION_MINOR_FoundationExtension_UIKitExtension 37
+#define COCOAPODS_VERSION_PATCH_FoundationExtension_UIKitExtension 1
+
 // GGFullscreenImageViewController
 #define COCOAPODS_POD_AVAILABLE_GGFullscreenImageViewController
 #define COCOAPODS_VERSION_MAJOR_GGFullscreenImageViewController 1
@@ -37,6 +55,12 @@
 // Please contact the author.
 // Version: 1.5pre.
 
+// KLSwitch
+#define COCOAPODS_POD_AVAILABLE_KLSwitch
+#define COCOAPODS_VERSION_MAJOR_KLSwitch 1
+#define COCOAPODS_VERSION_MINOR_KLSwitch 5
+#define COCOAPODS_VERSION_PATCH_KLSwitch 0
+
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
@@ -48,6 +72,12 @@
 #define COCOAPODS_VERSION_MAJOR_MTStatusBarOverlay 0
 #define COCOAPODS_VERSION_MINOR_MTStatusBarOverlay 9
 #define COCOAPODS_VERSION_PATCH_MTStatusBarOverlay 1
+
+// UI7Kit
+#define COCOAPODS_POD_AVAILABLE_UI7Kit
+#define COCOAPODS_VERSION_MAJOR_UI7Kit 0
+#define COCOAPODS_VERSION_MINOR_UI7Kit 3
+#define COCOAPODS_VERSION_PATCH_UI7Kit 2
 
 // UIBubbleTableView
 #define COCOAPODS_POD_AVAILABLE_UIBubbleTableView
@@ -72,4 +102,10 @@
 #define COCOAPODS_VERSION_MAJOR_ZXTools_ZXMacro 1
 #define COCOAPODS_VERSION_MINOR_ZXTools_ZXMacro 3
 #define COCOAPODS_VERSION_PATCH_ZXTools_ZXMacro 0
+
+// cdebug
+#define COCOAPODS_POD_AVAILABLE_cdebug
+#define COCOAPODS_VERSION_MAJOR_cdebug 0
+#define COCOAPODS_VERSION_MINOR_cdebug 1
+#define COCOAPODS_VERSION_PATCH_cdebug 1
 

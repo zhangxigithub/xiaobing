@@ -136,6 +136,7 @@ static DataCenter *dataCenter;
                                       @"type":@"0",
                                       @"title":podcast.title,
                                       @"cover":podcast.coverURL.absoluteString,
+                                      @"content":podcast.content,
                                       @"imageURL":podcast.imageURL.absoluteString,
                                       @"largeImageURL":podcast.largeImageURL.absoluteString,
                                       @"podcastURL":podcast.podcastURL.absoluteString,

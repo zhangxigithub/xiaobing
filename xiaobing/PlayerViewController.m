@@ -84,6 +84,8 @@ static NSDateFormatter *formatter;
             break;
             
         case DOUAudioStreamerFinished:
+            [self.playButton setSelected:YES];
+            [player stop];
             NSLog(@"f");
             //[_labelInfo setText:@"finished"];
             //[self actionNext:nil];
