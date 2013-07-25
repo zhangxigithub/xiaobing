@@ -47,6 +47,16 @@
     [[UMSocialDataService defaultDataService] requestAddFollow:UMShareToSina
                                                   followedUsid:@[@"1366326195"] completion:^(UMSocialResponseEntity *response) {
                                                       NSLog(@"1.%@",response);
+                                                      if([response.message isEqualToString:@"no error"])
+                                                      {
+                                                          ALERT(@"关注成功 ^_^");
+                                                      }else
+                                                      {
+                                                          ALERT(@"BUG了 >_<");
+                                                      }
+                                                      
+                                                      
+                                                      
                                                   }];
     
 }
@@ -110,9 +120,25 @@
     [self.navigationController pushViewController:list animated:YES];
 }
 
-- (IBAction)rate:(id)sender {
-    [self checkAndFollow];
-    return;
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    switch (buttonIndex) {
+        case 0:
+            [self checkAndFollow];
+            break;
+        case 1:
+            [self share];
+            break;
+        case 2:
+            
+            break;
+        default:
+            break;
+    }
+}
+-(void)share
+{
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     [UMSocialData defaultData].extConfig.appUrl = @"http://zhangxi.me";//设置你应用的下载地址
     
@@ -142,5 +168,15 @@
     //                                shareToSnsNames:@[UMShareToSina,UMShareToTencent,UMShareToRenren,
     //                                                  UMShareToDouban,UMShareToQzone,UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter]
     //                                       delegate:nil];
+    
+}
+- (IBAction)rate:(id)sender {
+    
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@""
+                                                        delegate:self
+                                               cancelButtonTitle:@"点我取消 >_<"
+                                          destructiveButtonTitle:Nil
+                                               otherButtonTitles:@"关注 小饼FM",@"分享",nil];
+    [action showInView:self.view];
 }
 @end

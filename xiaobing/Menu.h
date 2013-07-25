@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Menu : UIViewController
+@interface Menu : UIViewController<UIActionSheetDelegate>
 
 - (IBAction)listen:(id)sender;
 - (IBAction)rate:(id)sender;
