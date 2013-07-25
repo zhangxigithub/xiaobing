@@ -165,7 +165,9 @@
 }
 -(void)tap
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 - (void)didReceiveMemoryWarning
 {

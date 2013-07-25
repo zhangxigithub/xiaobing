@@ -30,6 +30,22 @@ static DataCenter *dataCenter;
     self = [super init];
     if (self) {
         self.client = [AFHTTPClient clientWithBaseURL:kBaseURL];
+        
+        
+        
+        
+        NSMutableArray *podcasts = [self localPodcast];
+        
+        self.podcasts = [NSMutableArray array];
+        
+        for(NSDictionary *podcast in podcasts)
+        {
+            XBPodcast *onePodcast = [[XBPodcast alloc] initWithDictionary:podcast];
+            [self.podcasts addObject:onePodcast];
+        }
+        
+        
+        
     }
     return self;
 }
@@ -54,42 +70,80 @@ static DataCenter *dataCenter;
     
     return podcasts;
 }
--(NSMutableArray *)podcast
+//-(NSMutableArray *)podcast
+//{
+//
+//    NSMutableArray *podcasts = [self localPodcast];
+//    
+//    NSMutableArray *result = [NSMutableArray array];
+//    for(NSDictionary *podcast in podcasts)
+//    {
+//        XBPodcast *onePodcast = [[XBPodcast alloc] initWithDictionary:podcast];
+//        [result addObject:onePodcast];
+//    }
+//    return result;
+//}
+
+//+(void)setURL:(NSString *)url toPodcast:(NSString *)podcastID
+//{
+//    //NSMutableArray *podcasts = [[[NSUserDefaults standardUserDefaults] objectForKey:kStoreKey] mutableCopy];
+//    //NSMutableArray *newPod = [NSMutableArray array];
+//    //if(podcasts == nil) return;
+//    
+//    for(NSDictionary *thePodcast in self)
+//    {
+//        if([podcastID isEqualToString:thePodcast[@"id"]])
+//        {
+//            NSMutableDictionary *newPodcast = [thePodcast mutableCopy];
+//            [newPodcast setObject:url forKey:@"podcastURL"];
+//
+//            
+//            [newPod addObject:newPodcast];
+//        }else
+//        {
+//            [newPod addObject:thePodcast];
+//        }
+//    }
+//    
+//    [[NSUserDefaults standardUserDefaults]setObject:newPod
+//                                             forKey:kStoreKey];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//}
+
+
+
+-(void)save
 {
-
-    NSMutableArray *podcasts = [self localPodcast];
-    
-    NSMutableArray *result = [NSMutableArray array];
-    for(NSDictionary *podcast in podcasts)
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    /*
+     {
+     "id": "9",
+     "type": "0",
+     "title": "vol7 女神对话",
+     "cover": "http://xiaobingfm.sinaapp.com/image/bird.jpg",
+     "content": "时间花在哪里是看得见的。——颜宁",
+     "imageURL": "",
+     "largeImageURL": "",
+     "podcastURL": "http://xiaobingfm.sinaapp.com/podcast/demo.mp3",
+     "date": "2013-06-07 00:00:00"
+     }
+     */
+    NSMutableArray *dataArray = [NSMutableArray array];
+    for(XBPodcast *podcast in self.podcasts)
     {
-        XBPodcast *onePodcast = [[XBPodcast alloc] initWithDictionary:podcast];
-        [result addObject:onePodcast];
+        NSDictionary *onePodcast  = @{@"id":podcast.podcastID,
+                                      @"type":@"0",
+                                      @"title":podcast.title,
+                                      @"cover":podcast.coverURL.absoluteString,
+                                      @"imageURL":podcast.imageURL.absoluteString,
+                                      @"largeImageURL":podcast.largeImageURL.absoluteString,
+                                      @"podcastURL":podcast.podcastURL.absoluteString,
+                                      @"date":[formatter stringFromDate:podcast.date]
+                                      };
+        [dataArray addObject:onePodcast];
     }
-    return result;
-}
-
-+(void)setURL:(NSString *)url toPodcast:(NSString *)podcastID
-{
-    NSMutableArray *podcasts = [[[NSUserDefaults standardUserDefaults] objectForKey:kStoreKey] mutableCopy];
-    NSMutableArray *newPod = [NSMutableArray array];
-    if(podcasts == nil) return;
-    
-    for(NSDictionary *thePodcast in podcasts)
-    {
-        if([podcastID isEqualToString:thePodcast[@"id"]])
-        {
-            NSMutableDictionary *newPodcast = [thePodcast mutableCopy];
-            [newPodcast setObject:url forKey:@"podcastURL"];
-
-            
-            [newPod addObject:newPodcast];
-        }else
-        {
-            [newPod addObject:thePodcast];
-        }
-    }
-    
-    [[NSUserDefaults standardUserDefaults]setObject:newPod
+    [[NSUserDefaults standardUserDefaults]setObject:dataArray
                                              forKey:kStoreKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -141,5 +195,6 @@ static DataCenter *dataCenter;
         
     }];
     //http://xiaobingfm.sinaapp.com/api/content.php?id=33
+    return @"";
 }
 @end

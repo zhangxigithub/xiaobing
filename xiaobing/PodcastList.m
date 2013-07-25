@@ -94,7 +94,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    localData = [[DataCenter sharedDateCenter] podcast];
+    localData = [[DataCenter sharedDateCenter] podcasts];
     
     self.navigationItem.title = @"podcasts";
 }

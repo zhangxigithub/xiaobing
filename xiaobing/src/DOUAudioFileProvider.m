@@ -196,8 +196,9 @@ typedef NS_ENUM(NSUInteger, DOUAudioRemoteFileHeaderFormat) {
         XBPodcast *podcast = (XBPodcast *)self.audioFile;
         NSLog(@"title:%@",podcast.title);
         NSLog(@"id:%@",podcast.podcastID);
+        podcast.podcastURL = self.cachedURL;
         
-        [DataCenter setURL:self.cachedURL.absoluteString toPodcast:podcast.podcastID];
+//        [DataCenter setURL:self.cachedURL.absoluteString toPodcast:podcast.podcastID];
     }
     
     

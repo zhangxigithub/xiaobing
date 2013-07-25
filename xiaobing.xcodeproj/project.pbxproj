@@ -25,7 +25,6 @@
 		3344CDAB179E2CE600C35573 /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3344CD9D179E2CE600C35573 /* UMSocialSDKResourcesNew.bundle */; };
 		334DEF59179CD63400C04292 /* PodcastList.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DEF57179CD4CD00C04292 /* PodcastList.m */; };
 		334DEF5A179CD78600C04292 /* PodcastList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 334DEF58179CD4CD00C04292 /* PodcastList.xib */; };
-		33655AE6175C7EFB009339C1 /* FliterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AE5175C7EFB009339C1 /* FliterTableViewController.m */; };
 		33655AEA175C80C9009339C1 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AE8175C80C9009339C1 /* AboutViewController.m */; };
 		33655AEB175C80C9009339C1 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33655AE9175C80C9009339C1 /* AboutViewController.xib */; };
 		33655AEF175C8124009339C1 /* ZXNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 33655AEE175C8124009339C1 /* ZXNavigationBar.m */; };
@@ -37,6 +36,7 @@
 		3373D2561761A83E00E004E5 /* List.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3373D2541761A83E00E004E5 /* List.xib */; };
 		3373D25B1761B51E00E004E5 /* ZXRemoteNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 3373D25A1761B51E00E004E5 /* ZXRemoteNotification.m */; };
 		3373D25D1761B87700E004E5 /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = 3373D25C1761B87700E004E5 /* list.json */; };
+		3379270617A0BBE700F61A00 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3379270517A0BBE700F61A00 /* SystemConfiguration.framework */; };
 		33BC6004179D2C1B003795ED /* DOUAudioAnalyzer+Default.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BC5FDF179D2C1B003795ED /* DOUAudioAnalyzer+Default.m */; };
 		33BC6005179D2C1B003795ED /* DOUAudioAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BC5FE1179D2C1B003795ED /* DOUAudioAnalyzer.m */; };
 		33BC6006179D2C1B003795ED /* DOUAudioDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 33BC5FE5179D2C1B003795ED /* DOUAudioDecoder.m */; };
@@ -117,8 +117,6 @@
 		334DEF56179CD4CD00C04292 /* PodcastList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PodcastList.h; sourceTree = "<group>"; };
 		334DEF57179CD4CD00C04292 /* PodcastList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PodcastList.m; sourceTree = "<group>"; };
 		334DEF58179CD4CD00C04292 /* PodcastList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastList.xib; sourceTree = "<group>"; };
-		33655AE4175C7EFA009339C1 /* FliterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FliterTableViewController.h; sourceTree = "<group>"; };
-		33655AE5175C7EFB009339C1 /* FliterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FliterTableViewController.m; sourceTree = "<group>"; };
 		33655AE7175C80C9009339C1 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		33655AE8175C80C9009339C1 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		33655AE9175C80C9009339C1 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -135,6 +133,7 @@
 		3373D2591761B51E00E004E5 /* ZXRemoteNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXRemoteNotification.h; sourceTree = "<group>"; };
 		3373D25A1761B51E00E004E5 /* ZXRemoteNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXRemoteNotification.m; sourceTree = "<group>"; };
 		3373D25C1761B87700E004E5 /* list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
+		3379270517A0BBE700F61A00 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		33BC5FDE179D2C1B003795ED /* DOUAudioAnalyzer+Default.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOUAudioAnalyzer+Default.h"; sourceTree = "<group>"; };
 		33BC5FDF179D2C1B003795ED /* DOUAudioAnalyzer+Default.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOUAudioAnalyzer+Default.m"; sourceTree = "<group>"; };
 		33BC5FE0179D2C1B003795ED /* DOUAudioAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAudioAnalyzer.h; sourceTree = "<group>"; };
@@ -221,6 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3379270617A0BBE700F61A00 /* SystemConfiguration.framework in Frameworks */,
 				33BC6018179D2C56003795ED /* QuartzCore.framework in Frameworks */,
 				3344CDA2179E2CE600C35573 /* libUMSocial_Sdk_Comment_2.2.1.a in Frameworks */,
 				33BC6016179D2C4D003795ED /* OpenGLES.framework in Frameworks */,
@@ -435,6 +435,7 @@
 		43CB9BCD175A169D00B5705C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3379270517A0BBE700F61A00 /* SystemConfiguration.framework */,
 				33BC6017179D2C56003795ED /* QuartzCore.framework */,
 				33BC6015179D2C4D003795ED /* OpenGLES.framework */,
 				33708238175C628300752485 /* AVFoundation.framework */,
@@ -482,8 +483,6 @@
 				333C8985179FAF2D00CDB7D9 /* PlayerViewController.xib */,
 				439CEDC0175B90F30096D909 /* ImageViewController.h */,
 				439CEDC1175B90F30096D909 /* ImageViewController.m */,
-				33655AE4175C7EFA009339C1 /* FliterTableViewController.h */,
-				33655AE5175C7EFB009339C1 /* FliterTableViewController.m */,
 				33655AE7175C80C9009339C1 /* AboutViewController.h */,
 				33655AE8175C80C9009339C1 /* AboutViewController.m */,
 				33655AE9175C80C9009339C1 /* AboutViewController.xib */,
@@ -647,7 +646,6 @@
 				439CEDB1175B03A20096D909 /* XBPodcastCell.m in Sources */,
 				439CEDBF175B84FA0096D909 /* PlayerViewController.m in Sources */,
 				439CEDC2175B90F30096D909 /* ImageViewController.m in Sources */,
-				33655AE6175C7EFB009339C1 /* FliterTableViewController.m in Sources */,
 				33BC6006179D2C1B003795ED /* DOUAudioDecoder.m in Sources */,
 				33BC6009179D2C1B003795ED /* DOUAudioFileProvider.m in Sources */,
 				33655AEA175C80C9009339C1 /* AboutViewController.m in Sources */,

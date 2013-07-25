@@ -21,6 +21,8 @@
 @interface DataCenter : NSObject
 
 
+@property(nonatomic,strong)NSMutableArray *podcasts;
+
 @property(nonatomic,strong) AFHTTPClient *client;
 
 
@@ -30,9 +32,13 @@
 
 
 
--(NSMutableArray *)localPodcast;
--(NSMutableArray *)podcast;
-+(void)setURL:(NSString *)url toPodcast:(NSString *)podcastID;
+//-(NSMutableArray *)localPodcast;
+//-(NSMutableArray *)podcast;
+-(void)save;
+
+
+
+//+(void)setURL:(NSString *)url toPodcast:(NSString *)podcastID;
 
 -(NSString*)content:(NSString *)podcastID;
 @end

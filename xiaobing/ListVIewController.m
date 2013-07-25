@@ -12,7 +12,7 @@
 #import "DataCenter.h"
 #import <UIImageView+AFNetworking.h>
 #import "PlayerViewController.h"
-#import "FliterTableViewController.h"
+
 #import "AboutViewController.h"
 #import <UMSocial.h>
 #import "UIViewController+UI.h"

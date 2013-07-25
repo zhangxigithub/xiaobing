@@ -126,7 +126,9 @@ static ImageViewController *image;
     image.podcast= self.podcast;
     
    UIViewController *controller = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-    [controller presentModalViewController:image animated:YES];
+    [controller presentViewController:controller animated:YES completion:^{
+        
+    }];
 //    
 //    
     

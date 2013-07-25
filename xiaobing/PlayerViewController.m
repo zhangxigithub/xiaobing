@@ -98,6 +98,8 @@ static NSDateFormatter *formatter;
             NSLog(@"E");
             //[_labelInfo setText:@"error"];
             break;
+        default:
+            break;
     }
 
 }
