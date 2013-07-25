@@ -126,7 +126,8 @@ static NSDateFormatter *formatter;
 {
     [super viewDidLoad];
     //[self addBackButton];
-    [self loadContent];
+    //[self loadContent];
+    self.contentTextView.text = podcast.content;
     [self.coverImageView setImageWithURL:podcast.coverURL placeholderImage:[UIImage imageNamed:@"cover_holder"]];
 //    [self.coverImageView setImage:[UIImage imageNamed:@"cover_holder"]];
     
