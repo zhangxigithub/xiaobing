@@ -32,6 +32,8 @@
     [MobClick startWithAppkey:@"51abf69b56240b183404f364"];
     [UMSocialData setAppKey:@"51abf69b56240b183404f364"];
     
+
+
     //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
     

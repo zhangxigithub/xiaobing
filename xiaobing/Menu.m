@@ -23,17 +23,43 @@
     }
     return self;
 }
-
+-(void)checkAndFollow
+{
+    BOOL isOauth = [UMSocialAccountManager isOauthWithPlatform:UMShareToSina];
+    
+    
+    if(isOauth)
+    {
+        [self follow];
+    }else
+    {
+        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+        snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+            
+            NSLog(@"2.response is %@",response);
+            [self follow];
+            
+        });
+    }
+}
+-(void)follow
+{
+    [[UMSocialDataService defaultDataService] requestAddFollow:UMShareToSina
+                                                  followedUsid:@[@"1366326195"] completion:^(UMSocialResponseEntity *response) {
+                                                      NSLog(@"1.%@",response);
+                                                  }];
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.navigationItem.title = @"小饼FM";
     
     
-//    if(iOS<7)
-//    {
-//        self.listenButton.backgroundColor =  [UIColor clearColor];
-//    }
+    //    if(iOS<7)
+    //    {
+    //        self.listenButton.backgroundColor =  [UIColor clearColor];
+    //    }
     
     
     
@@ -51,7 +77,7 @@
         self.currentLabel.text = [[XBPlayer sharedPlayer] currentPodcastTitle];
     }else
         self.currentLabel.text = @"";
-
+    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -85,7 +111,8 @@
 }
 
 - (IBAction)rate:(id)sender {
-    
+    [self checkAndFollow];
+    return;
     [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     [UMSocialData defaultData].extConfig.appUrl = @"http://zhangxi.me";//设置你应用的下载地址
     
@@ -107,13 +134,13 @@
                                 shareToSnsNames:nil
                                        delegate:nil];
     
-//    
-//    [UMSocialSnsService presentSnsIconSheetView:[[[UIApplication sharedApplication] keyWindow] rootViewController]
-//                                         appKey:@"51abf69b56240b183404f364"
-//                                      shareText:@"@小饼FM"
-//                                     shareImage:[UIImage imageNamed:@"icon.png"]
-//                                shareToSnsNames:@[UMShareToSina,UMShareToTencent,UMShareToRenren,
-//                                                  UMShareToDouban,UMShareToQzone,UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter]
-//                                       delegate:nil];
+    //
+    //    [UMSocialSnsService presentSnsIconSheetView:[[[UIApplication sharedApplication] keyWindow] rootViewController]
+    //                                         appKey:@"51abf69b56240b183404f364"
+    //                                      shareText:@"@小饼FM"
+    //                                     shareImage:[UIImage imageNamed:@"icon.png"]
+    //                                shareToSnsNames:@[UMShareToSina,UMShareToTencent,UMShareToRenren,
+    //                                                  UMShareToDouban,UMShareToQzone,UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter]
+    //                                       delegate:nil];
 }
 @end
