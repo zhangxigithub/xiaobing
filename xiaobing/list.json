@@ -1,27 +1,5 @@
 [
-    {
-        "id": "9",
-        "type": "0",
-        "title": "vol7 女神对话",
-        "cover": "http://xiaobingfm.sinaapp.com/image/bird.jpg",
- "content": "小饼电台 讲座系列一（系列暂无后续节目 如果有精彩讲座录音欢迎提供~）讲座简介：2013年5月18日，清华大学生命学院研团主办的”校友面对面“活动邀请到了生物系96级的两位美女校友：一位是清华大学医学院教授颜宁，另一位是麦肯锡大中华区医药卫生资讯业务负责人李一诺。这对昔日的“闺蜜”分享了自己获得生物学博士学位后职业生涯规划的故事，又以不同的视角为在场的准博士们解答了关于未来发展方向的疑惑，奉上了一场有关人生选择的精彩演讲。（zz：http://life.tsinghua.edu.cn/home/news/2439.html）歌单： 太多了 有喜欢的问我吧。谢谢您的支持~",
-        "imageURL": "",
-        "largeImageURL": "",
-        "podcastURL": "http://xiaobingfm.sinaapp.com/podcast/demo.mp3",
-        "date": "2013-06-07 00:00:00"
-    },
-    {
-        "id": "8",
-        "type": "0",
-        "title": "vol6 五道口是世界中心",
-        "cover": "http://xiaobingfm.sinaapp.com/image/bird.jpg",
- "content": "五道口 这里只有青春和生活\n五道口 这里有学上 有美食吃 有咖啡喝 有书店逛 有小店淘 还有老外教你学外语\n这是咱们永远的家\n文案不多废话啦\n节目将近一个半小时 有史以来最长的一期节目\n希望大家能找个网速好的时间听~\n这也是 阿萌电台 小饼电台第一次联合录音\n感谢雕刻时光（五道口店）有偿提供的录音环境\n请包涵我们边吃边录音 以及不时的跑题 打虫子之类的小插曲~\n不管是五道口的土著 还是五道口的新朋友\n我们相信 这期节目都能给您一些温暖的回忆或者新鲜的信息\n歌单：\n朴树《new boy》\n李云迪《在那遥远的地方》",
-        "imageURL": "",
-        "largeImageURL": "",
-        "podcastURL": "http://xiaobingfm-podcast.stor.sinaapp.com/%E5%B0%8F%E9%A5%BC%E7%94%B5%E5%8F%B0%20vol6%E4%BA%94%E9%81%93%E5%8F%A3%E6%98%AF%E4%B8%96%E7%95%8C%E4%B8%AD%E5%BF%83.mp3",
-        "date": "2013-06-06 16:52:31"
-    },
-    {
+{
         "id": "7",
         "type": "0",
         "title": "vol5 以爱情为靶向的微感情制备",
@@ -64,5 +42,16 @@
         "largeImageURL": "",
         "podcastURL": "http://xiaobingfm.sinaapp.com/podcast/2.mp3",
         "date": "2013-06-02 17:43:19"
-    }
+ },
+ {
+ "id": "1",
+ "type": "0",
+ "title": "vol1你离开南京",
+ "cover": "http://xiaobingfm.sinaapp.com/image/bird.jpg",
+ "content": "有人说 时光是记忆的橡皮 在南京已经1000多天 离毕业还有300天的时候  想记录下这段日子 以这种不靠谱的方式",
+ "imageURL": "",
+ "largeImageURL": "",
+ "podcastURL": "http://xiaobingfm.sinaapp.com/podcast/1.mp3",
+ "date": "2013-06-01 14:50:31"
+ }
 ]

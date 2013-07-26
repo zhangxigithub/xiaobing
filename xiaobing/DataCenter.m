@@ -9,6 +9,7 @@
 #import "DataCenter.h"
 #import "XBPodcast.h"
 #import <JSONKit.h>
+#import <MobClick.h>
 
 @implementation DataCenter
 
@@ -148,6 +149,62 @@ static DataCenter *dataCenter;
                                              forKey:kStoreKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+-(void)update
+{
+    int version = 0;
+    if([[NSUserDefaults standardUserDefaults] objectForKey:kVersonKey])
+    {
+        version = [[[NSUserDefaults standardUserDefaults] objectForKey:kVersonKey] intValue];
+    }
+    
+    int umengVersion = [[MobClick getConfigParams:@"umeng_version"] intValue];
+    
+    if(YES)
+    {
+        NSLog(@"update data");
+        
+        XBPodcast *podcast = self.podcasts[0];
+        NSMutableURLRequest *request = [self.client requestWithMethod:@"GET"
+                                                                 path:@"podcast.php"
+                                                           parameters:@{@"id":[NSString stringWithFormat:@"%@",podcast.podcastID]}];
+        
+        AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                 
+
+                 
+                 
+                 if(JSON == nil) return ;
+                 if([JSON count]<=0 )return;
+                 NSArray *old = [[NSUserDefaults standardUserDefaults] objectForKey:kStoreKey];
+                 NSArray *newPodcasts = [JSON arrayByAddingObjectsFromArray:old];
+
+                 
+                 [[NSUserDefaults standardUserDefaults] setObject:newPodcasts forKey:kStoreKey];
+                 [[NSUserDefaults standardUserDefaults] synchronize];
+                 
+                 
+                 
+                 
+             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                 
+             }];
+        
+        [op start];
+        
+        
+        
+        
+        
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:umengVersion]
+                                                  forKey:kVersonKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+
+
+
 -(void)getPodcastWithBlock:(void(^)(NSArray *result))finish withParams:(NSDictionary *)params
 {
     

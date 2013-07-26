@@ -78,12 +78,18 @@
     self.window.rootViewController = navigationController;
 
      [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+
     
-    [NSTimer scheduledTimerWithTimeInterval:30
-                                     target:self
-                                   selector:@selector(checkFeedBack)
-                                   userInfo:nil
-                                    repeats:YES];
+    
+    [MobClick updateOnlineConfig];
+    [[DataCenter sharedDateCenter] update];
+    
+    
+//    [NSTimer scheduledTimerWithTimeInterval:30
+//                                     target:self
+//                                   selector:@selector(checkFeedBack)
+//                                   userInfo:nil
+//                                    repeats:YES];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(umCheck:)
