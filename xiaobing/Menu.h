@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UMSocial.h>
 
-@interface Menu : UIViewController<UIActionSheetDelegate>
+@interface Menu : UIViewController<UIActionSheetDelegate,UMSocialUIDelegate>
 
 - (IBAction)listen:(id)sender;
 - (IBAction)rate:(id)sender;

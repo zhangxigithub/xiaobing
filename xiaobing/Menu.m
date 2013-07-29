@@ -139,8 +139,8 @@
 }
 -(void)share
 {
-    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
-    [UMSocialData defaultData].extConfig.appUrl = @"http://zhangxi.me";//设置你应用的下载地址
+    //[UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeApp;
+    //[UMSocialData defaultData].extConfig.appUrl = @"http://zhangxi.me";//设置你应用的下载地址
     
     //2.用微信web类型，用户点击直接打开web
     /*    [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeOther;
@@ -149,8 +149,13 @@
      [UMSocialData defaultData].extConfig.wxMediaObject = webObject;
      */
     
-    NSString *shareText = [UMSocialData defaultData].shareText;           //分享内嵌文字
-    UIImage *shareImage = [UMSocialData defaultData].shareImage;          //分享内嵌图片
+    
+    
+    NSString *shareText = @"@小饼FM ";
+    UIImage *shareImage = [UIImage imageNamed:@"Icon"];          //分享内嵌图片
+
+    //NSString *shareText = [UMSocialData defaultData].shareText;           //分享内嵌文字
+    //UIImage *shareImage = [UMSocialData defaultData].shareImage;          //分享内嵌图片
     
     //如果得到分享完成回调，可以设置delegate
     [UMSocialSnsService presentSnsIconSheetView:self
@@ -174,7 +179,7 @@
     
     UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@""
                                                         delegate:self
-                                               cancelButtonTitle:@"点我取消 >_<"
+                                               cancelButtonTitle:@"取消 >_<"
                                           destructiveButtonTitle:Nil
                                                otherButtonTitles:@"关注 小饼FM",@"分享",nil];
     [action showInView:self.view];

@@ -41,7 +41,7 @@
     [UMSocialControllerService defaultControllerService].socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;
     [UMSocialControllerService defaultControllerService].socialData.extConfig.appUrl = @"http://zhangxi.me";
     
-    
+
     
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
