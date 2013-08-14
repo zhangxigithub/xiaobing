@@ -33,9 +33,6 @@
     [UMSocialData setAppKey:@"51abf69b56240b183404f364"];
     
 
-
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-    
     
     [WXApi registerApp:@"wx7a0f9be121c270af"];
     [UMSocialControllerService defaultControllerService].socialData.extConfig.wxMessageType = UMSocialWXMessageTypeApp;
@@ -79,7 +76,6 @@
 
      [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 
-    
     
     [MobClick updateOnlineConfig];
     [[DataCenter sharedDateCenter] update];
