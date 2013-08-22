@@ -557,6 +557,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = me.zhangxi;
+				TargetAttributes = {
+					43CB9BCA175A169D00B5705C = {
+						DevelopmentTeam = 54TGPDSGF2;
+					};
+				};
 			};
 			buildConfigurationList = 43CB9BC6175A169D00B5705C /* Build configuration list for PBXProject "xiaobing" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -770,10 +775,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "xiaobing/xiaobing-Prefix.pch";
 				INFOPLIST_FILE = "xiaobing/xiaobing-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/xiaobing/SDKExport\\\"",
@@ -792,10 +798,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "xiaobing/xiaobing-Prefix.pch";
 				INFOPLIST_FILE = "xiaobing/xiaobing-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/xiaobing/SDKExport\\\"",
