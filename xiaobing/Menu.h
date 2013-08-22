@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <UMSocial.h>
+#import "UMSocial.h"
 
 @interface Menu : UIViewController<UIActionSheetDelegate,UMSocialUIDelegate>
 

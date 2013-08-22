@@ -14,7 +14,7 @@
 #import "PlayerViewController.h"
 
 #import "AboutViewController.h"
-#import <UMSocial.h>
+#import "UMSocial.h"
 #import "UIViewController+UI.h"
 
 @implementation ListVIewController

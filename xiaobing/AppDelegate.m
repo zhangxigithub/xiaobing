@@ -12,7 +12,7 @@
 #import "ListVIewController.h"
 #import <MobClick.h>
 #import <AVFoundation/AVFoundation.h>
-#import <UMSocial.h>
+#import "UMSocial.h"
 #import "XBPlayer.h"
 #import <UMFeedback.h>
 #import <MTStatusBarOverlay.h>
@@ -29,6 +29,10 @@
     NSLog(@"kScreen_Height:%f",kScreen_Height);
     NSLog(@"%@",NSHomeDirectory());
     
+    NSLog(@"%@",[UITableViewCell superclass]);
+    NSString *al = [[UITableViewCell superclass] description];
+    ALERT(al);
+
     [MobClick startWithAppkey:@"51abf69b56240b183404f364"];
     [UMSocialData setAppKey:@"51abf69b56240b183404f364"];
     

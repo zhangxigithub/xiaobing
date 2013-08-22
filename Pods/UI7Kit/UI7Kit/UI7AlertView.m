@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 youknowone.org. All rights reserved.
 //
 
+#import <cdebug/debug.h>
+
 #import "UI7Font.h"
 #import "UI7Color.h"
 #import "UI7Button.h"
@@ -82,58 +84,9 @@ NSAPropertyRetainSetter(setBackgroundImageView, @"_backgroundImageView")
 @end
 
 
-@interface UI7AlertView ()
+@implementation UIAlertView (UI7AlertView)
 
-
-@end
-
-
-@implementation UIAlertView (Patch)
-
-- (id)init { return [super init]; }
-- (id)__init { assert(NO); return nil; }
-- (void)__show { assert(NO); }
-- (void)__dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated { assert(NO); }
-
-@end
-
-
-@implementation UI7AlertView
-
-+ (void)initialize {
-    if (self == [UI7AlertView class]) {
-        Class target = [UIAlertView class];
-
-        [target copyToSelector:@selector(__init) fromSelector:@selector(init)];
-        [target copyToSelector:@selector(__show) fromSelector:@selector(show)];
-        [target copyToSelector:@selector(__dismissWithClickedButtonIndex:animated:) fromSelector:@selector(dismissWithClickedButtonIndex:animated:)];
-    }
-}
-
-+ (void)patch {
-    Class target = [UIAlertView class];
-
-    [self exportSelector:@selector(init) toClass:target];
-    [self exportSelector:@selector(show) toClass:target];
-    [self exportSelector:@selector(dealloc) toClass:target];
-    [self exportSelector:@selector(dismissWithClickedButtonIndex:animated:) toClass:target];
-}
-
-- (id)init {
-    self = [self __init];
-    if (self != nil) {
-        SEL setDimsBackground = NSSelectorFromString([@"set" stringByAppendingString:@"DimsBackground:"]);
-        [self performSelector:setDimsBackground withObject:(id)NO];
-        self.backgroundImageView = [UIImage clearImage].view;
-        self.backgroundView = [[[UIImageView alloc] init] autorelease];
-        [self addSubview:self.backgroundView];
-    }
-    return self;
-}
-
-- (void)show {
-    [self __show];;
-
+- (void)relayout {
     // dim view - not available before setDimsBackground as NO
     UIView *view = self.dimView = [[[UIADimmingView alloc] initWithFrame:self.superview.bounds] autorelease];
     view.alpha = 0.4;
@@ -201,12 +154,12 @@ NSAPropertyRetainSetter(setBackgroundImageView, @"_backgroundImageView")
         frame.origin.y = baseHeight + UI7ControlRowHeight * (rows - 1);
         button.frame = frame;
 
-        frame.size.height = 0.5f;
+        CGFloat strokeWidth = [[UIScreen mainScreen] scale] != 1.0f ? 0.5f : 1.0f;
         CGRect sframe;
         if (frame.origin.x < frame.size.width) {
-            sframe = CGRectMake(7.0, frame.origin.y, UI7AlertViewWidth, 0.5);
+            sframe = CGRectMake(7.0, frame.origin.y, UI7AlertViewWidth, strokeWidth);
         } else {
-            sframe = CGRectMake(142.0, frame.origin.y, 0.5, UI7ControlRowHeight);
+            sframe = CGRectMake(142.0, frame.origin.y, strokeWidth, UI7ControlRowHeight);
         }
         UIView *strokeView = [[[UIView alloc] initWithFrame:sframe] autorelease];
         strokeView.backgroundColor = [UIColor colorWith8bitWhite:182 alpha:255];
@@ -221,11 +174,61 @@ NSAPropertyRetainSetter(setBackgroundImageView, @"_backgroundImageView")
     self.backgroundView.image = [UIImage roundedImageWithSize:self.backgroundView.frame.size color:[UI7Color defaultBarColor] radius:6.0];
 }
 
+@end
+
+
+@implementation UIAlertView (Patch)
+
+- (id)init { return [super init]; }
+- (id)__init { assert(NO); return nil; }
+- (void)__show { assert(NO); }
+- (void)__dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated { assert(NO); }
+
+@end
+
+
+@implementation UI7AlertView
+
++ (void)initialize {
+    if (self == [UI7AlertView class]) {
+        Class target = [UIAlertView class];
+
+        [target copyToSelector:@selector(__init) fromSelector:@selector(init)];
+        [target copyToSelector:@selector(__show) fromSelector:@selector(show)];
+        [target copyToSelector:@selector(__dismissWithClickedButtonIndex:animated:) fromSelector:@selector(dismissWithClickedButtonIndex:animated:)];
+    }
+}
+
++ (void)patch {
+    Class target = [UIAlertView class];
+
+    [self exportSelector:@selector(init) toClass:target];
+    [self exportSelector:@selector(show) toClass:target];
+    [self exportSelector:@selector(dismissWithClickedButtonIndex:animated:) toClass:target];
+}
+
+- (id)init {
+    self = [self __init];
+    if (self != nil) {
+        SEL setDimsBackground = NSSelectorFromString([@"set" stringByAppendingString:@"DimsBackground:"]);
+        [self performSelector:setDimsBackground withObject:(id)NO];
+        self.backgroundImageView = [UIImage clearImage].view;
+        self.backgroundView = [[[UIImageView alloc] init] autorelease];
+        [self addSubview:self.backgroundView];
+    }
+    return self;
+}
+
+
+- (void)show {
+    [self __show];
+
+    [self relayout];
+}
+
 - (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated {
     [self __dismissWithClickedButtonIndex:buttonIndex animated:animated];
-    if (animated) {
-        [self.dimView setHidden:YES animated:YES];
-    }
+    [self.dimView setHidden:YES animated:animated];
 }
 
 @end

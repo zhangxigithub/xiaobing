@@ -8,7 +8,7 @@
 
 #import "PlayerViewController.h"
 #import "UIViewController+UI.h"
-#import <UMSocial.h>
+#import "UMSocial.h"
 #import <UIImageView+AFNetworking.h>
 #import "DOUAudioFileProvider.h"
 #import <AFHTTPClient.h>

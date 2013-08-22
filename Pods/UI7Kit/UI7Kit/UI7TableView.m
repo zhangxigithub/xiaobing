@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 youknowone.org. All rights reserved.
 //
 
+#import "UI7KitPrivate.h"
 #import "UI7Font.h"
 #import "UI7Color.h"
 
@@ -13,12 +14,28 @@
 
 CGFloat UI7TableViewGroupedTableSectionSeperatorHeight = 28.0f;
 
+@interface UITableViewCell (Accessor)
+
+@property(nonatomic,assign) UITableView *tableView;
+@property(nonatomic,strong) NSIndexPath *indexPath;
+
+@end
+
+
+@interface UITableView (Private)
+
+- (void)_updateVisibleCellsNow:(BOOL)flag;
+
+@end
+
+
 @implementation UITableView (Patch)
 
 - (id)__initWithCoder:(NSCoder *)aDecoder { assert(NO); return nil; }
 - (id)__initWithFrame:(CGRect)frame { assert(NO); return nil; }
 - (void)__setDelegate:(id<UITableViewDelegate>)delegate { assert(NO); return; }
 - (UITableViewStyle)__style { assert(NO); return 0; }
+- (void)__updateVisibleCellsNow:(BOOL)flag { assert(NO); }
 
 - (void)_tableViewInit {
 
@@ -61,6 +78,8 @@ CGFloat UI7TableViewGroupedTableSectionSeperatorHeight = 28.0f;
 
 // TODO: implement 'setAccessoryType' to fake accessories.
 
+UIColor *UI7TableViewGroupedViewPatternColor = nil;
+
 + (void)initialize {
     if (self == [UI7TableView class]) {
         Class target = [UITableView class];
@@ -69,6 +88,7 @@ CGFloat UI7TableViewGroupedTableSectionSeperatorHeight = 28.0f;
         [target copyToSelector:@selector(__initWithFrame:) fromSelector:@selector(initWithFrame:)];
         [target copyToSelector:@selector(__setDelegate:) fromSelector:@selector(setDelegate:)];
         [target copyToSelector:@selector(__style) fromSelector:@selector(style)];
+        [target copyToSelector:@selector(__updateVisibleCellsNow:) fromSelector:@selector(_updateVisibleCellsNow:)];
     }
 }
 
@@ -80,6 +100,7 @@ CGFloat UI7TableViewGroupedTableSectionSeperatorHeight = 28.0f;
     [self exportSelector:@selector(awakeFromNib) toClass:target];
     [self exportSelector:@selector(setDelegate:) toClass:target];
     [self exportSelector:@selector(style) toClass:target];
+    [self exportSelector:@selector(_updateVisibleCellsNow:) toClass:target];
 
     if (![target methodForSelector:@selector(dequeueReusableCellWithIdentifier:forIndexPath:)]) {
         [target addMethodForSelector:@selector(dequeueReusableCellWithIdentifier:forIndexPath:) fromMethod:[self methodForSelector:@selector(__dequeueReusableCellWithIdentifier:forIndexPath:)]];
@@ -106,7 +127,14 @@ CGFloat UI7TableViewGroupedTableSectionSeperatorHeight = 28.0f;
 //    }
     if (self) {
         if (self.__style == UITableViewStyleGrouped) {
-            self.backgroundColor = [UIColor clearColor];
+            if (UI7TableViewGroupedViewPatternColor == nil) {
+                UI7TableViewGroupedViewPatternColor = [[[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped] autorelease].backgroundColor;
+            }
+            UIColor *color = [aDecoder decodeObjectForKey:@"UIBackgroundColor"];
+            if (color == UI7TableViewGroupedViewPatternColor) {
+                self.backgroundColor = [UI7Color groupedTableViewSectionBackgroundColor];
+            }
+
             self.backgroundView = nil;
             if (self.separatorStyle == UITableViewCellSeparatorStyleSingleLineEtched) {
                 self.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -214,7 +242,7 @@ UIView *_UI7TableViewDelegateViewForHeaderInSection(id self, SEL _cmd, UITableVi
         label.text = [@"   " stringByAppendingString:[title uppercaseString]];
         label.font = [UI7Font systemFontOfSize:14.0 attribute:UI7FontAttributeNone];
         label.textColor = [UIColor colorWith8bitWhite:77 alpha:255];
-        label.backgroundColor = [UIColor colorWith8bitRed:239 green:239 blue:244 alpha:255];
+        label.backgroundColor = [UI7Color groupedTableViewSectionBackgroundColor];
     } else {
         label.text = [@"    " stringByAppendingString:title];
         label.font = [UI7Font systemFontOfSize:14.0 attribute:UI7FontAttributeMedium];
@@ -247,7 +275,7 @@ UIView *_UI7TableViewDelegateViewForFooterInSection(id self, SEL _cmd, UITableVi
         label.text = [@"   " stringByAppendingString:title];
         label.font = [UI7Font systemFontOfSize:14.0 attribute:UI7FontAttributeNone];
         label.textColor = [UIColor colorWith8bitWhite:128 alpha:255];
-        label.backgroundColor = [UIColor colorWith8bitRed:239 green:239 blue:244 alpha:255];
+        label.backgroundColor = [UI7Color groupedTableViewSectionBackgroundColor];
     } else {
         label.text = [@"    " stringByAppendingString:title]; // TODO: do this pretty later
         label.font = [UI7Font systemFontOfSize:14.0 attribute:UI7FontAttributeMedium];
@@ -314,6 +342,16 @@ UIView *_UI7TableViewDelegateViewForFooterInSection(id self, SEL _cmd, UITableVi
     [self __setDelegate:delegate];
 }
 
+- (void)_updateVisibleCellsNow:(BOOL)flag {
+    [self __updateVisibleCellsNow:flag];
+    for (NSIndexPath *path in self.indexPathsForVisibleRows) {
+        UITableViewCell *cell = [self cellForRowAtIndexPath:path];
+        cell.tableView = self;
+        cell.indexPath = path;
+        [cell _tintColorUpdated];
+    }
+}
+
 // TODO: ok.. do this next time.
 //- (BOOL)_delegateWantsHeaderViewForSection:(NSUInteger)section {
 //    return YES;
@@ -332,70 +370,6 @@ UIView *_UI7TableViewDelegateViewForFooterInSection(id self, SEL _cmd, UITableVi
 @end
 
 
-@interface UITableViewCell (Patch)
-
-// backup
-- (id)__initWithCoder:(NSCoder *)aDecoder;
-- (id)__initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
-
-@end
-
-
-@implementation UITableViewCell (Patch)
-
-- (id)__initWithCoder:(NSCoder *)aDecoder { assert(NO); return nil; }
-- (id)__initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier { assert(NO); return nil; }
-
-- (void)_tableViewCellInitTheme {
-    self.textLabel.font = [UI7Font systemFontOfSize:self.textLabel.font.pointSize attribute:UI7FontAttributeLight];
-    self.detailTextLabel.font = [UI7Font systemFontOfSize:self.detailTextLabel.font.pointSize attribute:UI7FontAttributeNone];
-}
-
-- (void)_tableViewCellInit {
-    self.textLabel.highlightedTextColor = self.textLabel.textColor;
-    self.detailTextLabel.highlightedTextColor = self.detailTextLabel.textColor; // FIXME: not sure
-    self.selectedBackgroundView = [UIColor colorWith8bitWhite:217 alpha:255].image.view;
-}
-
-@end
-
-
-@implementation UI7TableViewCell
-
-+ (void)initialize {
-    if (self == [UI7TableViewCell class]) {
-        Class target = [UITableViewCell class];
-
-        [target copyToSelector:@selector(__initWithCoder:) fromSelector:@selector(initWithCoder:)];
-        [target copyToSelector:@selector(__initWithStyle:reuseIdentifier:) fromSelector:@selector(initWithStyle:reuseIdentifier:)];
-    }
-}
-
-+ (void)patch {
-    Class target = [UITableViewCell class];
-
-    [self exportSelector:@selector(initWithCoder:) toClass:target];
-    [self exportSelector:@selector(initWithStyle:reuseIdentifier:) toClass:target];
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [self __initWithCoder:aDecoder];
-    if (self != nil) {
-        [self _tableViewCellInit];
-    }
-    return self;
-}
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [self __initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self != nil) {
-        [self _tableViewCellInitTheme]; // not adjusted now
-        [self _tableViewCellInit];
-    }
-    return self;
-}
-
-@end
 
 
 @implementation UI7TableViewController

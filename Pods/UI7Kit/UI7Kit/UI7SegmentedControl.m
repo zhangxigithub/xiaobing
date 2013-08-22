@@ -50,6 +50,7 @@ CGFloat UI7SegmentedControlHeight = 29.0f;
 - (void)__awakeFromNib { assert(NO); }
 - (UIColor *)__tintColor { assert(NO); return nil; }
 - (void)__setTintColor:(UIColor *)tintColor { assert(NO); }
+- (void)__setFrame:(CGRect)frame { assert(NO); }
 
 - (void)_segmentedControlInit {
     self.layer.cornerRadius = UI7ControlRadius;
@@ -59,7 +60,6 @@ CGFloat UI7SegmentedControlHeight = 29.0f;
     frame.size.height = UI7SegmentedControlHeight;
     self.frame = frame;
 
-    [self _tintColorUpdated];
     [self _backgroundColorUpdated];
 }
 
@@ -67,11 +67,12 @@ CGFloat UI7SegmentedControlHeight = 29.0f;
     [super _tintColorUpdated];
 
     UIColor *tintColor = self.tintColor;
+    if (tintColor == nil) return;
     // Set background images
 
     UIImage *backgroundImage = [UIColor clearColor].image;
     UIImage *selectedBackgroundImage = [UIImage roundedImageWithSize:CGSizeMake(10.0f, self.frame.size.height) color:tintColor radius:UI7ControlRadius];
-    UIImage *highlightedBackgroundImage = [UIImage roundedImageWithSize:CGSizeMake(10.0f, self.frame.size.height) color:[tintColor highligtedColorForBackgroundColor:self.stackedBackroundColor] radius:UI7ControlRadius];
+    UIImage *highlightedBackgroundImage = [UIImage roundedImageWithSize:CGSizeMake(10.0f, self.frame.size.height) color:[tintColor highligtedColorForBackgroundColor:self.stackedBackgroundColor] radius:UI7ControlRadius];
 
     NSDictionary *attributes = @{
                                  UITextAttributeFont: [UI7Font systemFontOfSize:13.0 attribute:UI7FontAttributeMedium],
@@ -93,7 +94,7 @@ CGFloat UI7SegmentedControlHeight = 29.0f;
 }
 
 - (void)_backgroundColorUpdated {
-    NSDictionary *selectedAttributes = @{UITextAttributeTextColor: self.stackedBackroundColor};
+    NSDictionary *selectedAttributes = @{UITextAttributeTextColor: self.stackedBackgroundColor};
     [self setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
 }
 
@@ -111,6 +112,7 @@ CGFloat UI7SegmentedControlHeight = 29.0f;
         [target copyToSelector:@selector(__awakeFromNib) fromSelector:@selector(awakeFromNib)];
         [target copyToSelector:@selector(__tintColor) fromSelector:@selector(tintColor)];
         [target copyToSelector:@selector(__setTintColor:) fromSelector:@selector(setTintColor:)];
+        [target copyToSelector:@selector(__setFrame:) fromSelector:@selector(setFrame:)];
     }
 }
 
@@ -120,8 +122,11 @@ CGFloat UI7SegmentedControlHeight = 29.0f;
     [self exportSelector:@selector(initWithItems:) toClass:target];
     [self exportSelector:@selector(initWithFrame:) toClass:target];
     [self exportSelector:@selector(awakeFromNib) toClass:target];
-    [self exportSelector:@selector(tintColor) toClass:target];
-    [self exportSelector:@selector(setTintColor:) toClass:target];
+    [self exportSelector:@selector(setFrame:) toClass:target];
+    if (![UIDevice currentDevice].iOS7) {
+        [self exportSelector:@selector(tintColor) toClass:target];
+        [self exportSelector:@selector(setTintColor:) toClass:target];
+    }
 }
 
 - (void)awakeFromNib {
@@ -143,6 +148,13 @@ CGFloat UI7SegmentedControlHeight = 29.0f;
         [self _segmentedControlInit];
     }
     return self;
+}
+
+- (void)setFrame:(CGRect)frame {
+    if (frame.size.height <= 1.0f) {
+        frame.size.height = UI7SegmentedControlHeight;
+    }
+    [self __setFrame:frame];
 }
 
 - (UIColor *)tintColor {

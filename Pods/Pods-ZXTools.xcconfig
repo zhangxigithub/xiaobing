@@ -1,0 +1,1 @@
+PODS_ZXTOOLS_OTHER_LDFLAGS = -framework AVFoundation -framework AssetsLibrary -framework CoreGraphics -framework CoreLocation -framework MapKit

@@ -13,14 +13,9 @@
 
 @interface UIDevice (iOS7)
 
+@property(nonatomic, readonly) NSInteger majorVersion;
+@property(nonatomic, readonly, getter=isIOS7) BOOL iOS7;
 @property(nonatomic, readonly) BOOL needsUI7Kit;
-
-@end
-
-
-@interface NSObject (Pointer)
-
-@property(nonatomic, readonly) NSString *pointerString;
 
 @end
 

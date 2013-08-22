@@ -8,7 +8,7 @@
 
 #import "Menu.h"
 #import "PodcastList.h"
-#import <UMSocial.h>
+#import "UMSocial.h"
 #import <ZXMacro.h>
 #import "XBPlayer.h"
 

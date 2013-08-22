@@ -10,19 +10,33 @@
 
 @implementation UIDevice (iOS7)
 
-- (BOOL)needsUI7Kit {
-    NSArray *versionParts = [self.systemVersion componentsSeparatedByString:@"."];
-    NSInteger major = [versionParts[0] integerValue];
-    return major < 7;
+- (NSInteger)majorVersion {
+    static NSInteger result = -1;
+    if (result == -1) {
+        NSNumber *majorVersion = [[self.systemVersion componentsSeparatedByString:@"."] objectAtIndex:0];
+        result = majorVersion.integerValue;
+    }
+    return (BOOL)result;
 }
 
-@end
+- (BOOL)isIOS7 {
+    static NSInteger result = -1;
+    if (result == -1) {
+        result = [self majorVersion] >= 7;
+    }
+    return (BOOL)result;
+}
 
-
-@implementation NSObject (Pointer)
-
-- (NSString *)pointerString {
-    return [@"%p" format:self];
+- (BOOL)needsUI7Kit {
+    static NSInteger result = -1;
+    if (result == -1) {
+        #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
+        result = ![self isIOS7];
+        #else
+        result = YES;
+        #endif
+    }
+    return (BOOL)result;
 }
 
 @end

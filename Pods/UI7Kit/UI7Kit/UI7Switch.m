@@ -7,22 +7,29 @@
 //
 
 #import "UI7Switch.h"
-#import <KLSwitch/KLSwitch.h>
+
+#if !defined(UI7SWITCH_KLSWITCH) && !defined(UI7SWITCH_MBSWITCH)
+#   define UI7SWITCH_KLSWITCH 1
+#endif
+
+#if UI7SWITCH_KLSWITCH
+#   import <KLSwitch/KLSwitch.h>
+#   define UI7SwitchImplementation KLSwitch
+#elif UI7SWITCH_MBSWITCH
+#   import <MBSwitch/MBSwitch.h>
+@interface MBSwitch (Private)
+- (void)configure;
+@end
+#   define UI7SwitchImplementation MBSwitch
+#else
+#   error UI7Switch implementation class is missing.
+#endif
 
 @implementation UISwitch (Patch)
 
 - (id)__initWithCoder:(NSCoder *)aDecoder { assert(NO); return nil; }
 - (id)__initWithFrame:(CGRect)frame { assert(NO); return nil; }
-
-- (void)_switchInit {
-   // self.onTintColor = [UIColor colorWith8bitRed:76 green:217 blue:100 alpha:255];
-    if ([self respondsToSelector:@selector(onImage)]) {
-        self.onImage = [UIImage clearImage];
-        self.offImage = [UIImage clearImage];
-        self.tintColor = self.tintColor;
-        self.thumbTintColor = [UIColor whiteColor];
-    }
-}
+- (void)__awakeFromNib { assert(NO); }
 
 @end
 
@@ -35,6 +42,9 @@
 
         [target copyToSelector:@selector(__initWithCoder:) fromSelector:@selector(initWithCoder:)];
         [target copyToSelector:@selector(__initWithFrame:) fromSelector:@selector(initWithFrame:)];
+        #if UI7SWITCH_MBSWITCH
+        [self exportSelector:@selector(awakeFromNib) toClass:[UI7SwitchImplementation class]];
+        #endif
     }
 }
 
@@ -46,41 +56,49 @@
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    //Create a dummy to grab IB props from
-    UISwitch* dummySwitch = [self __initWithCoder:aDecoder];
-    if (self != nil) {
-        [dummySwitch _switchInit];
-    }
-    
+    [self release];
+
     //Reassign self and set to a KLSwitch copying propertie from dummy
-    self = (UI7Switch*)[[KLSwitch alloc] initWithCoder:aDecoder];
+    self = (UI7Switch *)[[UI7SwitchImplementation alloc] initWithCoder:aDecoder];
     if (self != nil) {
-        [self setOn:dummySwitch.on animated: NO];
+        #if UI7SWITCH_MBSWITCH
+        [self configure];
+        #endif
+        BOOL on = [aDecoder decodeBoolForKey:@"UISwitchOn"];
+        [self setOn:on animated:NO];
         if ([aDecoder containsValueForKey:@"UISwitchOnTintColor"]) {
-            self.onTintColor = dummySwitch.onTintColor;
+            self.onTintColor = [aDecoder decodeObjectForKey:@"UISwitchOnTintColor"];
         } else {
             self.onTintColor = [UIColor colorWith8bitRed:69 green:215 blue:117 alpha:255];
+        }
+        if ([aDecoder containsValueForKey:@"UISwitchThumbTintColor"]) {
+            self.thumbTintColor = [aDecoder decodeObjectForKey:@"UISwitchThumbTintColor"];
+        }
+        CGRect frame = self.frame;
+        if (frame.size.width != 51.0f) {
+            frame.size.height = 31.0f;
+            #if UI7SWITCH_KLSWITCH
+            frame.origin.x += 20.0f;
+            #elif UI7SWITCH_MBSWITCH
+            frame.origin.x += (frame.size.width - 51.0f) / 2;
+            #endif
+            frame.size.width = 51.0f;
+            self.frame = frame;
         }
     }
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    //Create a dummy to grab IB props from
-    UISwitch* dummySwitch = [self __initWithFrame:frame];
-    if (self != nil) {
-        [dummySwitch _switchInit];
-    }
-    
+#if UI7SWITCH_MBSWITCH
+- (void)awakeFromNib {
+
+}
+#endif
+
+- (id)initWithFrame:(CGRect)frame {
+    [self release];
     //Reassign self and set to a KLSwitch copying propertie from dummy
-    self = (UI7Switch*)[[KLSwitch alloc]
-                        initWithFrame:frame];
-    if (self != nil) {
-        [self setOn: dummySwitch.on
-           animated: NO];
-        self.onTintColor = dummySwitch.onTintColor;
-    }
+    self = (UI7Switch *)[[UI7SwitchImplementation alloc] initWithFrame:frame];
     return self;
 }
 @end
