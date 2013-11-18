@@ -183,11 +183,11 @@ static DataCenter *dataCenter;
                  [[NSUserDefaults standardUserDefaults] setObject:newPodcasts forKey:kStoreKey];
                  [[NSUserDefaults standardUserDefaults] synchronize];
                  
-                 
+                 //ALERT(@"更新成功");
                  
                  
              } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                 
+                 //ALERT(@"更新失败");
              }];
         
         [op start];

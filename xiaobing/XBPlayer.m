@@ -103,8 +103,6 @@ static XBPlayer *player;
         //NSLog(@"path:%@",streamer.cachedPath);
         //NSLog(@"url:%@",streamer.cachedURL);
 
-        
-        
     }
     
     

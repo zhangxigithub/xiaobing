@@ -29,9 +29,9 @@
     NSLog(@"kScreen_Height:%f",kScreen_Height);
     NSLog(@"%@",NSHomeDirectory());
     
-    NSLog(@"%@",[UITableViewCell superclass]);
-    NSString *al = [[UITableViewCell superclass] description];
-    ALERT(al);
+//    NSLog(@"%@",[UITableViewCell superclass]);
+//    NSString *al = [[UITableViewCell superclass] description];
+//    ALERT(al);
 
     [MobClick startWithAppkey:@"51abf69b56240b183404f364"];
     [UMSocialData setAppKey:@"51abf69b56240b183404f364"];
@@ -172,7 +172,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    [[DataCenter sharedDateCenter] save];
+    //[[DataCenter sharedDateCenter] save];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
@@ -197,6 +197,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    //[[DataCenter sharedDateCenter] save];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

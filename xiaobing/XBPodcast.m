@@ -23,18 +23,18 @@
     }
     return self;
 }
--(float)height
-{
-    if(self.rowHeight <0)
-    {
-        CGSize size = [self.content sizeWithFont:kContent_Font
-                               constrainedToSize:CGSizeMake(220, 9999)
-                                   lineBreakMode:NSLineBreakByCharWrapping];
-        
-        self.rowHeight = size.height+42;
-    }
-    return self.rowHeight;
-}
+//-(float)height
+//{
+//    if(self.rowHeight <0)
+//    {
+//        CGSize size = [self.content sizeWithFont:kContent_Font
+//                               constrainedToSize:CGSizeMake(220, 9999)
+//                                   lineBreakMode:NSLineBreakByCharWrapping];
+//        
+//        self.rowHeight = size.height+42;
+//    }
+//    return self.rowHeight;
+//}
 
 /*
  {
@@ -72,6 +72,8 @@ static NSDateFormatter *formatter;
         //NSLog(@"...%@",self.date);
         //self.date = [NSDate date];
         self.imageURL = [NSURL URLWithString:dictionary[@"imageURL"]];
+        
+
         self.podcastURL = [NSURL URLWithString:dictionary[@"podcastURL"]];
         
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%d",dictionary[@"largeImageURL"],arc4random()]];

@@ -2,28 +2,159 @@ PODS:
   - AFNetworking (1.3.1)
   - cdebug (0.1.1)
   - EGOTableViewPullRefresh (0.1.0)
-  - FoundationExtension (0.38):
+  - FoundationExtension (0.45):
     - cdebug (~> 0.1)
     - FoundationExtension/CocoaExtension
     - FoundationExtension/FoundationExtension
     - FoundationExtension/UIKitExtension
-  - FoundationExtension/FoundationExtension (0.38):
+  - FoundationExtension/FoundationExtension (0.45):
     - cdebug (~> 0.1)
-  - FoundationExtension/UIKitExtension (0.38):
+  - FoundationExtension/UIKitExtension (0.45):
     - cdebug (~> 0.1)
     - FoundationExtension/FoundationExtension
   - FPPopover (1.4.1)
   - GGFullscreenImageViewController (1.0.0)
+  - GIKPopoverBackgroundView/Core (0.0.1)
   - JSONKit (1.5pre)
-  - KLSwitch (1.5)
-  - MBProgressHUD (0.7)
+  - MBProgressHUD (0.8)
   - MTStatusBarOverlay (0.9.1)
-  - UI7Kit (0.7.3):
-    - FoundationExtension (~> 0.38)
-    - KLSwitch (~> 1.5)
+  - SevenSwitch (1.3.0)
+  - UI7Kit (0.9.9):
+    - UI7Kit/All
+  - UI7Kit/All (0.9.9):
+    - UI7Kit/UI7ActionSheet
+    - UI7Kit/UI7ActivityViewController
+    - UI7Kit/UI7AlertView
+    - UI7Kit/UI7BarButtonItem
+    - UI7Kit/UI7Button
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7NavigationBar
+    - UI7Kit/UI7NavigationController
+    - UI7Kit/UI7PickerView
+    - UI7Kit/UI7PopoverController
+    - UI7Kit/UI7ProgressView
+    - UI7Kit/UI7SearchBar
+    - UI7Kit/UI7SegmentedControl
+    - UI7Kit/UI7Slider
+    - UI7Kit/UI7Stepper
+    - UI7Kit/UI7Switch/SevenSwitch
+    - UI7Kit/UI7TabBar
+    - UI7Kit/UI7TabBarController
+    - UI7Kit/UI7TabBarItem
+    - UI7Kit/UI7TableView
+    - UI7Kit/UI7TableViewCell
+    - UI7Kit/UI7TextField
+    - UI7Kit/UI7Toolbar
+    - UI7Kit/UI7View
+    - UI7Kit/UI7ViewController
+    - UI7Kit/UI7Window
+  - UI7Kit/Core (0.9.9):
+    - cdebug
+    - FoundationExtension (~> 0.44)
+    - UI7Kit/UI7Color
+  - UI7Kit/UI7ActionSheet (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+  - UI7Kit/UI7ActivityViewController (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Font
+  - UI7Kit/UI7AlertView (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Button
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+  - UI7Kit/UI7BarButtonItem (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Font
+  - UI7Kit/UI7Button (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7BarButtonItem
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7View
+    - UIKitResources/UIButtonBar
+  - UI7Kit/UI7Color (0.9.9):
+    - UIKitResources/UIAccessoryButton
+  - UI7Kit/UI7Font (0.9.9):
+    - UI7Kit/Core
+  - UI7Kit/UI7NavigationBar (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7BarButtonItem
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+  - UI7Kit/UI7NavigationController (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7NavigationBar
+    - UI7Kit/UI7Toolbar
+  - UI7Kit/UI7PickerView (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7TableView
+    - UI7Kit/UI7View
+  - UI7Kit/UI7PopoverController (0.9.9):
+    - GIKPopoverBackgroundView/Core
+  - UI7Kit/UI7ProgressView (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7View
+  - UI7Kit/UI7SearchBar (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+  - UI7Kit/UI7SegmentedControl (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7View
+  - UI7Kit/UI7Slider (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7View
+  - UI7Kit/UI7Stepper (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7View
+  - UI7Kit/UI7Switch/SevenSwitch (0.9.9):
+    - SevenSwitch (~> 1.3.0)
+    - UI7Kit/Core
+  - UI7Kit/UI7TabBar (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7View
+  - UI7Kit/UI7TabBarController (0.9.9):
+    - UI7Kit/Core
+  - UI7Kit/UI7TabBarItem (0.9.9):
+    - UI7Kit/Core
+    - UIKitResources/UITabBar
+  - UI7Kit/UI7TableView (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7View
+  - UI7Kit/UI7TableViewCell (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+    - UI7Kit/UI7Font
+    - UI7Kit/UI7View
+  - UI7Kit/UI7TextField (0.9.9):
+    - UI7Kit/Core
+  - UI7Kit/UI7Toolbar (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7Color
+  - UI7Kit/UI7View (0.9.9):
+    - UI7Kit/Core
+  - UI7Kit/UI7ViewController (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7BarButtonItem
+    - UI7Kit/UI7NavigationBar
+  - UI7Kit/UI7Window (0.9.9):
+    - UI7Kit/Core
+    - UI7Kit/UI7View
   - UIBubbleTableView (0.2)
-  - UMengAnalytics (2.2.0)
-  - UMengFeedback (1.4)
+  - UIKitResources/UIAccessoryButton (7.0)
+  - UIKitResources/UIButtonBar (7.0)
+  - UIKitResources/UITabBar (7.0)
+  - UMengAnalytics (2.2.1)
+  - UMengFeedback (1.4.1)
   - ZXTools/ZXMacro (1.3)
 
 DEPENDENCIES:
@@ -44,17 +175,19 @@ SPEC CHECKSUMS:
   AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
   cdebug: 8c2ca6363107205eaf777295736c0ec12ba490bd
   EGOTableViewPullRefresh: 6ba637ce6dd3186b503d2d91e6b3a08a26d650f5
-  FoundationExtension: c1b0732650dbe50e4ab4754b34050b7d44952f50
+  FoundationExtension: 9ea775b06ff4a3914db341cefdcaa8180c6e0366
   FPPopover: 0289b796c031d8f27bd221d93d282ffe23619893
   GGFullscreenImageViewController: 81ff02e95ea08d28326e937090fbf3e2b2778193
+  GIKPopoverBackgroundView: 6163da8cb906689732e5900c1484e6a411ce4da3
   JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
-  KLSwitch: 27e07101397ce250acbf6c3a65349cdf69f4bcec
-  MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
+  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
   MTStatusBarOverlay: 2cee705996e4e307191d423bf49e583b9b2c14ac
-  UI7Kit: 9236397dc188569babf7e4c8e9ce76a2b42d95a1
+  SevenSwitch: f1ae106a4fcb459829ba5a6a3265e7e9f873f80c
+  UI7Kit: cc047d4196ab61952d5e0784fae34e785af7f780
   UIBubbleTableView: 08dcbbb351538139d7a2a01216bb427ad4253bb1
-  UMengAnalytics: 8da44b6e1f604cd56202a820108b86df79a929bc
-  UMengFeedback: 89e746f9fb063e5a9bb4f06bb456f989d67d901d
+  UIKitResources: 3f3b1787af49bb881fc5b6dba2d34d2d4682f0e7
+  UMengAnalytics: f4fd387a67f1ac6cef005d196ddd690c9515566d
+  UMengFeedback: 27a139664da63c59e7168851a60ec87b2fcd7086
   ZXTools: 51ece1ee0386c69777a805b65e696d620af1d625
 
-COCOAPODS: 0.22.3
+COCOAPODS: 0.26.2

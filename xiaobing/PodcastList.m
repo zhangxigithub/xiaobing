@@ -96,7 +96,7 @@
     [super viewDidLoad];
     localData = [[DataCenter sharedDateCenter] podcasts];
     
-    self.navigationItem.title = @"podcasts";
+    self.navigationItem.title = @"Podcasts";
 }
 -(void)viewWillAppear:(BOOL)animated
 {

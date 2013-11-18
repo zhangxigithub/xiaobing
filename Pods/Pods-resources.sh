@@ -18,16 +18,20 @@ install_resource()
     *.framework)
       echo "mkdir -p ${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
       mkdir -p "${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
-      echo "cp -fpR ${PODS_ROOT}/$1 ${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
-      cp -fpR "${PODS_ROOT}/$1" "${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+      echo "rsync -av ${PODS_ROOT}/$1 ${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+      rsync -av "${PODS_ROOT}/$1" "${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
       ;;
     *.xcdatamodel)
-      echo xcrun momc "${PODS_ROOT}/$1" ${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcdatamodel`.mom
-      xcrun momc "${PODS_ROOT}/$1" ${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcdatamodel`.mom
+      echo "xcrun momc \"${PODS_ROOT}/$1\" \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1"`.mom\""
+      xcrun momc "${PODS_ROOT}/$1" "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcdatamodel`.mom"
       ;;
     *.xcdatamodeld)
-      echo  xcrun momc "${PODS_ROOT}/$1" ${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcdatamodeld`.momd
-      xcrun momc "${PODS_ROOT}/$1" ${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcdatamodeld`.momd
+      echo "xcrun momc \"${PODS_ROOT}/$1\" \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcdatamodeld`.momd\""
+      xcrun momc "${PODS_ROOT}/$1" "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcdatamodeld`.momd"
+      ;;
+    /*)
+      echo "$1"
+      echo "$1" >> "$RESOURCES_TO_COPY"
       ;;
     *)
       echo "${PODS_ROOT}/$1"
@@ -35,81 +39,187 @@ install_resource()
       ;;
   esac
 }
-install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blackArrow.png'
-install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blackArrow@2x.png'
-install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blueArrow.png'
-install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blueArrow@2x.png'
-install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/grayArrow.png'
-install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/grayArrow@2x.png'
-install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow.png'
-install_resource 'EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconAction.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconAction@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconAdd.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconAdd@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconBookmarks.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconBookmarks@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconCamera.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconCamera@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconCompose.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconCompose@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconFastForward.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconFastForward@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconOrganize.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconOrganize@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconPause.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconPause@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconPlay.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconPlay@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconRefresh.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconRefresh@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconReply.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconReply@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconRewind.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconRewind@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconSearch.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconSearch@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconStop.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconStop@2x.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconTrash.png'
-install_resource 'UI7Kit/Resources/UI7BarButtonIconTrash@2x.png'
-install_resource 'UI7Kit/Resources/UI7ButtonImageAdd.png'
-install_resource 'UI7Kit/Resources/UI7ButtonImageAdd@2x.png'
-install_resource 'UI7Kit/Resources/UI7ButtonImageInfo.png'
-install_resource 'UI7Kit/Resources/UI7ButtonImageInfo@2x.png'
-install_resource 'UI7Kit/Resources/UI7NavigationBarBackButton.png'
-install_resource 'UI7Kit/Resources/UI7NavigationBarBackButton@2x.png'
-install_resource 'UI7Kit/Resources/UI7SliderThumb.png'
-install_resource 'UI7Kit/Resources/UI7SliderThumb@2x.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemBookmarksUnselected.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemBookmarksUnselected@2x.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemContactsUnselected.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemContactsUnselected@2x.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemDownloadsUnselected.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemDownloadsUnselected@2x.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemFavoriteSelected.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemFavoriteSelected@2x.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemFavoriteUnselected.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemFavoriteUnselected@2x.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemHistoryUnselected.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemHistoryUnselected@2x.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemMoreUnselected.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemMoreUnselected@2x.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemMostRecentUnselected.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemMostRecentUnselected@2x.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemMostViewedUnselected.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemMostViewedUnselected@2x.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemSearchUnselected.png'
-install_resource 'UI7Kit/Resources/UI7TabBarItemSearchUnselected@2x.png'
-install_resource 'UIBubbleTableView/images/bubbleMine.png'
-install_resource 'UIBubbleTableView/images/bubbleMine@2x.png'
-install_resource 'UIBubbleTableView/images/bubbleSomeone.png'
-install_resource 'UIBubbleTableView/images/bubbleSomeone@2x.png'
-install_resource 'UIBubbleTableView/images/typingMine.png'
-install_resource 'UIBubbleTableView/images/typingMine@2x.png'
-install_resource 'UIBubbleTableView/images/typingSomeone.png'
-install_resource 'UIBubbleTableView/images/typingSomeone@2x.png'
-install_resource 'UMengFeedback/UMFeedback_iOS_1.4/umFeedback.bundle'
+install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blackArrow.png"
+install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blackArrow@2x.png"
+install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blueArrow.png"
+install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/blueArrow@2x.png"
+install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/grayArrow.png"
+install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/grayArrow@2x.png"
+install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow.png"
+install_resource "EGOTableViewPullRefresh/EGOTableViewPullRefresh/Resources/whiteArrow@2x.png"
+install_resource "UI7Kit/Resources/UI7NavigationBarBackButton.png"
+install_resource "UI7Kit/Resources/UI7NavigationBarBackButton@2x.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowDown.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowDown@2x.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowDownRight.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowDownRight@2x.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowSide.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowSide@2x.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowSideBottom.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowSideBottom@2x.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowSideTop.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowSideTop@2x.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowUp.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowUp@2x.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowUpRight.png"
+install_resource "UI7Kit/Resources/PopoverBackgroundArrowUpRight@2x.png"
+install_resource "UI7Kit/Resources/UI7SliderThumb.png"
+install_resource "UI7Kit/Resources/UI7SliderThumb@2x.png"
+install_resource "UIBubbleTableView/images/bubbleMine.png"
+install_resource "UIBubbleTableView/images/bubbleMine@2x.png"
+install_resource "UIBubbleTableView/images/bubbleSomeone.png"
+install_resource "UIBubbleTableView/images/bubbleSomeone@2x.png"
+install_resource "UIBubbleTableView/images/typingMine.png"
+install_resource "UIBubbleTableView/images/typingMine@2x.png"
+install_resource "UIBubbleTableView/images/typingSomeone.png"
+install_resource "UIBubbleTableView/images/typingSomeone@2x.png"
+install_resource "UIKitResources/UIAccessoryButtonCheckmark.png"
+install_resource "UIKitResources/UIAccessoryButtonCheckmark@2x.png"
+install_resource "UIKitResources/UIAccessoryButtonExclamationMark.png"
+install_resource "UIKitResources/UIAccessoryButtonExclamationMark@2x.png"
+install_resource "UIKitResources/UIAccessoryButtonInfo.png"
+install_resource "UIKitResources/UIAccessoryButtonInfo@2x.png"
+install_resource "UIKitResources/UIAccessoryButtonMinus.png"
+install_resource "UIKitResources/UIAccessoryButtonMinus@2x.png"
+install_resource "UIKitResources/UIAccessoryButtonPlus.png"
+install_resource "UIKitResources/UIAccessoryButtonPlus@2x.png"
+install_resource "UIKitResources/UIAccessoryButtonQuestionMark.png"
+install_resource "UIKitResources/UIAccessoryButtonQuestionMark@2x.png"
+install_resource "UIKitResources/UIAccessoryButtonX.png"
+install_resource "UIKitResources/UIAccessoryButtonX@2x.png"
+install_resource "UIKitResources/UIButtonBarAction.png"
+install_resource "UIKitResources/UIButtonBarAction@2x.png"
+install_resource "UIKitResources/UIButtonBarActionSmall.png"
+install_resource "UIKitResources/UIButtonBarActionSmall@2x.png"
+install_resource "UIKitResources/UIButtonBarAirPlay.png"
+install_resource "UIKitResources/UIButtonBarAirPlay@2x.png"
+install_resource "UIKitResources/UIButtonBarAirplayLandscape.png"
+install_resource "UIKitResources/UIButtonBarAirplayLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarArrowDown.png"
+install_resource "UIKitResources/UIButtonBarArrowDown@2x.png"
+install_resource "UIKitResources/UIButtonBarArrowDownSmall.png"
+install_resource "UIKitResources/UIButtonBarArrowDownSmall@2x.png"
+install_resource "UIKitResources/UIButtonBarArrowLeft.png"
+install_resource "UIKitResources/UIButtonBarArrowLeft@2x.png"
+install_resource "UIKitResources/UIButtonBarArrowLeftLandscape.png"
+install_resource "UIKitResources/UIButtonBarArrowLeftLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarArrowRight.png"
+install_resource "UIKitResources/UIButtonBarArrowRight@2x.png"
+install_resource "UIKitResources/UIButtonBarArrowRightLandscape.png"
+install_resource "UIKitResources/UIButtonBarArrowRightLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarArrowUp.png"
+install_resource "UIKitResources/UIButtonBarArrowUp@2x.png"
+install_resource "UIKitResources/UIButtonBarArrowUpSmall.png"
+install_resource "UIKitResources/UIButtonBarArrowUpSmall@2x.png"
+install_resource "UIKitResources/UIButtonBarBadge.png"
+install_resource "UIKitResources/UIButtonBarBadge@2x.png"
+install_resource "UIKitResources/UIButtonBarBookmarks.png"
+install_resource "UIKitResources/UIButtonBarBookmarks@2x.png"
+install_resource "UIKitResources/UIButtonBarBookmarksLandscape.png"
+install_resource "UIKitResources/UIButtonBarBookmarksLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarCamera.png"
+install_resource "UIKitResources/UIButtonBarCamera@2x.png"
+install_resource "UIKitResources/UIButtonBarCameraSmall.png"
+install_resource "UIKitResources/UIButtonBarCameraSmall@2x.png"
+install_resource "UIKitResources/UIButtonBarCompose.png"
+install_resource "UIKitResources/UIButtonBarCompose@2x.png"
+install_resource "UIKitResources/UIButtonBarComposeLandscape.png"
+install_resource "UIKitResources/UIButtonBarComposeLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarDefaultBackground.png"
+install_resource "UIKitResources/UIButtonBarDefaultBackground@2x.png"
+install_resource "UIKitResources/UIButtonBarFastForward.png"
+install_resource "UIKitResources/UIButtonBarFastForward@2x.png"
+install_resource "UIKitResources/UIButtonBarFastForwardLandscape.png"
+install_resource "UIKitResources/UIButtonBarFastForwardLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarListIcon.png"
+install_resource "UIKitResources/UIButtonBarListIcon@2x.png"
+install_resource "UIKitResources/UIButtonBarLocate.png"
+install_resource "UIKitResources/UIButtonBarLocate@2x.png"
+install_resource "UIKitResources/UIButtonBarLocateSmall.png"
+install_resource "UIKitResources/UIButtonBarLocateSmall@2x.png"
+install_resource "UIKitResources/UIButtonBarMiniDefaultBackground.png"
+install_resource "UIKitResources/UIButtonBarMiniDefaultBackground@2x.png"
+install_resource "UIKitResources/UIButtonBarNew.png"
+install_resource "UIKitResources/UIButtonBarNew@2x.png"
+install_resource "UIKitResources/UIButtonBarNewLandscape.png"
+install_resource "UIKitResources/UIButtonBarNewLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarNewSmall.png"
+install_resource "UIKitResources/UIButtonBarNewSmall@2x.png"
+install_resource "UIKitResources/UIButtonBarOrganize.png"
+install_resource "UIKitResources/UIButtonBarOrganize@2x.png"
+install_resource "UIKitResources/UIButtonBarOrganizeLandscape.png"
+install_resource "UIKitResources/UIButtonBarOrganizeLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarPause.png"
+install_resource "UIKitResources/UIButtonBarPause@2x.png"
+install_resource "UIKitResources/UIButtonBarPauseLandscape.png"
+install_resource "UIKitResources/UIButtonBarPauseLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarPlay.png"
+install_resource "UIKitResources/UIButtonBarPlay@2x.png"
+install_resource "UIKitResources/UIButtonBarPlayLandscape.png"
+install_resource "UIKitResources/UIButtonBarPlayLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarPlus.png"
+install_resource "UIKitResources/UIButtonBarPlus@2x.png"
+install_resource "UIKitResources/UIButtonBarRefresh.png"
+install_resource "UIKitResources/UIButtonBarRefresh@2x.png"
+install_resource "UIKitResources/UIButtonBarRefreshLandscape.png"
+install_resource "UIKitResources/UIButtonBarRefreshLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarReply.png"
+install_resource "UIKitResources/UIButtonBarReply@2x.png"
+install_resource "UIKitResources/UIButtonBarReplyLandscape.png"
+install_resource "UIKitResources/UIButtonBarReplyLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarRewind.png"
+install_resource "UIKitResources/UIButtonBarRewind@2x.png"
+install_resource "UIKitResources/UIButtonBarRewindLandscape.png"
+install_resource "UIKitResources/UIButtonBarRewindLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarSearch.png"
+install_resource "UIKitResources/UIButtonBarSearch@2x.png"
+install_resource "UIKitResources/UIButtonBarShadow.png"
+install_resource "UIKitResources/UIButtonBarShadow@2x.png"
+install_resource "UIKitResources/UIButtonBarStop.png"
+install_resource "UIKitResources/UIButtonBarStop@2x.png"
+install_resource "UIKitResources/UIButtonBarStopLandscape.png"
+install_resource "UIKitResources/UIButtonBarStopLandscape@2x.png"
+install_resource "UIKitResources/UIButtonBarTrash.png"
+install_resource "UIKitResources/UIButtonBarTrash@2x.png"
+install_resource "UIKitResources/UIButtonBarTrashLandscape.png"
+install_resource "UIKitResources/UIButtonBarTrashLandscape@2x.png"
+install_resource "UIKitResources/UITabBarBookmarksTemplate.png"
+install_resource "UIKitResources/UITabBarBookmarksTemplate@2x.png"
+install_resource "UIKitResources/UITabBarBookmarksTemplateSelected.png"
+install_resource "UIKitResources/UITabBarBookmarksTemplateSelected@2x.png"
+install_resource "UIKitResources/UITabBarContactsTemplate.png"
+install_resource "UIKitResources/UITabBarContactsTemplate@2x.png"
+install_resource "UIKitResources/UITabBarContactsTemplateSelected.png"
+install_resource "UIKitResources/UITabBarContactsTemplateSelected@2x.png"
+install_resource "UIKitResources/UITabBarDownloadsTemplate.png"
+install_resource "UIKitResources/UITabBarDownloadsTemplate@2x.png"
+install_resource "UIKitResources/UITabBarDownloadsTemplateSelected.png"
+install_resource "UIKitResources/UITabBarDownloadsTemplateSelected@2x.png"
+install_resource "UIKitResources/UITabBarFavoritesTemplate.png"
+install_resource "UIKitResources/UITabBarFavoritesTemplate@2x.png"
+install_resource "UIKitResources/UITabBarFavoritesTemplateSelected.png"
+install_resource "UIKitResources/UITabBarFavoritesTemplateSelected@2x.png"
+install_resource "UIKitResources/UITabBarHistoryTemplate.png"
+install_resource "UIKitResources/UITabBarHistoryTemplate@2x.png"
+install_resource "UIKitResources/UITabBarHistoryTemplateSelected.png"
+install_resource "UIKitResources/UITabBarHistoryTemplateSelected@2x.png"
+install_resource "UIKitResources/UITabBarMoreTemplate.png"
+install_resource "UIKitResources/UITabBarMoreTemplate@2x.png"
+install_resource "UIKitResources/UITabBarMoreTemplateSelected.png"
+install_resource "UIKitResources/UITabBarMoreTemplateSelected@2x.png"
+install_resource "UIKitResources/UITabBarMostViewedTemplate.png"
+install_resource "UIKitResources/UITabBarMostViewedTemplate@2x.png"
+install_resource "UIKitResources/UITabBarMostViewedTemplateSelected.png"
+install_resource "UIKitResources/UITabBarMostViewedTemplateSelected@2x.png"
+install_resource "UIKitResources/UITabBarSearchTemplate.png"
+install_resource "UIKitResources/UITabBarSearchTemplate@2x.png"
+install_resource "UIKitResources/UITabBarSearchTemplateSelected.png"
+install_resource "UIKitResources/UITabBarSearchTemplateSelected@2x.png"
+install_resource "UMengFeedback/__MACOSX/UMFeedback_iOS_1.41/umFeedback.bundle"
+install_resource "UMengFeedback/UMFeedback_iOS_1.41/umFeedback.bundle"
 
-rsync -avr --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+if [[ "${ACTION}" == "install" ]]; then
+  rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${INSTALL_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
+fi
 rm -f "$RESOURCES_TO_COPY"
