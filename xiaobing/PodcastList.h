@@ -11,7 +11,7 @@
 @interface PodcastList : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 {
-    NSMutableArray *localData;
+    NSArray *localData;
 }
 @property (weak, nonatomic) IBOutlet UITableView *table;
 

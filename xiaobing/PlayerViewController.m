@@ -83,7 +83,7 @@ static NSDateFormatter *formatter;
             break;
             
         case DOUAudioStreamerFinished:
-            [self.playButton setSelected:YES];
+            //[self.playButton setSelected:YES];
             [player stop];
             NSLog(@"f");
             //[_labelInfo setText:@"finished"];
@@ -114,11 +114,9 @@ static NSDateFormatter *formatter;
     
     if([player status] == DOUAudioStreamerPlaying)
     {
-        [self.playButton setSelected:YES];
         [player pause];
     }else
     {
-        [self.playButton setSelected:NO];
         [player play];
     }
 }
@@ -134,8 +132,9 @@ static NSDateFormatter *formatter;
     
     //self.view.backgroundColor = kColor_ListBG;
     self.navigationItem.title = podcast.title;
-    [self.playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateSelected];
     
+    [self.playButton setImage:[UIImage imageNamed:@"play"] forState:UIControlStateSelected];
+    [self.playButton setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
     
 //    
 //    
@@ -161,6 +160,27 @@ static NSDateFormatter *formatter;
     
     self.progressView.trackImage    = [UIImage imageNamed:@"track"];
     self.progressView.progressImage = [UIImage imageNamed:@"navBg"];
+    
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"zx_play"
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      
+                                                      [self.playButton setSelected:NO];
+                                                      
+                                                  }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"zx_pause"
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note) {
+                                                       [self.playButton setSelected:YES];
+                                                      
+                                                  }];
+    
     
     
     //+++++++++++++++

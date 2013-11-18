@@ -7,7 +7,7 @@
 //
 
 #import "XBPlayer.h"
-
+#import <ZXMacro.h>
 
 static void *kStatusKVOKey = &kStatusKVOKey;
 static void *kDurationKVOKey = &kDurationKVOKey;
@@ -132,11 +132,13 @@ static XBPlayer *player;
     [self.delegate changeStatus:[streamer status]];
     switch ([streamer status]) {
         case DOUAudioStreamerPlaying:
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"zx_play" object:nil];
             //[_labelInfo setText:@"playing"];
             //[_buttonPlayPause setTitle:@"Pause" forState:UIControlStateNormal];
             break;
             
         case DOUAudioStreamerPaused:
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"zx_pause" object:nil];
             //[_labelInfo setText:@"paused"];
             //[_buttonPlayPause setTitle:@"Play" forState:UIControlStateNormal];
             break;
@@ -189,14 +191,17 @@ static XBPlayer *player;
 
 -(void)pause
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"zx_pause" object:nil];
     [streamer pause];
 }
 -(void)stop
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"zx_stop" object:nil];
     [streamer stop];
 }
 -(void)play
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"zx_play" object:nil];
     [streamer play];
 }
 

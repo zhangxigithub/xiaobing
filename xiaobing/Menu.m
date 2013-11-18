@@ -37,7 +37,8 @@
         snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
             
             NSLog(@"2.response is %@",response);
-            [self follow];
+            if([response responseCode] == UMSResponseCodeSuccess)
+                [self follow];
             
         });
     }
@@ -66,14 +67,6 @@
     self.navigationItem.title = @"小饼FM";
     
     
-    //    if(iOS<7)
-    //    {
-    //        self.listenButton.backgroundColor =  [UIColor clearColor];
-    //    }
-    
-    
-    
-    
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, kContent_Height/2, 300, 1)];
     line.backgroundColor = RGB(240, 240, 240);
@@ -92,7 +85,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)listen:(id)sender {

@@ -10,6 +10,7 @@
 #import "XBPodcast.h"
 
 #import <MobClick.h>
+#import <AFNetworking.h>
 
 @implementation DataCenter
 
@@ -26,6 +27,8 @@ static DataCenter *dataCenter;
     }
     return dataCenter;
 }
+
+
 - (id)init
 {
     self = [super init];
@@ -35,20 +38,56 @@ static DataCenter *dataCenter;
         
         
         
-        NSMutableArray *podcasts = [self localPodcast];
-        
-        self.podcasts = [NSMutableArray array];
-        
-        for(NSDictionary *podcast in podcasts)
-        {
-            XBPodcast *onePodcast = [[XBPodcast alloc] initWithDictionary:podcast];
-            [self.podcasts addObject:onePodcast];
-        }
-        
+//        NSMutableArray *podcasts = [self localPodcast];
+//        
+//        self.podcasts = [NSMutableArray array];
+//        
+//        for(NSDictionary *podcast in podcasts)
+//        {
+//            XBPodcast *onePodcast = [[XBPodcast alloc] initWithDictionary:podcast];
+//            [self.podcasts addObject:onePodcast];
+//        }
+//        
         
         
     }
     return self;
+}
+
+
+-(NSArray *)podcasts
+{
+    if(_podcasts == nil)
+    {
+        NSArray *storedPodcast = [[NSUserDefaults standardUserDefaults] objectForKey:kStoreKey];
+        
+        if(storedPodcast == nil)
+        {
+            NSString *json = FileString(@"list", @"json");
+            
+            NSArray *newPodcast = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding]
+                                                                  options:NSJSONReadingAllowFragments
+                                                                    error:nil];
+            
+            
+            [[NSUserDefaults standardUserDefaults]setObject:newPodcast
+                                                     forKey:kStoreKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            storedPodcast = newPodcast;
+        }
+        
+        NSMutableArray *result = [NSMutableArray array];
+        
+        for(NSDictionary *podcast in storedPodcast)
+        {
+            XBPodcast *onePodcast = [[XBPodcast alloc] initWithDictionary:podcast];
+            [result addObject:onePodcast];
+        }
+        _podcasts = result;
+        
+    }
+    return _podcasts;
 }
 
 -(NSMutableArray *)localPodcast
@@ -151,55 +190,86 @@ static DataCenter *dataCenter;
 }
 -(void)update
 {
-    int version = 0;
-    if([[NSUserDefaults standardUserDefaults] objectForKey:kVersonKey])
-    {
-        version = [[[NSUserDefaults standardUserDefaults] objectForKey:kVersonKey] intValue];
-    }
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    int umengVersion = [[MobClick getConfigParams:@"umeng_version"] intValue];
+    [manager GET:@"http://xiaobingfm.sinaapp.com/api/podcast.php"
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+             
+             
+             
+             
+             NSArray *newPodcast = responseObject;
+             
+             
+             [[NSUserDefaults standardUserDefaults]setObject:newPodcast
+                                                      forKey:kStoreKey];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+
+             
+             
+             
+             
+             
+             
+             
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
     
-    if(YES)
-    {
-        NSLog(@"update data");
-        
-//        XBPodcast *podcast = self.podcasts[0];
-//        NSMutableURLRequest *request = [self.client requestWithMethod:@"GET"
-//                                                                 path:@"podcast.php"
-//                                                           parameters:@{@"id":[NSString stringWithFormat:@"%@",podcast.podcastID]}];
+    
+    
+//    
+//    int version = 0;
+//    if([[NSUserDefaults standardUserDefaults] objectForKey:kVersonKey])
+//    {
+//        version = [[[NSUserDefaults standardUserDefaults] objectForKey:kVersonKey] intValue];
+//    }
+//    
+//    int umengVersion = [[MobClick getConfigParams:@"umeng_version"] intValue];
+//    
+//    if(YES)
+//    {
+//        NSLog(@"update data");
 //        
-//        AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-//             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-//                 
-//
-//                 
-//                 
-//                 if(JSON == nil) return ;
-//                 if([JSON count]<=0 )return;
-//                 NSArray *old = [[NSUserDefaults standardUserDefaults] objectForKey:kStoreKey];
-//                 NSArray *newPodcasts = [JSON arrayByAddingObjectsFromArray:old];
-//
-//                 
-//                 [[NSUserDefaults standardUserDefaults] setObject:newPodcasts forKey:kStoreKey];
-//                 [[NSUserDefaults standardUserDefaults] synchronize];
-//                 
-//                 //ALERT(@"更新成功");
-//                 
-//                 
-//             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-//                 //ALERT(@"更新失败");
-//             }];
-//        
-//        [op start];
-//        
-//        
-//        
-//        
-//        
-//        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:umengVersion]
-//                                                  forKey:kVersonKey];
-//        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+////        XBPodcast *podcast = self.podcasts[0];
+////        NSMutableURLRequest *request = [self.client requestWithMethod:@"GET"
+////                                                                 path:@"podcast.php"
+////                                                           parameters:@{@"id":[NSString stringWithFormat:@"%@",podcast.podcastID]}];
+////        
+////        AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+////             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+////                 
+////
+////                 
+////                 
+////                 if(JSON == nil) return ;
+////                 if([JSON count]<=0 )return;
+////                 NSArray *old = [[NSUserDefaults standardUserDefaults] objectForKey:kStoreKey];
+////                 NSArray *newPodcasts = [JSON arrayByAddingObjectsFromArray:old];
+////
+////                 
+////                 [[NSUserDefaults standardUserDefaults] setObject:newPodcasts forKey:kStoreKey];
+////                 [[NSUserDefaults standardUserDefaults] synchronize];
+////                 
+////                 //ALERT(@"更新成功");
+////                 
+////                 
+////             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+////                 //ALERT(@"更新失败");
+////             }];
+////        
+////        [op start];
+////        
+////        
+////        
+////        
+////        
+////        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:umengVersion]
+////                                                  forKey:kVersonKey];
+////        [[NSUserDefaults standardUserDefaults] synchronize];
+//    }
 }
 
 

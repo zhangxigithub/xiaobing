@@ -18,23 +18,28 @@
 @interface DataCenter : NSObject
 
 
-@property(nonatomic,strong)NSMutableArray *podcasts;
-
+@property(nonatomic,strong) NSArray *podcasts;
 
 
 +(DataCenter *)sharedDateCenter;
+
+
+
+
+
+
+
+
 
 -(void)getPodcastWithBlock:(void(^)(NSArray *result))finish withParams:(NSDictionary *)params;
 
 
 
-//-(NSMutableArray *)localPodcast;
-//-(NSMutableArray *)podcast;
--(void)save;
+
+//-(void)save;
 -(void)update;
 
 
-//+(void)setURL:(NSString *)url toPodcast:(NSString *)podcastID;
 
--(NSString*)content:(NSString *)podcastID;
+
 @end
