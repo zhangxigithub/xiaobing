@@ -14,16 +14,12 @@
 
 
 #import <Foundation/Foundation.h>
-#import <AFHTTPClient.h>
-#import <JSONKit.h>
-#import <AFJSONRequestOperation.h>
 
 @interface DataCenter : NSObject
 
 
 @property(nonatomic,strong)NSMutableArray *podcasts;
 
-@property(nonatomic,strong) AFHTTPClient *client;
 
 
 +(DataCenter *)sharedDateCenter;

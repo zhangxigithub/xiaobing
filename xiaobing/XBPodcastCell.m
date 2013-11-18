@@ -9,7 +9,6 @@
 #import "XBPodcastCell.h"
 #import <UIImageView+AFNetworking.h>
 #import "ImageViewController.h"
-#import <GGFullScreenImageViewController.h>
 #import <QuartzCore/QuartzCore.h>
 @implementation XBPodcastCell
 

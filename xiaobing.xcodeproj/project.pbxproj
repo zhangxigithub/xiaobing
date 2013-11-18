@@ -51,7 +51,6 @@
 		33DE36FE176ED46D002F10D5 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33DE36FD176ED46D002F10D5 /* Media.xcassets */; };
 		33FA2349179CCE0200D88D69 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FA2347179CCE0200D88D69 /* Menu.m */; };
 		33FA234A179CCE0200D88D69 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33FA2348179CCE0200D88D69 /* Menu.xib */; };
-		4331B934175F844600B581E3 /* FeedBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4331B933175F844600B581E3 /* FeedBack.m */; };
 		439CEDA7175A4B7E0096D909 /* DataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CEDA6175A4B7E0096D909 /* DataCenter.m */; };
 		439CEDAA175AE4850096D909 /* XBPodcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CEDA9175AE4850096D909 /* XBPodcast.m */; };
 		439CEDAD175AE6320096D909 /* ListVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 439CEDAC175AE6320096D909 /* ListVIewController.m */; };
@@ -146,8 +145,6 @@
 		33FA2346179CCE0200D88D69 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		33FA2347179CCE0200D88D69 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		33FA2348179CCE0200D88D69 /* Menu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Menu.xib; sourceTree = "<group>"; };
-		4331B932175F844600B581E3 /* FeedBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBack.h; sourceTree = "<group>"; };
-		4331B933175F844600B581E3 /* FeedBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBack.m; sourceTree = "<group>"; };
 		439CEDA5175A4B7E0096D909 /* DataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCenter.h; sourceTree = "<group>"; };
 		439CEDA6175A4B7E0096D909 /* DataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCenter.m; sourceTree = "<group>"; };
 		439CEDA8175AE4850096D909 /* XBPodcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBPodcast.h; sourceTree = "<group>"; };
@@ -391,8 +388,6 @@
 				3373D2521761A83D00E004E5 /* List.h */,
 				3373D2531761A83D00E004E5 /* List.m */,
 				3373D2541761A83E00E004E5 /* List.xib */,
-				4331B932175F844600B581E3 /* FeedBack.h */,
-				4331B933175F844600B581E3 /* FeedBack.m */,
 				3373D25C1761B87700E004E5 /* list.json */,
 				33DE36FD176ED46D002F10D5 /* Media.xcassets */,
 				439CEDAE175B03720096D909 /* Cells */,
@@ -556,7 +551,6 @@
 				33BC600C179D2C1B003795ED /* DOUAudioPlaybackItem.m in Sources */,
 				33BC600E179D2C1B003795ED /* DOUAudioSpatialAnalyzer.m in Sources */,
 				333AA8F5175F09D300FA6C91 /* PageNumberView.m in Sources */,
-				4331B934175F844600B581E3 /* FeedBack.m in Sources */,
 				3373D2551761A83E00E004E5 /* List.m in Sources */,
 				33BC6007179D2C1B003795ED /* DOUAudioEventLoop.m in Sources */,
 				3373D25B1761B51E00E004E5 /* ZXRemoteNotification.m in Sources */,

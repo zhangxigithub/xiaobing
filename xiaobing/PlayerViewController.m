@@ -11,7 +11,6 @@
 #import "UMSocial.h"
 #import <UIImageView+AFNetworking.h>
 #import "DOUAudioFileProvider.h"
-#import <AFHTTPClient.h>
 #import "DataCenter.h"
 
 @implementation PlayerViewController
@@ -174,7 +173,7 @@ static NSDateFormatter *formatter;
                                       shareText:@"@小饼FM"
                                      shareImage:[UIImage imageNamed:@"icon.png"]
                                 shareToSnsNames:@[UMShareToSina,UMShareToTencent,UMShareToRenren,
-     UMShareToDouban,UMShareToQzone,UMShareToEmail,UMShareToSms,UMShareToWechat,UMShareToFacebook,UMShareToTwitter]
+     UMShareToDouban,UMShareToQzone,UMShareToEmail,UMShareToSms,UMShareToWechatTimeline,UMShareToFacebook,UMShareToTwitter]
                                        delegate:nil];
 }
 
@@ -187,20 +186,20 @@ static NSDateFormatter *formatter;
 -(void)loadContent
 {
     
-
-    NSMutableURLRequest *request = [[[DataCenter sharedDateCenter] client] requestWithMethod:@"GET"
-                                                             path:@"content.php"
-                                                       parameters:@{@"id":podcast.podcastID}];
-    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        
-        _contentTextView.text = [operation responseString];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
-    [op start];
+//
+//    NSMutableURLRequest *request = [[[DataCenter sharedDateCenter] client] requestWithMethod:@"GET"
+//                                                             path:@"content.php"
+//                                                       parameters:@{@"id":podcast.podcastID}];
+//    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+//    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
+//        
+//        _contentTextView.text = [operation responseString];
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//    }];
+//    [op start];
 }
 
 - (void)viewDidUnload {

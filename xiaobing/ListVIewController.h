@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "XBPodcastCell.h"
-#import <FPPopoverController.h>
-#import <MBProgressHUD.h>
 
-@interface ListVIewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,XBPodcastCellDelegate,FPPopoverControllerDelegate>
+@interface ListVIewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,XBPodcastCellDelegate>
 {
     UITableView   *table;
     UIView        *headerView;

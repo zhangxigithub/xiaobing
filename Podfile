@@ -1,13 +1,11 @@
-platform :ios,'5.0'
+platform :ios,'7.0'
 
-
-pod 'JSONKit'
-pod 'AFNetworking','1.3.1'
-
+pod 'AFNetworking'
 pod 'UMengSocial'
+
 pod 'UMengAnalytics'
-pod 'UMengFeedback'
-
-
 
 pod 'ZXTools/ZXMacro'
+
+
+

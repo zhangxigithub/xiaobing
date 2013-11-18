@@ -8,7 +8,6 @@
 
 #import "PodcastList.h"
 #import <ZXMacro.h>
-#import <JSONKit.h>
 #import "XBPodcast.h"
 #import "XBPlayer.h"
 #import "PlayerViewController.h"
