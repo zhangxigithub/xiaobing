@@ -1,23 +1,21 @@
 PODS:
-  - AFNetworking (2.0.2):
+  - AFNetworking (2.0.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.0.2):
+  - AFNetworking/NSURLConnection (2.0.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.0.2):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.0.2)
-  - AFNetworking/Security (2.0.2)
-  - AFNetworking/Serialization (2.0.2)
-  - AFNetworking/UIKit (2.0.2):
+  - AFNetworking/NSURLSession (2.0.3):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.0.3)
+  - AFNetworking/Security (2.0.3)
+  - AFNetworking/Serialization (2.0.3)
+  - AFNetworking/UIKit (2.0.3):
     - AFNetworking/NSURLConnection
   - UMengAnalytics (2.2.1)
   - UMengSocial (3.1)
@@ -30,9 +28,9 @@ DEPENDENCIES:
   - ZXTools/ZXMacro
 
 SPEC CHECKSUMS:
-  AFNetworking: 22de50ae71ab1c4859773f61068d6fcd1d8f9a4d
+  AFNetworking: e499052cbf3d743e9bb727bb37adb9dc2547ba15
   UMengAnalytics: f4fd387a67f1ac6cef005d196ddd690c9515566d
   UMengSocial: 3a48fa09ec5ed07ee29fe9f1917c2703f30bb394
   ZXTools: 51ece1ee0386c69777a805b65e696d620af1d625
 
-COCOAPODS: 0.26.2
+COCOAPODS: 0.28.0

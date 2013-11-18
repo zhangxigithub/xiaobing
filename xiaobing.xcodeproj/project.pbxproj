@@ -633,21 +633,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1EAC52C2A43C4C9998B33DFE /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "xiaobing/xiaobing-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				INFOPLIST_FILE = "xiaobing/xiaobing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\\\"$(SRCROOT)/xiaobing/SDKExport\\\"",
-					"$(SRCROOT)/xiaobing/UMSocial_Sdk_2.2.1/frameworks/Wechat",
-					"$(SRCROOT)/xiaobing/UMSocial_Sdk_2.2.1",
-				);
+				LIBRARY_SEARCH_PATHS = "${SRCROOT}/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -656,21 +655,21 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1EAC52C2A43C4C9998B33DFE /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: zhang  xi (54TGPDSGF2)";
+				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/**";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "xiaobing/xiaobing-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				INFOPLIST_FILE = "xiaobing/xiaobing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\\\"$(SRCROOT)/xiaobing/SDKExport\\\"",
-					"$(SRCROOT)/xiaobing/UMSocial_Sdk_2.2.1/frameworks/Wechat",
-					"$(SRCROOT)/xiaobing/UMSocial_Sdk_2.2.1",
-				);
+				LIBRARY_SEARCH_PATHS = "${SRCROOT}/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9D68A425-74F6-41BF-972A-F4A62B4CF507";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
